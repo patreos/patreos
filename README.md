@@ -20,13 +20,13 @@ You can generate your public/private keys on Scatter, then register for an accou
 Contributions are welcome from anyone.  There is currently not a contribution guide, so simply create a PR and await feedback.
 
 ## Running
-### Installing
+#### Installing
 ```npm install```
 
-### Running
+#### Running
 ```npm run start```
 
-
+#### Additional
 Ubuntu users may reache the kernel inotify watch limit.  If so, run:
 ```
 sudo sysctl fs.inotify.max_user_watches=524288
