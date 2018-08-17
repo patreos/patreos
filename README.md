@@ -15,19 +15,24 @@ A valid endpoint is: `http://jungle.cryptolions.io:38888`, where further chain i
 
 You can generate your public/private keys on Scatter, then register for an account [Jungle Testnet Account Creation](http://jungle.cryptolions.io/#account).
 
-## Contributing
-
-Contributions are welcome from anyone.  There is currently not a contribution guide, so simply create a PR and await feedback.
-
 ## Running
+
 #### Installing
-```npm install```
+```
+npm install
+```
 
 #### Running
-```npm run start```
+```
+npm run start
+```
 
 #### Additional
 Ubuntu users may reache the kernel inotify watch limit.  If so, run:
 ```
 sudo sysctl fs.inotify.max_user_watches=524288
 ```
+
+## Contributing
+
+Contributions are welcome from anyone.  There is currently not a contribution guide, so simply create a PR and await feedback.
