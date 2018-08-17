@@ -19,10 +19,11 @@ You can generate your public/private keys on Scatter, then register for an accou
 
 Contributions are welcome from anyone.  There is currently not a contribution guide, so simply create a PR and await feedback.
 
-#Install dependencies
+## Running
+### Installing
 ```npm install```
 
-#Run dev
+### Running
 ```npm run start```
 
 
