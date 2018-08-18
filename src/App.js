@@ -4,12 +4,21 @@ import { bindActionCreators } from 'redux';
 import * as UI_ACTIONS from './actions/ui_actions';
 import './styles/index.scss';
 import Eos from 'eosjs';
+import config from 'react-global-configuration';
+import configuration from './config/config';
+config.set(configuration);
 
 class App extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.appConfig = config.get(process.env["ENV_VAR"]);
+  }
+
   componentDidMount() {
+    console.log(process.env["APP_MESSAGE"])
     this.props.uiActions.detectScatter('LOOKING FOR SCATTER');
-    console.log(process.env.MESSAGE); // eslint-disable-line
+    let eos = Eos(Object.assign({}, this.appConfig.eos));
 
     setTimeout(
       function() {
@@ -37,10 +46,10 @@ class App extends React.Component {
       }
     });
 
-    let config = getEosConfig();
-    let eos = Eos(config);
+    //let eosConfig = getEosConfig();
+    //let eos = Eos(localConfig.eos);
 
-    let myaccount = eos.getAccount('myokayplanet');
+    let myaccount = eos.getAccount(this.appConfig.testAccount);
     myaccount.then((successMessage) => {
       this.props.uiActions.updateUserInfo(JSON.stringify(successMessage));
       this.props.uiActions.updateName(successMessage.account_name);
@@ -64,14 +73,6 @@ class App extends React.Component {
     );
   }
 
-}
-
-function getEosConfig() {
-  return {
-    httpEndpoint: 'https://mainnet.eoscanada.com',
-    chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-    verbose: true
-  };
 }
 
 function mapDispatchToProps(dispatch) {
