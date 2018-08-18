@@ -12,4 +12,3 @@ src/.DS_STORE
 dist/
 build/
 .env.production
-.env.development
