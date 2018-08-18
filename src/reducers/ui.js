@@ -17,8 +17,8 @@ export default (
     return { ...state, userInfo: action.data };
   case UI_ACTIONS.INCREMENT_COUNT:
     return { ...state, count: action.data };
-    case UI_ACTIONS.DETECT_SCATTER:
-      return { ...state, scatterDetected: action.data };
+  case UI_ACTIONS.DETECT_SCATTER:
+    return { ...state, scatterDetected: action.data };
   default:
     return state;
   }

@@ -8,40 +8,42 @@ import Eos from 'eosjs';
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.uiActions.detectScatter("LOOKING FOR SCATTER")
+    this.props.uiActions.detectScatter('LOOKING FOR SCATTER');
+    console.log(process.env.MESSAGE); // eslint-disable-line
 
     setTimeout(
-        function() {
-          if(typeof(scatter)=="undefined") {
-            this.props.uiActions.detectScatter("SCATTER NOT INSTALLED")
-          }
+      function() {
+        if(typeof(scatter)=='undefined') {
+          this.props.uiActions.detectScatter('SCATTER NOT INSTALLED');
         }
+      }
         .bind(this),
-        2000
+      2000
     );
 
-    document.addEventListener('scatterLoaded', scatterExtension => {
-        // Scatter will now be available from the window scope.
-        // At this stage the connection to Scatter from the application is
-        // already encrypted.
-        const scatter = window.scatter;
+    document.addEventListener('scatterLoaded', (e) => {
+      // Scatter will now be available from the window scope.
+      // At this stage the connection to Scatter from the application is
+      // already encrypted.
+      const scatter = window.scatter;
+      console.log(e); // eslint-disable-line
 
-        // It is good practice to take this off the window once you have
-        // a reference to it.
-        window.scatter = null;
+      // It is good practice to take this off the window once you have
+      // a reference to it.
+      window.scatter = null;
 
-        if(scatter != null) {
-          this.props.uiActions.detectScatter("SCATTER DETECTED")
-        }
+      if(scatter != null) {
+        this.props.uiActions.detectScatter('SCATTER DETECTED');
+      }
     });
 
-    let config = getEosConfig()
+    let config = getEosConfig();
     let eos = Eos(config);
 
-    let myaccount = eos.getAccount("myokayplanet");
+    let myaccount = eos.getAccount('myokayplanet');
     myaccount.then((successMessage) => {
-      this.props.uiActions.updateUserInfo(JSON.stringify(successMessage))
-      this.props.uiActions.updateName(successMessage.account_name)
+      this.props.uiActions.updateUserInfo(JSON.stringify(successMessage));
+      this.props.uiActions.updateName(successMessage.account_name);
     });
   }
 
@@ -69,7 +71,7 @@ function getEosConfig() {
     httpEndpoint: 'https://mainnet.eoscanada.com',
     chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
     verbose: true
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {

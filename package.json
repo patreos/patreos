@@ -5,8 +5,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "parcel public/index.html",
-    "build": "parcel build public/index.html --out-dir ./build"
+    "dev": "ENV_VAR=development parcel public/index.html -p 3000 --open",
+    "prod": "ENV_VAR=production parcel build public/index.html --out-dir ./build"
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
