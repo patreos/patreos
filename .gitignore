@@ -11,3 +11,5 @@ src/.DS_STORE
 .cache
 dist/
 build/
+.env.production
+.env.development
