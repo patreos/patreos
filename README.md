@@ -30,7 +30,7 @@ npm install
 
 #### Running
 ```
-npm run start
+npm run dev
 ```
 
 #### Additional
