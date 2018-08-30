@@ -1,4 +1,3 @@
-// SIMPLE REDUCER
 import { UI_ACTIONS } from '../constants/action_types';
 
 export default (
@@ -9,7 +8,6 @@ export default (
     webSite: 'http://www.patreos.com',
     scatterDetected: 'Checking for Scatter'
   }, action) => {
-
   switch (action.type) {
   case UI_ACTIONS.UPDATE_NAME:
     return { ...state, userName: action.data };

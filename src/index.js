@@ -2,9 +2,13 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import App from './App';
+import configuration from './config/config';
+import config from 'react-global-configuration';
+config.set(configuration);
 
 function configureStore(initialState) {
   return createStore(
@@ -16,6 +20,7 @@ function configureStore(initialState) {
 const store = configureStore({});
 
 const reactRoot = document.getElementById('react-root');
-const baseComponent = React.createElement(App, { store });
 
-ReactDOM.render(baseComponent, reactRoot);
+ReactDOM.render(
+  <Provider store={store}><App/></Provider>, reactRoot
+);

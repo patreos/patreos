@@ -5,10 +5,14 @@ module.exports = {
         "es6": true
     },
     "extends": "eslint:recommended",
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
-            "jsx": true
+            "jsx": true,
+            "modules":true,
+            "arrowFunctions":true,
+            "classes":true
         },
         "sourceType": "module"
     },
@@ -31,6 +35,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "react/jsx-uses-vars": 2
     }
 };
