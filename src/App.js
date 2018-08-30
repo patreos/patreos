@@ -42,7 +42,7 @@ class App extends React.Component {
   };
 
   getEosAccountInfo = () => {
-    const eos = Eos(Object.assign({}, this.config.eos));
+    const eos = Eos({...this.config.eos});
     const account = eos.getAccount(this.props.ui.userName);
     account.then((response) => {
       this.props.uiActions.updateUserInfo(response);
