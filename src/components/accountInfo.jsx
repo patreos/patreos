@@ -1,11 +1,11 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
-import * as UI_ACTIONS from '../actions/ui_actions';
+import * as ACCOUNT_ACTIONS from '../actions/account_actions';
 import connect from 'react-redux/es/connect/connect';
 
 class AccountInfo extends React.Component {
   render() {
-    const { userName, userInfo, webSite, scatterDetected } = this.props.ui;
+    const { userName, userInfo, webSite, scatterDetected } = this.props.accountInfo;
     return (
       <div className='account-container'>
         <ul className='account-info'>
@@ -23,13 +23,13 @@ class AccountInfo extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    uiActions: bindActionCreators(UI_ACTIONS, dispatch)
+    accountActions: bindActionCreators(ACCOUNT_ACTIONS, dispatch)
   };
 }
 
 function mapStateToProps(state) {
   return {
-    ui: state.ui
+    accountInfo: state.accountInfo
   };
 }
 

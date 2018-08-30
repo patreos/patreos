@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import ui from './ui';
+import accountInfo from './account';
 
 // Add your new reducer here
 const reducers = {
-  ui
+  accountInfo
 };
 
 const rootReducer = combineReducers(reducers);

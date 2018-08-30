@@ -1,4 +1,4 @@
-import { UI_ACTIONS } from '../constants/action_types';
+import {ACCOUNT_ACTIONS} from '../constants/action_types';
 
 export default (
   state = {
@@ -8,13 +8,13 @@ export default (
     scatterDetected: 'Checking for Scatter'
   }, action) => {
   switch (action.type) {
-  case UI_ACTIONS.UPDATE_NAME:
+  case ACCOUNT_ACTIONS.UPDATE_NAME:
     return { ...state, userName: action.data };
-  case UI_ACTIONS.UPDATE_USER_INFO:
+  case ACCOUNT_ACTIONS.UPDATE_USER_INFO:
     return { ...state, userInfo: action.data };
-  case UI_ACTIONS.UPDATE_TRANSACTIONS:
+  case ACCOUNT_ACTIONS.UPDATE_TRANSACTIONS:
     return { ...state, transactions: action.data };
-  case UI_ACTIONS.DETECT_SCATTER:
+  case ACCOUNT_ACTIONS.DETECT_SCATTER:
     return { ...state, scatterDetected: action.data };
   default:
     return state;

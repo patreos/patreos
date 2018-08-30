@@ -23,7 +23,11 @@ const config = {
     testAccount: 'okokokokokok',
     requiredFields: {
       accounts:[
-        {blockchain: 'eos', host: 'https://mainnet.eoscanada.com', port: 443},
+        {
+          blockchain: 'eos',
+          chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+          host: 'https://mainnet.eoscanada.com',
+          port: 443},
       ]
     },
     eos: {
