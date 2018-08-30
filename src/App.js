@@ -18,12 +18,21 @@ class App extends React.Component {
       this.scatter = window.scatter;
       window.scatter = null;
       this.props.uiActions.detectScatter('SCATTER DETECTED');
+      this.getAccountInfo();
     });
-
-    this.getAccountInfo();
   }
 
   getAccountInfo = () => {
+    this.scatter.getIdentity().then(identity => {
+      this.props.uiActions.updateName(identity.name);
+      this.props.uiActions.updateUserInfo(identity);
+    }).catch(error => {
+      console.log('An error occurred: ' + error); //eslint-disable-line
+    });
+  };
+
+  getTransactions = () => {
+    //These lines are for hitting the blockchain and getting info via eosjs
     const eos = Eos(Object.assign({}, this.appConfig.eos));
     const account = eos.getAccount(this.appConfig.testAccount);
     account.then((response) => {

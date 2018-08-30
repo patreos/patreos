@@ -9,13 +9,13 @@ class AccountInfo extends React.Component {
   }
 
   render() {
-    const { userInfo, webSite, scatterDetected } = this.props.ui;
+    const { userName, userInfo, webSite, scatterDetected } = this.props.ui;
     return (
       <div className='account-container'>
         <ul className='account-info'>
           <li>
             <span>Username: </span>
-            <a href={webSite} target='_blank'>{userInfo.account_name}</a>
+            <a href={webSite} target='_blank'>{userName}</a>
           </li>
           <li>User Info: {JSON.stringify(userInfo)}</li>
           <li>Status: {scatterDetected}</li>
