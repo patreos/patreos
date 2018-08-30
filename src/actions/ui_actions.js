@@ -12,13 +12,6 @@ export function updateUserInfo(userInfo) {
   };
 }
 
-export function incrementCount() {
-  return (dispatch, getState) => {
-    const { count } = getState().ui;
-    return dispatch({ type: UI_ACTIONS.INCREMENT_COUNT, data: count + 1 });
-  };
-}
-
 export function detectScatter(scatterDetected) {
   return (dispatch) => {
     dispatch({ type: UI_ACTIONS.DETECT_SCATTER, data: scatterDetected });

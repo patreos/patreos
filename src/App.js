@@ -26,9 +26,8 @@ class App extends React.Component {
   getAccountInfo = () => {
     const eos = Eos(Object.assign({}, this.appConfig.eos));
     const account = eos.getAccount(this.appConfig.testAccount);
-    account.then((successMessage) => {
-      this.props.uiActions.updateUserInfo(JSON.stringify(successMessage));
-      this.props.uiActions.updateName(successMessage.account_name);
+    account.then((response) => {
+      this.props.uiActions.updateUserInfo(response);
     });
   };
 
@@ -39,7 +38,6 @@ class App extends React.Component {
       </div>
     );
   }
-
 }
 
 function mapDispatchToProps(dispatch) {
