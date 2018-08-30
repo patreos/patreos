@@ -10,33 +10,44 @@ import config from 'react-global-configuration';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.appConfig = config.get(process.env['ENV_VAR']); //eslint-disable-line
+    this.config = config.get(process.env['ENV_VAR']); //eslint-disable-line
   }
 
-  componentDidMount() {
+  componentWillMount() {
     document.addEventListener('scatterLoaded', () => {
       this.scatter = window.scatter;
       window.scatter = null;
       this.props.uiActions.detectScatter('SCATTER DETECTED');
-      this.getAccountInfo();
+      this.getScatterIdentity();
     });
   }
 
-  getAccountInfo = () => {
-    this.scatter.getIdentity().then(identity => {
-      this.props.uiActions.updateName(identity.name);
-      this.props.uiActions.updateUserInfo(identity);
+  componentDidMount() {
+    if (!this.scatter) {
+      this.props.uiActions.detectScatter('SCATTER NOT DETECTED');
+    }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scatterLoaded', () => {}, false);
+  }
+
+  getScatterIdentity = () => {
+    const required = this.config.requiredFields;
+    this.scatter.getIdentity(required).then(identity => {
+      this.props.uiActions.updateName(identity.accounts[0].name);
     }).catch(error => {
-      console.log('An error occurred: ' + error); //eslint-disable-line
+      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
     });
   };
 
-  getTransactions = () => {
-    //These lines are for hitting the blockchain and getting info via eosjs
-    const eos = Eos(Object.assign({}, this.appConfig.eos));
-    const account = eos.getAccount(this.appConfig.testAccount);
+  getEosAccountInfo = () => {
+    const eos = Eos(Object.assign({}, this.config.eos));
+    const account = eos.getAccount(this.props.ui.userName);
     account.then((response) => {
       this.props.uiActions.updateUserInfo(response);
+    }).catch(error => {
+      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
     });
   };
 
@@ -44,6 +55,7 @@ class App extends React.Component {
     return (
       <div className='wrapper'>
         <AccountInfo/>
+        <button onClick={() => this.getEosAccountInfo()}>get user info</button>
       </div>
     );
   }

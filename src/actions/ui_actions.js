@@ -12,6 +12,12 @@ export function updateUserInfo(userInfo) {
   };
 }
 
+export function updateTransactions(transactions) {
+  return (dispatch) => {
+    dispatch({ type: UI_ACTIONS.UPDATE_TRANSACTIONS, data: transactions });
+  };
+}
+
 export function detectScatter(scatterDetected) {
   return (dispatch) => {
     dispatch({ type: UI_ACTIONS.DETECT_SCATTER, data: scatterDetected });

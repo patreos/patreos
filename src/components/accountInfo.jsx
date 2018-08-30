@@ -4,17 +4,13 @@ import * as UI_ACTIONS from '../actions/ui_actions';
 import connect from 'react-redux/es/connect/connect';
 
 class AccountInfo extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { userName, userInfo, webSite, scatterDetected } = this.props.ui;
     return (
       <div className='account-container'>
         <ul className='account-info'>
           <li>
-            <span>Username: </span>
+            <span>eos account: </span>
             <a href={webSite} target='_blank'>{userName}</a>
           </li>
           <li>User Info: {JSON.stringify(userInfo)}</li>

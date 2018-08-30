@@ -3,7 +3,7 @@ import { UI_ACTIONS } from '../constants/action_types';
 export default (
   state = {
     userName: 'Loading User',
-    userInfo: 'Loading User Info',
+    userInfo: 'Click button to load',
     webSite: 'http://www.patreos.com',
     scatterDetected: 'Checking for Scatter'
   }, action) => {
@@ -12,6 +12,8 @@ export default (
     return { ...state, userName: action.data };
   case UI_ACTIONS.UPDATE_USER_INFO:
     return { ...state, userInfo: action.data };
+  case UI_ACTIONS.UPDATE_TRANSACTIONS:
+    return { ...state, transactions: action.data };
   case UI_ACTIONS.DETECT_SCATTER:
     return { ...state, scatterDetected: action.data };
   default:
