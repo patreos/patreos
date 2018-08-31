@@ -5,9 +5,10 @@ const config = {
     requiredFields: {
       accounts:[
         {
+          protocol: 'http',
           blockchain: 'eos',
           chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
-          host: 'http://jungle.cryptolions.io',
+          host: 'jungle.cryptolions.io',
           port: 38888
         }
       ]
@@ -24,9 +25,10 @@ const config = {
     requiredFields: {
       accounts:[
         {
+          protocol: 'https',
           blockchain: 'eos',
           chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-          host: 'https://mainnet.eoscanada.com',
+          host: 'mainnet.eoscanada.com',
           port: 443},
       ]
     },
