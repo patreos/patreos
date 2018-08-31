@@ -57,7 +57,7 @@ class App extends React.Component {
     const network = this.config.requiredFields.accounts[0];
     const eos = this.scatter.eos(network, Eos, {});
     const username = this.props.accountInfo.userName;
-    const transaction = this.transaction_builder.transfer(username, 'eoscafekorea', 0.0001)
+    const transaction = this.transaction_builder.blurb(username, 'eoscafekorea', '<3')
     eos.transaction(transaction);
   };
 
