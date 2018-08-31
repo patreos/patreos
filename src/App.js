@@ -6,11 +6,13 @@ import * as ACCOUNT_ACTIONS from './actions/account_actions';
 import './styles/index.scss';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
+import TransactionBuilder from './utils/transaction_builder'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.config = config.get(process.env['ENV_VAR']); //eslint-disable-line
+    this.transaction_builder = new TransactionBuilder(this.config);
   }
 
   componentWillMount() {
@@ -55,27 +57,8 @@ class App extends React.Component {
     const network = this.config.requiredFields.accounts[0];
     const eos = this.scatter.eos(network, Eos, {});
     const username = this.props.accountInfo.userName;
-    eos.transaction(
-      {
-        actions: [
-          {
-            account: 'eosio.token',
-            name: 'transfer',
-            authorization: [{
-              actor: username,
-              permission: 'active'
-            }],
-            data: {
-              from: username,
-              to: 'eoscafekorea',
-              quantity: '0.0001 EOS',
-              memo: ''
-            }
-          }
-        ]
-      }
-      // config -- example: {broadcast: false, sign: true}
-    );
+    const transaction = this.transaction_builder.transfer(username, 'eoscafekorea', 0.0001)
+    eos.transaction(transaction);
   };
 
   render() {
