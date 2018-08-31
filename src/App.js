@@ -41,32 +41,6 @@ class App extends React.Component {
     });
   };
 
-  createTransaction = () => {
-    const network = this.config.requiredFields.accounts[0];
-    const eos = this.scatter.eos( network, Eos, {} );
-    eos.transaction(
-      {
-        actions: [
-          {
-            account: 'eosio.token',
-            name: 'transfer',
-            authorization: [{
-              actor: 'okokokokokok',
-              permission: 'active'
-            }],
-            data: {
-              from: 'okokokokokok',
-              to: 'eoscafekorea',
-              quantity: '0.0001 EOS',
-              memo: ''
-            }
-          }
-        ]
-      }
-      // config -- example: {broadcast: false, sign: true}
-    )
-  }
-
   getEosAccountInfo = () => {
     const eos = Eos({...this.config.eos});
     const account = eos.getAccount(this.props.accountInfo.userName);
@@ -75,6 +49,33 @@ class App extends React.Component {
     }).catch(error => {
       console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
     });
+  };
+
+  createTransaction = () => {
+    const network = this.config.requiredFields.accounts[0];
+    const eos = this.scatter.eos(network, Eos, {});
+    const username = this.props.accountInfo.userName;
+    eos.transaction(
+      {
+        actions: [
+          {
+            account: 'eosio.token',
+            name: 'transfer',
+            authorization: [{
+              actor: username,
+              permission: 'active'
+            }],
+            data: {
+              from: username,
+              to: 'eoscafekorea',
+              quantity: '0.0001 EOS',
+              memo: ''
+            }
+          }
+        ]
+      }
+      // config -- example: {broadcast: false, sign: true}
+    );
   };
 
   render() {
