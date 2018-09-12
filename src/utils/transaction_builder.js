@@ -101,11 +101,25 @@ class TransactionBuilder {
     }
   }
 
+  unpledge(_from, _to, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreosnexus,
+        name: 'unpledge',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          from: _from,
+          to: _to
+        }
+      }]
+    }
+  }
+
   // Creator publishes new content
   publish(_from, _title, _description, _url) {}
-
-  // Pledge a quantity to creator every n-days
-  unpledge(_from, _to) {}
 
   // A simple follow to a creator
   subscribe(_from, _to) {}
