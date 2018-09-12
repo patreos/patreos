@@ -21,7 +21,7 @@ const config = {
       patreostoken: 'patreostoken',
       patreosblurb: 'patreostests',
       patreosmoney: 'patreostests',
-      patreosnexus: 'patreostests'
+      patreosnexus: 'pppppppnexus'
     },
     patreosSymbol: 'PTR'
   },

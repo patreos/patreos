@@ -9,7 +9,9 @@ export default (
     stakeQuantity: '1.0000',
     unstakeQuantity: '1.0000',
     pledgeQuantity: '1.0000',
-    pledgeCycleDays: '0'
+    pledgeCycleDays: '0',
+    pledges: [],
+    pledgers: []
   }, action) => {
   switch (action.type) {
   case PATREOS_TOKEN_ACTIONS.UNSTAKED_BALANCE:
@@ -28,6 +30,10 @@ export default (
     return { ...state, pledgeQuantity: action.data };
   case PATREOS_TOKEN_ACTIONS.PLEDGE_CYCLE_DAYS:
     return { ...state, pledgeCycleDays: action.data };
+  case PATREOS_TOKEN_ACTIONS.PLEDGES:
+    return { ...state, pledges: action.data };
+  case PATREOS_TOKEN_ACTIONS.PLEDGERS:
+    return { ...state, pledgers: action.data };
   default:
     return state;
   }

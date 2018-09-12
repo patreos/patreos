@@ -81,11 +81,30 @@ class TransactionBuilder {
 		}
 	}
 
+  // Pledge a quantity to creator every n-days
+  pledge(_from, _to, _quantity, _days, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreosnexus,
+        name: 'pledge',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          from: _from,
+          to: _to,
+          quantity: _quantity + ' ' + this.config.patreosSymbol,
+          days: _days
+        }
+      }]
+    }
+  }
+
   // Creator publishes new content
   publish(_from, _title, _description, _url) {}
 
   // Pledge a quantity to creator every n-days
-  pledge(_from, _to, _quantity, _days) {}
   unpledge(_from, _to) {}
 
   // A simple follow to a creator

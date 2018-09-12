@@ -47,3 +47,15 @@ export function updatePledgeCycleDays(pledgeCycleDays) {
     dispatch({ type: PATREOS_TOKEN_ACTIONS.PLEDGE_CYCLE_DAYS, data: pledgeCycleDays });
   };
 }
+
+export function updatePledges(pledges) {
+  return (dispatch) => {
+    dispatch({ type: PATREOS_TOKEN_ACTIONS.PLEDGES, data: pledges });
+  };
+}
+
+export function updatePledgers(pledgers) {
+  return (dispatch) => {
+    dispatch({ type: PATREOS_TOKEN_ACTIONS.PLEDGERS, data: pledgers });
+  };
+}
