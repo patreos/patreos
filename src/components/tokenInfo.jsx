@@ -78,7 +78,7 @@ class TokenInfo extends React.Component {
           <div className="row">
             <div className="col-m">
               <input type="text" size="12" placeholder="receiver account" onChange={this.updateReceiverAccount} />
-              <button onClick={() => this.sendPatreosToken()}>send transaction</button>
+              <button onClick={ () => this.sendPatreosToken() }>send transaction</button>
             </div>
           </div>
         </div>
@@ -97,7 +97,7 @@ class TokenInfo extends React.Component {
             </div>
           </div>
           <div className="row">
-            <button onClick={() => this.stakePatreos()}>stake</button>
+            <button onClick={ () => this.stakePatreos() }>stake</button>
           </div>
           <br/>
           <div className="row">
@@ -109,7 +109,7 @@ class TokenInfo extends React.Component {
             </div>
           </div>
           <div className="row">
-            <button onClick={() => this.unstakePatreos()}>unstake</button>
+            <button onClick={ () => this.unstakePatreos() }>unstake</button>
           </div>
         </div>
         <div className="container m-5">
@@ -131,7 +131,7 @@ class TokenInfo extends React.Component {
               <input type="text" size="12" placeholder="pledge to account" onChange={this.updateReceiverAccount} />
             </div>
             <div className="col-m">
-              <button onClick={() => this.pledgePatreos()}>pledge</button>
+              <button onClick={ () => this.pledgePatreos() }>pledge</button>
             </div>
           </div>
           <br/>
@@ -195,19 +195,7 @@ class TokenInfo extends React.Component {
 
     const eos = scatter.eos(network, Eos, {});
     const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.stake(this.props.account, this.props.tokenInfo.receiverAccount, '1.0000', '<3');
-    eos.transaction(transaction);
-  };
-
-  pledgePatreos = () => {
-    const network = this.config.requiredFields.accounts[0];
-
-    // TODO: Check that passing scatter prop is best approach
-    const scatter = this.props.scatter;
-
-    const eos = scatter.eos(network, Eos, {});
-    const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.pledge(this.props.account, this.props.tokenInfo.receiverAccount,'1.0000', 1);
+    const transaction = transaction_builder.stake(this.props.account, '1.0000', '<3');
     eos.transaction(transaction);
   };
 
@@ -220,6 +208,18 @@ class TokenInfo extends React.Component {
     const eos = scatter.eos(network, Eos, {});
     const transaction_builder = new TransactionBuilder(this.config);
     const transaction = transaction_builder.unstake(this.props.account, '1.0000', '<3');
+    eos.transaction(transaction);
+  };
+
+  pledgePatreos = () => {
+    const network = this.config.requiredFields.accounts[0];
+
+    // TODO: Check that passing scatter prop is best approach
+    const scatter = this.props.scatter;
+
+    const eos = scatter.eos(network, Eos, {});
+    const transaction_builder = new TransactionBuilder(this.config);
+    const transaction = transaction_builder.pledge(this.props.account, this.props.tokenInfo.receiverAccount, '1.0000', 1);
     eos.transaction(transaction);
   };
 
