@@ -24,6 +24,44 @@ class TransactionBuilder {
 		}
 	}
 
+  // A custom transfer function for any eosio.token-like contract
+  stake(_from, _quantity, _memo='', _permission='active') {
+    return {
+			actions: [{
+				account: this.config.code.patreostoken,
+				name: 'stake',
+				authorization: [{
+					actor: _from,
+					permission: _permission
+				}],
+				data: {
+					account: _from,
+					quantity: _quantity + ' ' + this.config.patreosSymbol,
+					memo: _memo
+				}
+			}]
+		}
+  }
+
+  // A custom transfer function for any eosio.token-like contract
+  unstake(_from, _quantity, _memo='', _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreostoken,
+        name: 'unstake',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          account: _from,
+          quantity: _quantity + ' ' + this.config.patreosSymbol,
+          memo: _memo
+        }
+      }]
+    }
+  }
+
   // A basic alert method that uses memo for alert data
   blurb(_from, _to, _memo='a basic blurb', _permission='active') {
 		return {
@@ -57,9 +95,6 @@ class TransactionBuilder {
   // Update basic profile information
   set_profile(_account, _name, _description, _img_url) {}
   unset_profile(_account) {}
-
-  // Only staked PTR can be managed by subscription services
-  stake(_account, _quantity) {}
 
 }
 

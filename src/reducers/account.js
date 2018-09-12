@@ -5,7 +5,8 @@ export default (
     userName: 'Loading User',
     userInfo: 'Click button to load',
     webSite: 'http://www.patreos.com',
-    scatterDetected: 'Checking for Scatter'
+    scatterDetected: 'Checking for Scatter',
+    ptrReceiver: ''
   }, action) => {
   switch (action.type) {
   case ACCOUNT_ACTIONS.UPDATE_NAME:

@@ -9,12 +9,11 @@ class AccountInfo extends React.Component {
     return (
       <div className='account-container'>
         <ul className='account-info'>
+          <li>Status: {scatterDetected }</li>
           <li>
-            <span>eos account: </span>
+            <span>EOS Account: </span>
             <a href={webSite} target='_blank'>{userName}</a>
           </li>
-          <li>User Info: {JSON.stringify(userInfo)}</li>
-          <li>Status: {scatterDetected}</li>
         </ul>
       </div>
     );

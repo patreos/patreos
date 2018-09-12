@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import accountInfo from './account';
-
+import tokenInfo from './token';
 // Add your new reducer here
 const reducers = {
-  accountInfo
+  accountInfo,
+  tokenInfo
 };
 
 const rootReducer = combineReducers(reducers);

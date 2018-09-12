@@ -18,11 +18,12 @@ const config = {
       verbose: true
     },
     code: {
-      patreostoken: 'patreostests',
+      patreostoken: 'patreostoken',
       patreosblurb: 'patreostests',
       patreosmoney: 'patreostests',
       patreosnexus: 'patreostests'
-    }
+    },
+    patreosSymbol: 'PTR'
   },
   production: {
     env: 'production',
@@ -47,7 +48,8 @@ const config = {
       patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
       patreosnexus: 'patreosnexus'
-    }
+    },
+    patreosSymbol: 'PTR'
   }
 };
 
