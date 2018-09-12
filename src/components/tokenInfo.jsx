@@ -43,22 +43,7 @@ class TokenInfo extends React.Component {
               { unstakedBalance }
             </div>
           </div>
-          <div className="row">
-            <div className="col-m">
-              PTR Staked Balance:
-            </div>
-            <div className="col-m">
-              { stakedBalance }
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-m">
-              Pledges:
-            </div>
-            <div className="col-m">
-              { JSON.stringify(pledges) }
-            </div>
-          </div>
+          <br/>
           <div className="row">
             <div className="col-m">
               Send:
@@ -90,6 +75,15 @@ class TokenInfo extends React.Component {
           </div>
           <div className="row">
             <div className="col-m">
+              PTR Staked Balance:
+            </div>
+            <div className="col-m">
+              { stakedBalance }
+            </div>
+          </div>
+          <br/>
+          <div className="row">
+            <div className="col-m">
               Quantity to Stake:
             </div>
             <div className="col-m">
@@ -118,6 +112,15 @@ class TokenInfo extends React.Component {
               <b>Patreos Token Pledging</b>
             </div>
           </div>
+          <div className="row">
+            <div className="col-m">
+              Pledges:
+            </div>
+            <div className="col-m">
+              { JSON.stringify(pledges) }
+            </div>
+          </div>
+          <br/>
           <div className="row">
             <div className="col-m">
               Quantity to Pledge:
