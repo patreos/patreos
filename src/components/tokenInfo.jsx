@@ -11,14 +11,27 @@ class TokenInfo extends React.Component {
   constructor(props) {
     super(props);
     this.config = this.props.config;
+    this.eos = Eos({...this.config.eos});
+  }
+
+  tokeInfoUpdate() {
+    this.getPTRBalance();
+    this.getStakedPTRBalance();
+    this.getPledges()
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.account !== this.props.account) {
-      this.getPTRBalance();
-      this.getStakedPTRBalance();
-      this.getPledges();
+      this.tokeInfoUpdate();
     }
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
@@ -156,17 +169,6 @@ class TokenInfo extends React.Component {
     );
   }
 
-  getPTRBalance = () => {
-    const eos = Eos({...this.config.eos});
-    const patreosBalance = eos.getCurrencyBalance(this.config.code.patreostoken,
-      this.props.account, this.config.patreosSymbol)
-    patreosBalance.then((response) => {
-      this.props.tokenActions.updateUnstakedBalance(response[0]);
-    }).catch(error => {
-      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
-    });
-  };
-
   updateReceiverAccount = (input) => {
     this.props.tokenActions.updateReceiverAccount(input.target.value);
   };
@@ -238,34 +240,41 @@ class TokenInfo extends React.Component {
     eos.transaction(transaction);
   };
 
+  getPTRBalance = () => {
+    const patreosBalance = this.eos.getCurrencyBalance(this.config.code.patreostoken,
+      this.props.account, this.config.patreosSymbol)
+    patreosBalance.then((response) => {
+      this.props.tokenActions.updateUnstakedBalance(response[0]);
+    }).catch(error => {
+      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
+    });
+  };
+
   getStakedPTRBalance = () => {
-    const eos = Eos({...this.config.eos});
-    // json, code, scope, table, table_key
-    const table = eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'stakedaccs')
+    const table = this.eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'stakedaccs')
     table.then((response) => {
       if(response.rows.length > 0) {
         this.props.tokenActions.updateStakedBalance(response.rows[0].balance);
         return;
       }
+      this.props.tokenActions.updateStakedBalance('0.0000 PTR');
     }).catch(error => {
       console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
     });
   };
 
   getPledges = () => {
-    const eos = Eos({...this.config.eos});
-    // json, code, scope, table, table_key
-    const table = eos.getTableRows(true, this.config.code.patreosnexus, this.props.account, 'pledges')
+    const table = this.eos.getTableRows(true, this.config.code.patreosnexus, this.props.account, 'pledges')
     table.then((response) => {
       if(response.rows.length > 0) {
         this.props.tokenActions.updatePledges(response.rows);
         return;
       }
+      this.props.tokenActions.updatePledges([]);
     }).catch(error => {
       console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
     });
   };
-
 }
 
 function mapDispatchToProps(dispatch) {
