@@ -7,7 +7,7 @@ class AccountInfo extends React.Component {
   render() {
     const { userName, userInfo, webSite, scatterDetected } = this.props.accountInfo;
     return (
-      <div className='account-container pt-5'>
+      <div className='account-container'>
         <div className='container m-5'>
           <div className='row'>
             <div className='col-m'>

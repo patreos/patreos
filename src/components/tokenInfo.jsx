@@ -15,19 +15,21 @@ class TokenInfo extends React.Component {
   }
 
   tokeInfoUpdate() {
-    this.getPTRBalance();
-    this.getStakedPTRBalance();
-    this.getPledges()
+    if(this.props.scatter != null) {
+      this.getPTRBalance();
+      this.getStakedPTRBalance();
+      this.getPledges()
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.account !== this.props.account) {
-      //this.tokeInfoUpdate();
+      this.tokeInfoUpdate();
     }
   }
 
   componentDidMount() {
-    //this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
+    this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
   }
 
   componentWillUnmount() {

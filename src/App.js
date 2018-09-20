@@ -1,11 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Header from './components/header';
 import AccountInfo from './components/accountInfo';
 import TokenInfo from './components/tokenInfo';
-import Footer from './components/footer';
-import Demo from './components/demo';
+import Sidebar from './components/sidebar';
+import Menu from './components/menu';
 import * as ACCOUNT_ACTIONS from './actions/account_actions';
 import * as PATREOS_TOKEN_ACTIONS from './actions/token_actions';
 import './styles/index.scss';
@@ -69,7 +68,14 @@ class App extends React.Component {
 
   render() {
     return (
-        <Demo/>
+      <div className='wrapper'>
+        <Sidebar/>
+        <div id="content">
+          <Menu/>
+          <AccountInfo/>
+          <TokenInfo scatter={this.scatter} config={this.config} account={ this.props.accountInfo.userName }/>
+        </div>
+      </div>
     );
   }
 }
