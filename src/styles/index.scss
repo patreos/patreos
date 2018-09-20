@@ -1,6 +1,5 @@
 body {
-  display: flex;
-  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   p {
     color: red;
   }
@@ -12,5 +11,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+button {
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }

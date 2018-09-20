@@ -41,151 +41,154 @@ class TokenInfo extends React.Component {
 
     return (
       <div className='token-container'>
-        <div className="jumbotron">
+        <div className='jumbotron m-5 container'>
           <h1>PTR Management</h1>
-          <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-          <p>
-            <a className="btn btn-lg btn-primary" href="#navbar" role="button">Manage with Scatter</a>
-          </p>
+          <p>This dashboard allows an account to manage their PTR tokens.</p>
         </div>
-        <div className="container m-5">
-          <div className="row">
-            <div className="col-m">
-              <b>Patreos Token Transfers</b>
+        <div className='container m-5 '>
+          <div className='row'>
+            <div className='col-m'>
+              <h3>Patreos Token Transfers</h3>
             </div>
           </div>
-          <div className="row">
-            <div className="col-m">
-              PTR Balance:
+          <div className='row'>
+            <div className='col-m'>
+              Unstaked Balance:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { unstakedBalance }
             </div>
           </div>
           <br/>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               Send:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { transferQuantity } PTR
             </div>
+            <div className='input-group mb-3'>
+              <input type='text' className='form-control' placeholder={ transferQuantity }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateTransferQuantity } />
+              <div className='input-group-append'>
+                <span className='input-group-text'>PTR</span>
+              </div>
+            </div>
           </div>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               Receiver Account:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { receiverAccount }
             </div>
           </div>
-          <div className="row">
-            <div className="col-m">
-              <input type="text" size="12" placeholder="Receiver Account" onChange={ this.updateReceiverAccount } />
-              <button className="btn btn-primary" onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
+          <div className='row'>
+            <div className='col-m input-group mb-3'>
+              <input className='form-control' type='text' size='12' placeholder='Receiver Account' onChange={ this.updateReceiverAccount } />
             </div>
+            <button className='btn btn-primary' onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
           </div>
         </div>
-        <div className="container m-5">
-          <div className="row">
-            <div className="col-m">
-              <b>Patreos Token Staking</b>
+        <div className='container m-5'>
+          <div className='row'>
+            <div className='col-m'>
+              <h3>Patreos Token Staking</h3>
             </div>
           </div>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               PTR Staked Balance:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { stakedBalance }
             </div>
           </div>
           <br/>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               Quantity to Stake:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { stakeQuantity } PTR
             </div>
           </div>
-          <div className="row">
-            <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder={ stakeQuantity }  aria-label="Amount (to the nearest dollar)" onChange={ this.updateStakeQuantity } />
-              <div className="input-group-append">
-                <span className="input-group-text">PTR</span>
+          <div className='row'>
+            <div className='input-group mb-3'>
+              <input type='text' className='form-control' placeholder={ stakeQuantity }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateStakeQuantity } />
+              <div className='input-group-append'>
+                <span className='input-group-text'>PTR</span>
               </div>
             </div>
-            <button className="btn btn-primary" onClick={ () => this.stakePatreos() }>Stake</button>
+            <button className='btn btn-primary' onClick={ () => this.stakePatreos() }>Stake</button>
           </div>
           <br/>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               Quantity to Unstake:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { unstakeQuantity } PTR
             </div>
           </div>
-          <div className="row">
-            <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder={ unstakeQuantity } aria-label="Amount (to the nearest dollar)" onChange={ this.updateUnstakeQuantity } />
-              <div className="input-group-append">
-                <span className="input-group-text">PTR</span>
+          <div className='row'>
+            <div className='input-group mb-3'>
+              <input type='text' className='form-control' placeholder={ unstakeQuantity } aria-label='Amount (to the nearest dollar)' onChange={ this.updateUnstakeQuantity } />
+              <div className='input-group-append'>
+                <span className='input-group-text'>PTR</span>
               </div>
             </div>
-            <button className="btn btn-primary" onClick={ () => this.unstakePatreos() }>Unstake</button>
+            <button className='btn btn-primary' onClick={ () => this.unstakePatreos() }>Unstake</button>
           </div>
         </div>
-        <div className="container m-5">
-          <div className="row">
-            <div className="col-m">
-              <b>Patreos Token Pledging</b>
+        <div className='container m-5'>
+          <div className='row'>
+            <div className='col-m'>
+              <h3>Patreos Token Pledging</h3>
             </div>
           </div>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               Pledges:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { JSON.stringify(pledges) }
             </div>
           </div>
           <br/>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               Quantity to Pledge:
             </div>
-            <div className="col-m">
+            <div className='col-m'>
               { pledgeQuantity } PTR
             </div>
           </div>
-          <div className="row">
-            <div className="col-m">
-              <input type="text" size="12" placeholder="Pledge to Account" onChange={ this.updateReceiverAccount } />
+          <div className='row'>
+            <div className='col-m input-group mb-3'>
+              <input className='form-control' type='text' size='12' placeholder='Pledge to Account' onChange={ this.updateReceiverAccount } />
             </div>
-            <div className="col-m">
-              <button className="btn btn-primary" onClick={ () => this.pledgePatreos() }>Pledge</button>
-            </div>
+            <button className='btn btn-primary' onClick={ () => this.pledgePatreos() }>Pledge</button>
           </div>
           <br/>
-          <div className="row">
-            <div className="col-m">
+          <div className='row'>
+            <div className='col-m'>
               Unpledge:
             </div>
           </div>
-          <div className="row">
-            <div className="col-m">
-              <input type="text" size="12" placeholder="Unpledge from Account" onChange={ this.updateReceiverAccount } />
+          <div className='row'>
+            <div className='col-m input-group mb-3'>
+              <input className='form-control' type='text' size='12' placeholder='Unpledge from Account' onChange={ this.updateReceiverAccount } />
             </div>
-            <div className="col-m">
-              <button className="btn btn-primary" onClick={ () => this.unpledgePatreos() }>Unpledge</button>
-            </div>
+            <button className='btn btn-primary' onClick={ () => this.unpledgePatreos() }>Unpledge</button>
           </div>
         </div>
       </div>
     );
   }
+
+  updateTransferQuantity = (input) => {
+    this.props.tokenActions.updateTransferQuantity(input.target.value);
+  };
 
   updateReceiverAccount = (input) => {
     this.props.tokenActions.updateReceiverAccount(input.target.value);
