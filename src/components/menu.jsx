@@ -7,9 +7,8 @@ class Menu extends React.Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-
               <button type="button" id="sidebarCollapse" className="btn btn-info">
-                  <i className="fas fa-align-left"></i>
+                  <i className="fas fa-align-left mr-2"></i>
                   <span>Toggle Sidebar</span>
               </button>
               <button className="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +18,6 @@ class Menu extends React.Component {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="nav navbar-nav ml-auto">
                       <li className="nav-item active">
-                          <a className="nav-link" href="#">Terms</a>
-                      </li>
-                      <li className="nav-item">
                           <a className="nav-link" href="#">News</a>
                       </li>
                       <li className="nav-item">
@@ -29,6 +25,9 @@ class Menu extends React.Component {
                       </li>
                       <li className="nav-item">
                           <a className="nav-link" href="#">Contact</a>
+                      </li>
+                      <li className="nav-item">
+                          <a className="nav-link" href="#">Privacy</a>
                       </li>
                   </ul>
               </div>

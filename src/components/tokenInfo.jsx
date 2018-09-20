@@ -43,10 +43,6 @@ class TokenInfo extends React.Component {
 
     return (
       <div className='token-container'>
-        <div className='jumbotron m-5 container'>
-          <h1>PTR Management</h1>
-          <p>This dashboard allows an account to manage their PTR tokens.</p>
-        </div>
         <div className='container m-5 '>
           <div className='row'>
             <div className='col-m'>
