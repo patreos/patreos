@@ -7,6 +7,7 @@ import Sidebar from './components/sidebar';
 import Menu from './components/menu';
 import * as ACCOUNT_ACTIONS from './actions/account_actions';
 import * as PATREOS_TOKEN_ACTIONS from './actions/token_actions';
+import './styles/custom.css';
 import './styles/index.scss';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
