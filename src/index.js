@@ -8,6 +8,7 @@ import rootReducer from './reducers';
 import App from './App';
 import configuration from './config/config';
 import config from 'react-global-configuration';
+
 config.set(configuration);
 
 function configureStore(initialState) {

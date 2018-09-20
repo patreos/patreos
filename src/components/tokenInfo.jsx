@@ -22,12 +22,12 @@ class TokenInfo extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.account !== this.props.account) {
-      this.tokeInfoUpdate();
+      //this.tokeInfoUpdate();
     }
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
+    //this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
   }
 
   componentWillUnmount() {
@@ -39,9 +39,15 @@ class TokenInfo extends React.Component {
     const { unstakedBalance, stakedBalance, receiverAccount, transferQuantity,
       stakeQuantity, unstakeQuantity, pledgeQuantity, pledgeCycleDays, pledges } = this.props.tokenInfo;
 
-
     return (
       <div className='token-container'>
+        <div className="jumbotron">
+          <h1>PTR Management</h1>
+          <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+          <p>
+            <a className="btn btn-lg btn-primary" href="#navbar" role="button">Manage with Scatter</a>
+          </p>
+        </div>
         <div className="container m-5">
           <div className="row">
             <div className="col-m">
@@ -75,8 +81,8 @@ class TokenInfo extends React.Component {
           </div>
           <div className="row">
             <div className="col-m">
-              <input type="text" size="12" placeholder="receiver account" onChange={ this.updateReceiverAccount } />
-              <button onClick={ () => this.sendPatreosToken() }>send transaction</button>
+              <input type="text" size="12" placeholder="Receiver Account" onChange={ this.updateReceiverAccount } />
+              <button className="btn btn-primary" onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
             </div>
           </div>
         </div>
@@ -104,7 +110,13 @@ class TokenInfo extends React.Component {
             </div>
           </div>
           <div className="row">
-            <button onClick={ () => this.stakePatreos() }>stake</button>
+            <div className="input-group mb-3">
+              <input type="text" className="form-control" placeholder={ stakeQuantity }  aria-label="Amount (to the nearest dollar)" onChange={ this.updateStakeQuantity } />
+              <div className="input-group-append">
+                <span className="input-group-text">PTR</span>
+              </div>
+            </div>
+            <button className="btn btn-primary" onClick={ () => this.stakePatreos() }>Stake</button>
           </div>
           <br/>
           <div className="row">
@@ -116,7 +128,13 @@ class TokenInfo extends React.Component {
             </div>
           </div>
           <div className="row">
-            <button onClick={ () => this.unstakePatreos() }>unstake</button>
+            <div className="input-group mb-3">
+              <input type="text" className="form-control" placeholder={ unstakeQuantity } aria-label="Amount (to the nearest dollar)" onChange={ this.updateUnstakeQuantity } />
+              <div className="input-group-append">
+                <span className="input-group-text">PTR</span>
+              </div>
+            </div>
+            <button className="btn btn-primary" onClick={ () => this.unstakePatreos() }>Unstake</button>
           </div>
         </div>
         <div className="container m-5">
@@ -144,10 +162,10 @@ class TokenInfo extends React.Component {
           </div>
           <div className="row">
             <div className="col-m">
-              <input type="text" size="12" placeholder="pledge to account" onChange={ this.updateReceiverAccount } />
+              <input type="text" size="12" placeholder="Pledge to Account" onChange={ this.updateReceiverAccount } />
             </div>
             <div className="col-m">
-              <button onClick={ () => this.pledgePatreos() }>pledge</button>
+              <button className="btn btn-primary" onClick={ () => this.pledgePatreos() }>Pledge</button>
             </div>
           </div>
           <br/>
@@ -158,10 +176,10 @@ class TokenInfo extends React.Component {
           </div>
           <div className="row">
             <div className="col-m">
-              <input type="text" size="12" placeholder="unpledge from account" onChange={ this.updateReceiverAccount } />
+              <input type="text" size="12" placeholder="Unpledge from Account" onChange={ this.updateReceiverAccount } />
             </div>
             <div className="col-m">
-              <button onClick={ () => this.unpledgePatreos() }>unpledge</button>
+              <button className="btn btn-primary" onClick={ () => this.unpledgePatreos() }>Unpledge</button>
             </div>
           </div>
         </div>
@@ -171,6 +189,14 @@ class TokenInfo extends React.Component {
 
   updateReceiverAccount = (input) => {
     this.props.tokenActions.updateReceiverAccount(input.target.value);
+  };
+
+  updateStakeQuantity = (input) => {
+    this.props.tokenActions.updateStakeQuantity(input.target.value);
+  };
+
+  updateUnstakeQuantity = (input) => {
+    this.props.tokenActions.updateUnstakeQuantity(input.target.value);
   };
 
   sendPatreosToken = () => {

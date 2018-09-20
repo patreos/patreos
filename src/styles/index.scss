@@ -1,7 +1,16 @@
 body {
   display: flex;
-
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
   p {
     color: red;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
