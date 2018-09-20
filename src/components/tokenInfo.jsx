@@ -15,19 +15,21 @@ class TokenInfo extends React.Component {
   }
 
   tokeInfoUpdate() {
-    this.getPTRBalance();
-    this.getStakedPTRBalance();
-    this.getPledges()
+    if(this.props.scatter != null) {
+      this.getPTRBalance();
+      this.getStakedPTRBalance();
+      this.getPledges()
+    }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.account !== this.props.account) {
-      //this.tokeInfoUpdate();
+      this.tokeInfoUpdate();
     }
   }
 
   componentDidMount() {
-    //this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
+    this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
   }
 
   componentWillUnmount() {
@@ -41,10 +43,6 @@ class TokenInfo extends React.Component {
 
     return (
       <div className='token-container'>
-        <div className='jumbotron m-5 container'>
-          <h1>PTR Management</h1>
-          <p>This dashboard allows an account to manage their PTR tokens.</p>
-        </div>
         <div className='container m-5 '>
           <div className='row'>
             <div className='col-m'>

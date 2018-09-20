@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Header from './components/header';
 import AccountInfo from './components/accountInfo';
 import TokenInfo from './components/tokenInfo';
-import Footer from './components/footer';
+import Sidebar from './components/sidebar';
+import Menu from './components/menu';
 import * as ACCOUNT_ACTIONS from './actions/account_actions';
 import * as PATREOS_TOKEN_ACTIONS from './actions/token_actions';
+import './styles/custom.css';
 import './styles/index.scss';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
@@ -69,10 +70,12 @@ class App extends React.Component {
   render() {
     return (
       <div className='wrapper'>
-        <Header/>
-        <AccountInfo/>
-        <TokenInfo scatter={this.scatter} config={this.config} account={ this.props.accountInfo.userName }/>
-        <Footer/>
+        <Sidebar/>
+        <div id="content">
+          <Menu/>
+          <AccountInfo/>
+          <TokenInfo scatter={this.scatter} config={this.config} account={ this.props.accountInfo.userName }/>
+        </div>
       </div>
     );
   }
