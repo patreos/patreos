@@ -8,7 +8,19 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+h3 {
+  letter-spacing: 3px;
+}
+
+h3.light {
+  font-weight: lighter;
+}
+
+h3 > .normal {
+  font-weight: normal !important;
 }
 
 

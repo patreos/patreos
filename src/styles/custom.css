@@ -45,7 +45,7 @@ span {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #4f8ac0;
+    background: linear-gradient(180deg, rgb(42, 53, 136) 0px, rgb(77, 134, 189) 60%);
     color: #fff;
     transition: all 0.3s;
 }
@@ -97,7 +97,6 @@ span {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #4f8ac0;
 }
 
 #sidebar .sidebar-header strong {
@@ -117,7 +116,7 @@ span {
 }
 
 #sidebar ul li a:hover {
-    color: #4f8ac0;
+    color: #4D86BD;
     background: #fff;
 }
 
@@ -128,7 +127,7 @@ span {
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #4979b4;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 a[data-toggle="collapse"] {
@@ -234,4 +233,71 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+
+/* FLEX */
+
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+
+  /* Then we define the flow direction
+     and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+}
+
+/* CUSTOM BOTTON */
+
+.btn-patreos {
+  color: #ffffff;
+  background-color: #4069AA;
+  border-color: #B2B9E8;
+}
+
+.btn-patreos:hover,
+.btn-patreos:focus,
+.btn-patreos:active,
+.btn-patreos.active,
+.open .dropdown-toggle.btn-patreos {
+  color: #ffffff;
+  background-color: #4A7FB8;
+  border-color: #B2B9E8;
+}
+
+.btn-patreos:active,
+.btn-patreos.active,
+.open .dropdown-toggle.btn-patreos {
+  background-image: none;
+}
+
+.btn-patreos.disabled,
+.btn-patreos[disabled],
+fieldset[disabled] .btn-patreos,
+.btn-patreos.disabled:hover,
+.btn-patreos[disabled]:hover,
+fieldset[disabled] .btn-patreos:hover,
+.btn-patreos.disabled:focus,
+.btn-patreos[disabled]:focus,
+fieldset[disabled] .btn-patreos:focus, 
+.btn-patreos.disabled:active,
+.btn-patreos[disabled]:active,
+fieldset[disabled] .btn-patreos:active,
+.btn-patreos.disabled.active,
+.btn-patreos[disabled].active,
+fieldset[disabled] .btn-patreos.active {
+  background-color: #4069AA;
+  border-color: #B2B9E8;
+}
+
+.btn-patreos .badge {
+  color: #4069AA;
+  background-color: #ffffff;
 }

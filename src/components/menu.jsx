@@ -7,7 +7,7 @@ class Menu extends React.Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-              <button type="button" id="sidebarCollapse" className="btn btn-info">
+              <button type="button" id="sidebarCollapse" className="btn btn-patreos">
                   <i className="fas fa-align-left mr-2"></i>
                   <span>Toggle Sidebar</span>
               </button>

@@ -7,26 +7,26 @@ class Sidebar extends React.Component {
   render() {
     return (
       <nav id="sidebar">
-         <div className="sidebar-header">
-            <img src={ logo } alt='patreos-logo' width='50px' />
-            <h3>PATREOS</h3>
+         <div className="sidebar-header flex-container">
+            <img src={ logo } alt='patreos-logo' height="50" />
+            <h3 className="m-2 light">PATR<span className="normal">EOS</span></h3>
          </div>
          <ul className="list-unstyled components">
-            <li className="active">
+            <li>
                <a href="#">
                <i className="fas fa-home ml-2 mr-2"></i>
                Home
                </a>
             </li>
-            <li>
+            <li className="active">
                <a href="#">
-               <i className="fas fa-briefcase ml-2 mr-2"></i>
+               <i className="fas fa-coins ml-2 mr-2"></i>
                Token
                </a>
             </li>
             <li>
                <a href="#">
-               <i className="fas fa-image ml-2 mr-2"></i>
+               <i className="fas fa-user-circle ml-2 mr-2"></i>
                Profile
                </a>
             </li>
@@ -45,7 +45,10 @@ class Sidebar extends React.Component {
          </ul>
          <ul className="list-unstyled CTAs">
             <li>
-               <a href="https://github.com/patreos" className="download">Github Source</a>
+               <a href="https://github.com/patreos" className="download" target="_blank">
+               <i class="fab fa-github ml-4 mr-2"></i>
+               Github Source
+               </a>
             </li>
          </ul>
       </nav>

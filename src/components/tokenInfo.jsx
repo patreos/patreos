@@ -46,7 +46,7 @@ class TokenInfo extends React.Component {
         <div className='container m-5 '>
           <div className='row'>
             <div className='col-m'>
-              <h3>Patreos Token Transfers</h3>
+              <h3>Send</h3>
             </div>
           </div>
           <div className='row'>
@@ -84,13 +84,13 @@ class TokenInfo extends React.Component {
             <div className='col-m input-group mb-3'>
               <input className='form-control' type='text' size='12' placeholder='Receiver Account' onChange={ this.updateReceiverAccount } />
             </div>
-            <button className='btn btn-primary' onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
+            <button className='btn btn-patreos' onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
           </div>
         </div>
         <div className='container m-5'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Patreos Token Staking</h3>
+              <h3>Staking</h3>
             </div>
           </div>
           <div className='row'>
@@ -117,7 +117,7 @@ class TokenInfo extends React.Component {
                 <span className='input-group-text'>PTR</span>
               </div>
             </div>
-            <button className='btn btn-primary' onClick={ () => this.stakePatreos() }>Stake</button>
+            <button className='btn btn-patreos' onClick={ () => this.stakePatreos() }>Stake</button>
           </div>
           <br/>
           <div className='row'>
@@ -135,13 +135,13 @@ class TokenInfo extends React.Component {
                 <span className='input-group-text'>PTR</span>
               </div>
             </div>
-            <button className='btn btn-primary' onClick={ () => this.unstakePatreos() }>Unstake</button>
+            <button className='btn btn-patreos' onClick={ () => this.unstakePatreos() }>Unstake</button>
           </div>
         </div>
         <div className='container m-5'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Patreos Token Pledging</h3>
+              <h3>Pledging</h3>
             </div>
           </div>
           <div className='row'>
@@ -165,7 +165,7 @@ class TokenInfo extends React.Component {
             <div className='col-m input-group mb-3'>
               <input className='form-control' type='text' size='12' placeholder='Pledge to Account' onChange={ this.updateReceiverAccount } />
             </div>
-            <button className='btn btn-primary' onClick={ () => this.pledgePatreos() }>Pledge</button>
+            <button className='btn btn-patreos' onClick={ () => this.pledgePatreos() }>Pledge</button>
           </div>
           <br/>
           <div className='row'>
@@ -177,7 +177,7 @@ class TokenInfo extends React.Component {
             <div className='col-m input-group mb-3'>
               <input className='form-control' type='text' size='12' placeholder='Unpledge from Account' onChange={ this.updateReceiverAccount } />
             </div>
-            <button className='btn btn-primary' onClick={ () => this.unpledgePatreos() }>Unpledge</button>
+            <button className='btn btn-patreos' onClick={ () => this.unpledgePatreos() }>Unpledge</button>
           </div>
         </div>
       </div>
