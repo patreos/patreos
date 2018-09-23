@@ -46,7 +46,7 @@ class Sidebar extends React.Component {
          <ul className="list-unstyled CTAs">
             <li>
                <a href="https://github.com/patreos" className="download" target="_blank">
-               <i class="fab fa-github ml-4 mr-2"></i>
+               <i className="fab fa-github ml-4 mr-2"></i>
                Github Source
                </a>
             </li>

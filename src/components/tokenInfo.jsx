@@ -278,7 +278,7 @@ class TokenInfo extends React.Component {
   };
 
   getStakedPTRBalance = () => {
-    const table = this.eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'stakedaccs')
+    const table = this.eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'liquidstake')
     table.then((response) => {
       if(response.rows.length > 0) {
         this.props.tokenActions.updateStakedBalance(response.rows[0].balance);
