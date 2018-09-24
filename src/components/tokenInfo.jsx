@@ -43,7 +43,7 @@ class TokenInfo extends React.Component {
 
     return (
       <div className='token-container'>
-        <div className='container m-5 '>
+        <div className='container bg-light rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
               <h3>Send</h3>
@@ -87,7 +87,7 @@ class TokenInfo extends React.Component {
             <button className='btn btn-patreos' onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
           </div>
         </div>
-        <div className='container m-5'>
+        <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
               <h3>Staking</h3>
@@ -138,7 +138,7 @@ class TokenInfo extends React.Component {
             <button className='btn btn-patreos' onClick={ () => this.unstakePatreos() }>Unstake</button>
           </div>
         </div>
-        <div className='container m-5'>
+        <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
               <h3>Pledging</h3>

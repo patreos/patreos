@@ -236,6 +236,10 @@ a.article:hover {
 }
 
 
+.rounded {
+    border-radius:.25rem !important
+}
+
 /* FLEX */
 
 .flex-container {
@@ -252,6 +256,10 @@ a.article:hover {
 
   /* Then we define how is distributed the remaining space */
   justify-content: space-around;
+}
+
+.border-patreos {
+    border-color: #c1c5c9 !important;
 }
 
 /* CUSTOM BOTTON */
@@ -286,7 +294,7 @@ fieldset[disabled] .btn-patreos,
 fieldset[disabled] .btn-patreos:hover,
 .btn-patreos.disabled:focus,
 .btn-patreos[disabled]:focus,
-fieldset[disabled] .btn-patreos:focus, 
+fieldset[disabled] .btn-patreos:focus,
 .btn-patreos.disabled:active,
 .btn-patreos[disabled]:active,
 fieldset[disabled] .btn-patreos:active,

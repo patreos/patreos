@@ -8,7 +8,7 @@ class AccountInfo extends React.Component {
     const { userName, userInfo, webSite, scatterDetected } = this.props.accountInfo;
     return (
       <div className='account-container'>
-        <div className='container m-5'>
+        <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
               Scatter:
