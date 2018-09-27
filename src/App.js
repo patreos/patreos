@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    ScatterJS.scatter.connect("Patreos").then(connected => {
+    ScatterJS.scatter.connect("www.patreos.com").then(connected => {
         if(!connected) {
             // User does not have Scatter Desktop or Classic installed.
             return false;
