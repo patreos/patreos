@@ -12,6 +12,7 @@ import './styles/index.scss';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
 import TransactionBuilder from './utils/transaction_builder'
+import ScatterJS from 'scatter-js/dist/scatter.esm';
 
 class App extends React.Component {
 
@@ -22,11 +23,16 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    document.addEventListener('scatterLoaded', () => {
-      this.scatter = window.scatter;
-      window.scatter = null;
-      this.props.accountActions.detectScatter('SCATTER DETECTED');
-      this.getScatterIdentity();
+    ScatterJS.scatter.connect("Patreos").then(connected => {
+        if(!connected) {
+            // User does not have Scatter Desktop or Classic installed.
+            return false;
+        }
+
+        this.scatter = window.scatter;
+        window.scatter = null;
+        this.props.accountActions.detectScatter('SCATTER DETECTED');
+        this.getScatterIdentity();
     });
   }
 
