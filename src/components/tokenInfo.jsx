@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {bindActionCreators} from 'redux';
 import * as PATREOS_TOKEN_ACTIONS from '../actions/token_actions';
 import connect from 'react-redux/es/connect/connect';
@@ -18,13 +19,16 @@ class TokenInfo extends React.Component {
     if(this.props.scatter != null) {
       this.getPTRBalance();
       this.getStakedPTRBalance();
-      this.getPledges()
+      this.getPledges();
     }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.account !== this.props.account) {
       this.tokeInfoUpdate();
+    }
+    if (prevProps.tokenInfo.pledges !== this.props.tokenInfo.pledges) {
+      this.updatePledgeDom(this.props.tokenInfo.pledges);
     }
   }
 
@@ -144,14 +148,6 @@ class TokenInfo extends React.Component {
               <h3>Pledging</h3>
             </div>
           </div>
-          <div className='row'>
-            <div className='col-m'>
-              Pledges:
-            </div>
-            <div className='col-m'>
-              { JSON.stringify(pledges) }
-            </div>
-          </div>
           <br/>
           <div className='row'>
             <div className='col-m'>
@@ -167,17 +163,8 @@ class TokenInfo extends React.Component {
             </div>
             <button className='btn btn-patreos' onClick={ () => this.pledgePatreos() }>Pledge</button>
           </div>
-          <br/>
           <div className='row'>
-            <div className='col-m'>
-              Unpledge:
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-m input-group mb-3'>
-              <input className='form-control' type='text' size='12' placeholder='Unpledge from Account' onChange={ this.updateReceiverAccount } />
-            </div>
-            <button className='btn btn-patreos' onClick={ () => this.unpledgePatreos() }>Unpledge</button>
+            <div id="pledge-list" className='col-m'></div>
           </div>
         </div>
       </div>
@@ -255,6 +242,18 @@ class TokenInfo extends React.Component {
     eos.transaction(transaction);
   };
 
+  unpledgePatreosAccount = (account) => {
+  const network = this.config.requiredFields.accounts[0];
+
+  // TODO: Check that passing scatter prop is best approach
+  const scatter = this.props.scatter;
+
+  const eos = scatter.eos(network, Eos, {});
+  const transaction_builder = new TransactionBuilder(this.config);
+  const transaction = transaction_builder.unpledge(this.props.account, account);
+  eos.transaction(transaction);
+  }
+
   unpledgePatreos = () => {
     const network = this.config.requiredFields.accounts[0];
 
@@ -290,11 +289,36 @@ class TokenInfo extends React.Component {
     });
   };
 
+  updatePledgeDom = (pledges) => {
+    if(pledges == null) {
+      return;
+    }
+    var indents = [];
+    for (var i = 0; i < pledges.length; i++) {
+      let boundItemClick = this.unpledgePatreosAccount.bind(this, pledges[i]['to']);
+      indents.push(
+        <div className='row' key={i}>
+          <span className='col' key={4*i + 1}>Creator: {pledges[i]['to']}</span>
+          <span className='col' key={4*i + 2}>Pledge: {pledges[i]['quantity']}</span>
+          <span className='col' key={4*i + 3}>Days: {pledges[i]['days']}</span>
+          <button type="button" className="col close" aria-label="Close" key={4*i + 4} onClick={ boundItemClick } >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      );
+    }
+
+    ReactDOM.render(indents, document.getElementById('pledge-list'));
+  }
+
   getPledges = () => {
     const table = this.eos.getTableRows(true, this.config.code.patreosnexus, this.props.account, 'pledges')
     table.then((response) => {
       if(response.rows.length > 0) {
-        this.props.tokenActions.updatePledges(response.rows);
+        // TODO: Better way to compare this objects
+        if(JSON.stringify(this.props.tokenInfo.pledges) != JSON.stringify(response.rows)) {
+          this.props.tokenActions.updatePledges(response.rows);
+        }
         return;
       }
       this.props.tokenActions.updatePledges([]);
