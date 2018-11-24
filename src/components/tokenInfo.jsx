@@ -18,7 +18,9 @@ class TokenInfo extends React.Component {
   tokeInfoUpdate() {
     if(this.props.scatter != null) {
       this.getPTRBalance();
-      this.getStakedPTRBalance();
+      this.getVaultBalance();
+      this.getVaultStakedBalance();
+      //this.getStakedPTRBalance();
       this.getPledges();
     }
   }
@@ -214,11 +216,14 @@ class TokenInfo extends React.Component {
 
     const eos = scatter.eos(network, Eos, {});
     const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.stake(this.props.account, '1.0000', '<3');
+    const transaction = transaction_builder.transfer(this.props.account,
+      this.config.code.patreosvault, '1.0000', '<3',
+      this.config.code.patreostoken, this.config.patreosSymbol);
     eos.transaction(transaction);
   };
 
   unstakePatreos = () => {
+    console.log("UNSTAKE CLICKED")
     const network = this.config.requiredFields.accounts[0];
 
     // TODO: Check that passing scatter prop is best approach
@@ -226,7 +231,7 @@ class TokenInfo extends React.Component {
 
     const eos = scatter.eos(network, Eos, {});
     const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.unstake(this.props.account, '1.0000', '<3');
+    const transaction = transaction_builder.withdraw(this.props.account, '1.0000', 'PATR');
     eos.transaction(transaction);
   };
 
@@ -238,7 +243,7 @@ class TokenInfo extends React.Component {
 
     const eos = scatter.eos(network, Eos, {});
     const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.pledge(this.props.account, this.props.tokenInfo.receiverAccount, '1.0000', 1);
+    const transaction = transaction_builder.pledge(this.props.account, this.props.tokenInfo.receiverAccount, '50.0000', 1);
     eos.transaction(transaction);
   };
 
@@ -276,6 +281,31 @@ class TokenInfo extends React.Component {
     });
   };
 
+  getVaultBalance = () => {
+    const patreosBalance = this.eos.getCurrencyBalance(this.config.code.patreosvault,
+      this.props.account)
+    patreosBalance.then((response) => {
+      console.log("Vault response is " + JSON.stringify(response));
+    }).catch(error => {
+      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
+    });
+  };
+
+  getVaultStakedBalance = () => {
+    const patreosBalance = this.eos.getCurrencyBalance(this.config.code.patreosvault,
+      this.props.account, this.config.patreosSymbol)
+    patreosBalance.then((response) => {
+      console.log("VaultStakedBalance response is " + JSON.stringify(response));
+      if(response.length > 0) {
+        this.props.tokenActions.updateStakedBalance(response[0]);
+        return;
+      }
+      this.props.tokenActions.updateStakedBalance('0.0000 PTR');
+    }).catch(error => {
+      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
+    });
+  };
+
   getStakedPTRBalance = () => {
     const table = this.eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'liquidstake')
     table.then((response) => {
@@ -295,12 +325,12 @@ class TokenInfo extends React.Component {
     }
     var indents = [];
     for (var i = 0; i < pledges.length; i++) {
-      let boundItemClick = this.unpledgePatreosAccount.bind(this, pledges[i]['to']);
+      let boundItemClick = this.unpledgePatreosAccount.bind(this, pledges[i]['creator']);
       indents.push(
         <div className='row' key={i}>
-          <span className='col' key={4*i + 1}>Creator: {pledges[i]['to']}</span>
+          <span className='col' key={4*i + 1}>Creator: {pledges[i]['creator']}</span>
           <span className='col' key={4*i + 2}>Pledge: {pledges[i]['quantity']}</span>
-          <span className='col' key={4*i + 3}>Days: {pledges[i]['days']}</span>
+          <span className='col' key={4*i + 3}>Days: {pledges[i]['seconds']}</span>
           <button type="button" className="col close" aria-label="Close" key={4*i + 4} onClick={ boundItemClick } >
             <span aria-hidden="true">&times;</span>
           </button>

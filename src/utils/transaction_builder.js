@@ -24,6 +24,23 @@ class TransactionBuilder {
 		}
 	}
 
+	withdraw(_from, _quantity, _symbol='EOS', _permission='active') {
+		return {
+			actions: [{
+				account: this.config.code.patreosvault,
+				name: 'withdraw',
+				authorization: [{
+					actor: _from,
+					permission: _permission
+				}],
+				data: {
+					owner: _from,
+					quantity: _quantity + ' ' + _symbol
+				}
+			}]
+		}
+	}
+
   // A custom transfer function for any eosio.token-like contract
   stake(_from, _quantity, _memo='', _permission='active') {
     return {
@@ -92,10 +109,14 @@ class TransactionBuilder {
           permission: _permission
         }],
         data: {
-          from: _from,
-          to: _to,
-          quantity: _quantity + ' ' + this.config.patreosSymbol,
-          days: _days
+          pledger: _from,
+          _pledge: {
+            creator: _to,
+            quantity: _quantity + ' ' + this.config.patreosSymbol,
+            seconds: 10,
+            last_pledge: 0,
+            execution_count: 0
+          }
         }
       }]
     }
@@ -111,8 +132,8 @@ class TransactionBuilder {
           permission: _permission
         }],
         data: {
-          from: _from,
-          to: _to
+          pledger: _from,
+          creator: _to
         }
       }]
     }

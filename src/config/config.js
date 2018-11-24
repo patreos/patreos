@@ -6,6 +6,35 @@ const config = {
         {
           protocol: 'http',
           blockchain: 'eos',
+          chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f',
+          host: '127.0.0.1',
+          expireInSeconds: 3600,
+          verbose: false,
+          port: 8888
+        }
+      ]
+    },
+    eos: {
+      httpEndpoint: 'http://127.0.0.1:8888',
+      chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f',
+      verbose: true
+    },
+    code: {
+      patreostoken: 'patreostoken',
+      patreosblurb: 'patreosblurb',
+      patreosmoney: 'patreosmoney',
+      patreosnexus: 'patreosnexus',
+      patreosvault: 'patreosvault'
+    },
+    patreosSymbol: 'PATR'
+  },
+  testnet: {
+    env: 'testnet',
+    requiredFields: {
+      accounts:[
+        {
+          protocol: 'http',
+          blockchain: 'eos',
           chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
           host: 'jungle.cryptolions.io',
           expireInSeconds: 3600,
@@ -23,12 +52,13 @@ const config = {
       patreostoken: 'patreostoken',
       patreosblurb: 'patreostests',
       patreosmoney: 'patreostests',
-      patreosnexus: 'patreosnexus'
+      patreosnexus: 'patreosnexus',
+      patreosvault: 'patreosvault'
     },
-    patreosSymbol: 'PTR'
+    patreosSymbol: 'PATR'
   },
-  production: {
-    env: 'production',
+  mainnet: {
+    env: 'mainnet',
     requiredFields: {
       accounts:[
         {
@@ -49,9 +79,10 @@ const config = {
       patreostoken: 'patreostoken',
       patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
-      patreosnexus: 'patreosnexus'
+      patreosnexus: 'patreosnexus',
+      patreosvault: 'patreosvault'
     },
-    patreosSymbol: 'PTR'
+    patreosSymbol: 'PATR'
   }
 };
 
