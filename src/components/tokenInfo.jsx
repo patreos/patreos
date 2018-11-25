@@ -12,30 +12,28 @@ class TokenInfo extends React.Component {
   constructor(props) {
     super(props);
     this.config = this.props.config;
-    this.eos = Eos({...this.config.eos});
+    this.transaction_builder = new TransactionBuilder(this.config);
   }
 
   tokeInfoUpdate() {
-    if(this.props.scatter != null) {
-      this.getPTRBalance();
-      this.getVaultBalance();
-      this.getVaultStakedBalance();
+    if(this.props.scatterEos != null) {
+      //this.getVaultStakedBalance();
       //this.getStakedPTRBalance();
       this.getPledges();
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.account !== this.props.account) {
-      this.tokeInfoUpdate();
-    }
     if (prevProps.tokenInfo.pledges !== this.props.tokenInfo.pledges) {
       this.updatePledgeDom(this.props.tokenInfo.pledges);
+    }
+    if (prevProps.patrBalance !== this.props.patrBalance) {
+      //console.log("Updated TokenInfo PATR Balance prop: " + this.props.patrBalance)
     }
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.tokeInfoUpdate(), 3000);
+    this.interval = setInterval(() => this.tokeInfoUpdate(), this.config.updateInterval);
   }
 
   componentWillUnmount() {
@@ -56,16 +54,16 @@ class TokenInfo extends React.Component {
             </div>
           </div>
           <div className='row'>
-            <div className='col-m'>
+            <div className='col-m mr-1'>
               Unstaked Balance:
             </div>
             <div className='col-m'>
-              { unstakedBalance }
+              { this.props.patrBalance }
             </div>
           </div>
           <br/>
           <div className='row'>
-            <div className='col-m'>
+            <div className='col-m mr-1'>
               Send:
             </div>
             <div className='col-m'>
@@ -79,7 +77,7 @@ class TokenInfo extends React.Component {
             </div>
           </div>
           <div className='row'>
-            <div className='col-m'>
+            <div className='col-m mr-1'>
               Receiver Account:
             </div>
             <div className='col-m'>
@@ -100,7 +98,7 @@ class TokenInfo extends React.Component {
             </div>
           </div>
           <div className='row'>
-            <div className='col-m'>
+            <div className='col-m mr-1'>
               PTR Staked Balance:
             </div>
             <div className='col-m'>
@@ -109,7 +107,7 @@ class TokenInfo extends React.Component {
           </div>
           <br/>
           <div className='row'>
-            <div className='col-m'>
+            <div className='col-m mr-1'>
               Quantity to Stake:
             </div>
             <div className='col-m'>
@@ -127,7 +125,7 @@ class TokenInfo extends React.Component {
           </div>
           <br/>
           <div className='row'>
-            <div className='col-m'>
+            <div className='col-m mr-1'>
               Quantity to Unstake:
             </div>
             <div className='col-m'>
@@ -152,7 +150,7 @@ class TokenInfo extends React.Component {
           </div>
           <br/>
           <div className='row'>
-            <div className='col-m'>
+            <div className='col-m mr-1'>
               Quantity to Pledge:
             </div>
             <div className='col-m'>
@@ -195,104 +193,42 @@ class TokenInfo extends React.Component {
       alert('receiver account cannot be blank');
       return;
     }
-    const network = this.config.requiredFields.accounts[0];
 
-    // TODO: Check that passing scatter prop is best approach
-    const scatter = this.props.scatter;
-
-    const eos = scatter.eos(network, Eos, {});
-    const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.transfer(this.props.account,
+    const transaction = this.transaction_builder.transfer(this.props.account,
       receiverAccount, '1.0000', '<3',
       this.config.code.patreostoken, this.config.patreosSymbol);
-    eos.transaction(transaction);
+    this.props.scatterEos.transaction(transaction);
   };
 
   stakePatreos = () => {
-    const network = this.config.requiredFields.accounts[0];
-
-    // TODO: Check that passing scatter prop is best approach
-    const scatter = this.props.scatter;
-
-    const eos = scatter.eos(network, Eos, {});
-    const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.transfer(this.props.account,
+    const transaction = this.transaction_builder.transfer(this.props.account,
       this.config.code.patreosvault, '1.0000', '<3',
       this.config.code.patreostoken, this.config.patreosSymbol);
-    eos.transaction(transaction);
+    this.props.scatterEos.transaction(transaction);
   };
 
   unstakePatreos = () => {
-    console.log("UNSTAKE CLICKED")
-    const network = this.config.requiredFields.accounts[0];
-
-    // TODO: Check that passing scatter prop is best approach
-    const scatter = this.props.scatter;
-
-    const eos = scatter.eos(network, Eos, {});
-    const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.withdraw(this.props.account, '1.0000', 'PATR');
-    eos.transaction(transaction);
+    const transaction = this.transaction_builder.withdraw(this.props.account, '1.0000', 'PATR');
+    this.props.scatterEos.transaction(transaction);
   };
 
   pledgePatreos = () => {
-    const network = this.config.requiredFields.accounts[0];
-
-    // TODO: Check that passing scatter prop is best approach
-    const scatter = this.props.scatter;
-
-    const eos = scatter.eos(network, Eos, {});
-    const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.pledge(this.props.account, this.props.tokenInfo.receiverAccount, '50.0000', 1);
-    eos.transaction(transaction);
+    const transaction = this.transaction_builder.pledge(this.props.account, this.props.tokenInfo.receiverAccount, '50.0000', 1);
+    this.props.scatterEos.transaction(transaction);
   };
 
   unpledgePatreosAccount = (account) => {
-  const network = this.config.requiredFields.accounts[0];
-
-  // TODO: Check that passing scatter prop is best approach
-  const scatter = this.props.scatter;
-
-  const eos = scatter.eos(network, Eos, {});
-  const transaction_builder = new TransactionBuilder(this.config);
-  const transaction = transaction_builder.unpledge(this.props.account, account);
-  eos.transaction(transaction);
+  const transaction = this.transaction_builder.unpledge(this.props.account, account);
+  this.props.scatterEos.transaction(transaction);
   }
 
   unpledgePatreos = () => {
-    const network = this.config.requiredFields.accounts[0];
-
-    // TODO: Check that passing scatter prop is best approach
-    const scatter = this.props.scatter;
-
-    const eos = scatter.eos(network, Eos, {});
-    const transaction_builder = new TransactionBuilder(this.config);
-    const transaction = transaction_builder.unpledge(this.props.account, this.props.tokenInfo.receiverAccount);
-    eos.transaction(transaction);
-  };
-
-  getPTRBalance = () => {
-    const patreosBalance = this.eos.getCurrencyBalance(this.config.code.patreostoken,
-      this.props.account, this.config.patreosSymbol)
-    patreosBalance.then((response) => {
-      this.props.tokenActions.updateUnstakedBalance(response[0]);
-    }).catch(error => {
-      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
-    });
-  };
-
-  getVaultBalance = () => {
-    const patreosBalance = this.eos.getCurrencyBalance(this.config.code.patreosvault,
-      this.props.account)
-    patreosBalance.then((response) => {
-      console.log("Vault response is " + JSON.stringify(response));
-    }).catch(error => {
-      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
-    });
+    const transaction = this.transaction_builder.unpledge(this.props.account, this.props.tokenInfo.receiverAccount);
+    this.props.scatterEos.transaction(transaction);
   };
 
   getVaultStakedBalance = () => {
-    const patreosBalance = this.eos.getCurrencyBalance(this.config.code.patreosvault,
+    const patreosBalance = this.props.eos.getCurrencyBalance(this.config.code.patreosvault,
       this.props.account, this.config.patreosSymbol)
     patreosBalance.then((response) => {
       console.log("VaultStakedBalance response is " + JSON.stringify(response));
@@ -307,7 +243,7 @@ class TokenInfo extends React.Component {
   };
 
   getStakedPTRBalance = () => {
-    const table = this.eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'liquidstake')
+    const table = this.props.eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'liquidstake')
     table.then((response) => {
       if(response.rows.length > 0) {
         this.props.tokenActions.updateStakedBalance(response.rows[0].balance);
@@ -342,7 +278,7 @@ class TokenInfo extends React.Component {
   }
 
   getPledges = () => {
-    const table = this.eos.getTableRows(true, this.config.code.patreosnexus, this.props.account, 'pledges')
+    const table = this.props.eos.getTableRows(true, this.config.code.patreosnexus, this.props.account, 'pledges')
     table.then((response) => {
       if(response.rows.length > 0) {
         // TODO: Better way to compare this objects

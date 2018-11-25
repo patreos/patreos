@@ -20,13 +20,16 @@ const config = {
       verbose: true
     },
     code: {
+      eosiotoken: 'eosio.token',
       patreostoken: 'patreostoken',
       patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
       patreosnexus: 'patreosnexus',
       patreosvault: 'patreosvault'
     },
-    patreosSymbol: 'PATR'
+    patreosSymbol: 'PATR',
+    systemSymbol: 'EOS',
+    updateInterval: 3000
   },
   testnet: {
     env: 'testnet',
@@ -49,13 +52,16 @@ const config = {
       verbose: true
     },
     code: {
+      eosiotoken: 'eosio.token',
       patreostoken: 'patreostoken',
       patreosblurb: 'patreostests',
       patreosmoney: 'patreostests',
       patreosnexus: 'patreosnexus',
       patreosvault: 'patreosvault'
     },
-    patreosSymbol: 'PATR'
+    patreosSymbol: 'PATR',
+    systemSymbol: 'EOS',
+    updateInterval: 3000
   },
   mainnet: {
     env: 'mainnet',
@@ -76,13 +82,16 @@ const config = {
       verbose: false
     },
     code: {
+      eosiotoken: 'eosio.token',
       patreostoken: 'patreostoken',
       patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
       patreosnexus: 'patreosnexus',
       patreosvault: 'patreosvault'
     },
-    patreosSymbol: 'PATR'
+    patreosSymbol: 'PATR',
+    systemSymbol: 'EOS',
+    updateInterval: 3000
   }
 };
 

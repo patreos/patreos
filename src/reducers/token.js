@@ -8,7 +8,7 @@ export default (
     transferQuantity: '1.0000',
     stakeQuantity: '1.0000',
     unstakeQuantity: '1.0000',
-    pledgeQuantity: '1.0000',
+    pledgeQuantity: '50.0000',
     pledgeCycleDays: '0',
     pledges: [],
     pledgers: []
