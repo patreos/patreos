@@ -142,6 +142,32 @@ class TokenInfo extends React.Component {
             <button className='btn btn-patreos' onClick={ () => this.unstakePatreos() }>Unstake</button>
           </div>
         </div>
+
+
+        <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
+          <div className='row'>
+            <div className='col-m'>
+              <h3>Pledge Vault</h3>
+            </div>
+          </div>
+          <br/>
+          <div className='row'>
+            <div className='col-m mr-1'>
+              Quantity to Withdraw:
+            </div>
+            <div className='col-m'>
+              { pledgeQuantity } PTR
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-m input-group mb-3'>
+              <input className='form-control' type='text' size='12' placeholder='Withdraw Account' onChange={ this.updateReceiverAccount } />
+            </div>
+            <button className='btn btn-patreos' onClick={ () => this.withdraw() }>Withdraw</button>
+          </div>
+        </div>
+
+
         <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
@@ -213,7 +239,30 @@ class TokenInfo extends React.Component {
   };
 
   pledgePatreos = () => {
+
+    var regex = /^0.0000 PATR$/g;
+    var emptyVaultBalance = false;
+    for (var i in this.props.vaultInfo) {
+      var ret = this.props.vaultInfo[i].match(regex);
+      console.log(ret);
+      if(ret) {
+        emptyVaultBalance = true;
+      }
+    }
+    if(emptyVaultBalance) {
+      this.emptyVaultPledgePatreos()
+    } else {
+      this.vaultBalancePledgePatreos()
+    }
+  };
+
+  vaultBalancePledgePatreos = () => {
     const transaction = this.transaction_builder.pledge(this.props.account, this.props.tokenInfo.receiverAccount, '50.0000', 1);
+    this.props.scatterEos.transaction(transaction);
+  };
+
+  emptyVaultPledgePatreos = () => {
+    const transaction = this.transaction_builder.emptyVaultPledge(this.props.account, this.props.tokenInfo.receiverAccount, '50.0000', 'PLEDGE <3', 'patreostoken', 'PATR')
     this.props.scatterEos.transaction(transaction);
   };
 
@@ -225,6 +274,13 @@ class TokenInfo extends React.Component {
   unpledgePatreos = () => {
     const transaction = this.transaction_builder.unpledge(this.props.account, this.props.tokenInfo.receiverAccount);
     this.props.scatterEos.transaction(transaction);
+  };
+
+  withdraw = () => {
+    //const transaction = this.transaction_builder.withdraw(this.props.account, '10.0000');
+    //this.props.scatterEos.transaction(transaction);
+    const transaction2 = this.transaction_builder.withdraw(this.props.account, '120.0000', 'PATR');
+    this.props.scatterEos.transaction(transaction2);
   };
 
   getVaultStakedBalance = () => {

@@ -122,6 +122,43 @@ class TransactionBuilder {
     }
   }
 
+  emptyVaultPledge(_from, _to, _quantity, _memo='', _code='eosio.token', _symbol='EOS', _permission='active') {
+    return {
+      actions: [{
+				account: _code,
+				name: 'transfer',
+				authorization: [{
+					actor: _from,
+					permission: _permission
+				}],
+				data: {
+					from: _from,
+					to: this.config.code.patreosvault,
+					quantity: _quantity + ' ' + _symbol,
+					memo: _memo
+				}
+			},
+      {
+        account: this.config.code.patreosnexus,
+        name: 'pledge',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          pledger: _from,
+          _pledge: {
+            creator: _to,
+            quantity: _quantity + ' ' + this.config.patreosSymbol,
+            seconds: 10,
+            last_pledge: 0,
+            execution_count: 0
+          }
+        }
+      }]
+    }
+  }
+
   unpledge(_from, _to, _permission='active') {
     return {
       actions: [{

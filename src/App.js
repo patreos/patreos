@@ -128,7 +128,7 @@ class App extends React.Component {
         <div id="content">
           <Menu/>
           <AccountInfo eos={this.eos} scatterEos={ this.scatterEos } eosBalance={ this.props.accountInfo.eosBalance } patrBalance={ this.props.accountInfo.patrBalance } vaultInfo={ this.props.accountInfo.vaultInfo }/>
-          <TokenInfo eos={this.eos} scatterEos={ this.scatterEos } config={ this.config } account={ this.props.accountInfo.userName } patrBalance={ this.props.accountInfo.patrBalance }/>
+          <TokenInfo eos={this.eos} scatterEos={ this.scatterEos } config={ this.config } account={ this.props.accountInfo.userName } patrBalance={ this.props.accountInfo.patrBalance } vaultInfo={ this.props.accountInfo.vaultInfo }/>
         </div>
       </div>
     );
