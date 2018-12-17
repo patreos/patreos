@@ -176,6 +176,23 @@ class TransactionBuilder {
     }
   }
 
+  regservice(_provider, raw_provider_tokens, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreospayer,
+        name: 'regservice',
+        authorization: [{
+          actor: _provider,
+          permission: _permission
+        }],
+        data: {
+          provider: _provider,
+          valid_tokens: raw_provider_tokens
+        }
+      }]
+    }
+  }
+
   // Creator publishes new content
   publish(_from, _title, _description, _url) {}
 

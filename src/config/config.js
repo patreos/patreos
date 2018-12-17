@@ -24,6 +24,7 @@ const config = {
       patreostoken: 'patreostoken',
       patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
+      patreospayer: 'patreospayer',
       patreosnexus: 'patreosnexus',
       patreosvault: 'patreosvault'
     },
@@ -56,6 +57,7 @@ const config = {
       patreostoken: 'patreostoken',
       patreosblurb: 'patreostests',
       patreosmoney: 'patreostests',
+      patreospayer: 'patreospayer',
       patreosnexus: 'patreosnexus',
       patreosvault: 'patreosvault'
     },
@@ -86,6 +88,7 @@ const config = {
       patreostoken: 'patreostoken',
       patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
+      patreospayer: 'patreospayer',
       patreosnexus: 'patreosnexus',
       patreosvault: 'patreosvault'
     },

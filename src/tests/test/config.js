@@ -23,6 +23,7 @@ var config = {
     patreostoken: 'patreostoken',
     patreosblurb: 'patreosblurb',
     patreosmoney: 'patreosmoney',
+    patreospayer: 'patreospayer',
     patreosnexus: 'patreosnexus',
     patreosvault: 'patreosvault'
   },
