@@ -4,7 +4,7 @@ var assert = require('assert');
 var accounts = fs.readFileSync("accounts.json");
 
 var messagesModule = require("./messages.js");
-var configModule = require("./config.js");
+var configModule = require("../../config/config.js");
 
 var TransactionBuilder = require('../../utils/transaction_builder');
 
@@ -14,7 +14,7 @@ process.on('unhandledRejection', (reason, promise) => {
   // or whatever crash reporting service you use
 })
 
-var config = configModule.config;
+var config = configModule.config.development;
 var messages = messagesModule.messages;
 
 eos = Eos(config.eos);

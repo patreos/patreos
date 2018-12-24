@@ -17,7 +17,8 @@ const config = {
     eos: {
       httpEndpoint: 'http://127.0.0.1:8888',
       chainId: 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f',
-      verbose: true
+      keyProvider: '5JXT8YAsNvtipDH6oFon75EdFLHZ1x8VmwgBz2kz3be7Jr3kW4S',
+      verbose: false
     },
     code: {
       eosiotoken: 'eosio.token',
@@ -98,4 +99,4 @@ const config = {
   }
 };
 
-export default config;
+module.exports.config = config;

@@ -176,7 +176,7 @@ class TransactionBuilder {
     }
   }
 
-  regservice(_provider, raw_provider_tokens, _permission='active') {
+  regservice(_provider, raw_service_tokens, _permission='active') {
     return {
       actions: [{
         account: this.config.code.patreospayer,
@@ -187,7 +187,82 @@ class TransactionBuilder {
         }],
         data: {
           provider: _provider,
-          valid_tokens: raw_provider_tokens
+          valid_tokens: raw_service_tokens
+        }
+      }]
+    }
+  }
+
+/*
+uint64_t id;
+name from;
+name to;
+payer_token payer_token_amount;
+uint64_t cycle;
+uint64_t last_executed;
+asset fee;
+*/
+
+  _build_agreement(_from, _to, _quantity, _token_contract, _cycle) {
+    return {
+      "from": _from,
+      "to": _to,
+      "token_profile_amount": {
+        "contract": _token_contract,
+        "quantity": _quantity
+      },
+      "cycle": _cycle
+    }
+  }
+
+  subscribe(_provider, _agreement, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreospayer,
+        name: 'subscribe',
+        authorization: [{
+          actor: _agreement.from,
+          permission: _permission
+        }],
+        data: {
+          provider: _provider,
+          agreement: _agreement
+        }
+      }]
+    }
+  }
+
+  unsubscribe(_provider, _from, _to, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreospayer,
+        name: 'unsubscribe',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          provider: _provider,
+          from: _from,
+          to: _to
+        }
+      }]
+    }
+  }
+
+  process(_provider, _from, _to, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreospayer,
+        name: 'process',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          provider: _provider,
+          from: _from,
+          to: _to
         }
       }]
     }
@@ -195,10 +270,6 @@ class TransactionBuilder {
 
   // Creator publishes new content
   publish(_from, _title, _description, _url) {}
-
-  // A simple follow to a creator
-  subscribe(_from, _to) {}
-  unsubscribe(_from, _to) {}
 
   // Update basic profile information
   set_profile(_account, _name, _description, _img_url) {}
