@@ -4,7 +4,7 @@ var assert = require('assert');
 var accounts = fs.readFileSync("accounts.json");
 
 var messagesModule = require("./messages.js");
-var configModule = require("../../config/config.js");
+var configModule = require("../../config/test_config.js");
 
 var TransactionBuilder = require('../../utils/transaction_builder');
 

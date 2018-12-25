@@ -11,7 +11,7 @@ This project is the dapp UI for Patreos.  For more information about the technol
 Below is a list of relevant Patreos smart contracts:
  - patreostoken (token contract)
  - patreosblurb (alert manager)
- - patreospayer (subscription manager)
+ - recurringpay (subscription manager)
  - patreosmoney (inflation policy)
 
 ## We use the Jungle Testnet for end-to-end testing with Scatter

@@ -179,7 +179,7 @@ class TransactionBuilder {
   regservice(_provider, raw_service_tokens, _permission='active') {
     return {
       actions: [{
-        account: this.config.code.patreospayer,
+        account: this.config.code.recurringpay,
         name: 'regservice',
         authorization: [{
           actor: _provider,
@@ -218,7 +218,7 @@ asset fee;
   subscribe(_provider, _agreement, _permission='active') {
     return {
       actions: [{
-        account: this.config.code.patreospayer,
+        account: this.config.code.recurringpay,
         name: 'subscribe',
         authorization: [{
           actor: _agreement.from,
@@ -235,7 +235,7 @@ asset fee;
   unsubscribe(_provider, _from, _to, _permission='active') {
     return {
       actions: [{
-        account: this.config.code.patreospayer,
+        account: this.config.code.recurringpay,
         name: 'unsubscribe',
         authorization: [{
           actor: _from,
@@ -253,7 +253,7 @@ asset fee;
   process(_provider, _from, _to, _permission='active') {
     return {
       actions: [{
-        account: this.config.code.patreospayer,
+        account: this.config.code.recurringpay,
         name: 'process',
         authorization: [{
           actor: _from,
@@ -263,6 +263,24 @@ asset fee;
           provider: _provider,
           from: _from,
           to: _to
+        }
+      }]
+    }
+  }
+
+  recurringpay_withdraw(_from, _contract, _quantity, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.recurringpay,
+        name: 'withdraw',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          owner: _from,
+          contract: _contract,
+          quantity: _quantity
         }
       }]
     }

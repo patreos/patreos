@@ -4,7 +4,7 @@ var assert = require('assert');
 var accounts = fs.readFileSync("accounts.json");
 accounts = JSON.parse(accounts);
 var messagesModule = require("./messages.js");
-var configModule = require("../../config/config.js");
+var configModule = require("../../config/test_config.js");
 var bignum = require('bignum');
 
 //Adding agreement with secondary key (from.to): 269426230777718110912747792682672604624
@@ -40,10 +40,10 @@ function combineIds(name1, name2) {
   return binaryNumber;
 }
 
-describe('Patreos Payer Tests', function() {
+describe('Tests for recurringpay', function() {
 
-  it('xokayplanetx Deposits PATR into patreospayer', function(done) {
-    let tx = transaction_builder.transfer('xokayplanetx', 'patreospayer', '15.0000','STAKE <3','patreostoken', 'PATR');
+  it('xokayplanetx Deposits PATR into recurringpay', function(done) {
+    let tx = transaction_builder.transfer('xokayplanetx', 'recurringpay', '15.0000','STAKE <3','patreostoken', 'PATR');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -55,8 +55,8 @@ describe('Patreos Payer Tests', function() {
     });
   });
 
-  it('testplanet1x Deposits PATR into patreospayer', function(done) {
-    let tx = transaction_builder.transfer('testplanet1x', 'patreospayer', '15.0000','STAKE <3','patreostoken', 'PATR');
+  it('testplanet1x Deposits PATR into recurringpay', function(done) {
+    let tx = transaction_builder.transfer('testplanet1x', 'recurringpay', '15.0000','STAKE <3','patreostoken', 'PATR');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -119,7 +119,7 @@ describe('Patreos Payer Tests', function() {
     eos.getTableRows({
       "json": true,
       "scope": 'xokayplanetx',
-      "code": config.code.patreospayer,
+      "code": config.code.recurringpay,
       "table": "agreements",
       "index_position": 3,
       "table_key": 'from',
@@ -156,7 +156,7 @@ describe('Patreos Payer Tests', function() {
       }).catch(err => {
         error = JSON.parse(err).error;
         let message = error.details[0].message;
-        assert.ok(message.includes("Subscription is not due!"));
+        assert.ok(message.includes("Subscription is not due"));
         done();
       });
     }, 400));
@@ -186,6 +186,61 @@ describe('Patreos Payer Tests', function() {
     }).catch(err => {
       console.log(err);
       assert.strictEqual(0, 1, 'Transaction was not successful');
+      done();
+    });
+  });
+
+  it('testplanet2x Withdraw PATR', function(done) {
+    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreostoken', '0.5000 PATR');
+    eos.transaction(tx).then((response) => {
+      let ret = response.processed.receipt.status;
+      assert.equal('executed', ret);
+      done();
+    }).catch(err => {
+      console.log(err);
+      assert.strictEqual(0, 1, 'Transaction was not successful');
+      done();
+    });
+  });
+
+  it('testplanet2x Cannot Withdraw FAKE', function(done) {
+    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreostoken', '0.5000 FAKE');
+    eos.transaction(tx).then((response) => {
+      console.log(response);
+      assert.strictEqual(0, 1, 'Transaction was successful');
+      done();
+    }).catch(err => {
+      error = JSON.parse(err).error;
+      let message = error.details[0].message;
+      assert.ok(message.includes("No balance found"));
+      done();
+    });
+  });
+
+  it('testplanet2x Cannot Withdraw PATR from fake contract', function(done) {
+    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreosfaker', '0.5000 PATR');
+    eos.transaction(tx).then((response) => {
+      console.log(response);
+      assert.strictEqual(0, 1, 'Transaction was successful');
+      done();
+    }).catch(err => {
+      error = JSON.parse(err).error;
+      let message = error.details[0].message;
+      assert.ok(message.includes("No balance found"));
+      done();
+    });
+  });
+
+  it('testplanet2x Cannot Overdraw PATR balance', function(done) {
+    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreostoken', '999999.0000 PATR');
+    eos.transaction(tx).then((response) => {
+      console.log(response);
+      assert.strictEqual(0, 1, 'Transaction was successful');
+      done();
+    }).catch(err => {
+      error = JSON.parse(err).error;
+      let message = error.details[0].message;
+      assert.ok(message.includes("overdrawn balance"));
       done();
     });
   });
