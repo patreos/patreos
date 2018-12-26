@@ -1,38 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {bindActionCreators} from 'redux';
-import * as PATREOS_TOKEN_ACTIONS from '../actions/token_actions';
+import * as PATREOS_ACTIONS from '../actions/patreos_actions';
 import connect from 'react-redux/es/connect/connect';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
 import TransactionBuilder from '../utils/transaction_builder';
+import EosReader from '../utils/eos_reader'
 
-class TokenInfo extends React.Component {
+class PatreosInfo extends React.Component {
 
   constructor(props) {
     super(props);
     this.config = this.props.config;
     this.transaction_builder = new TransactionBuilder(this.config);
+    this.eosReader = new EosReader(this.props.eos);
   }
 
   tokeInfoUpdate() {
     if(this.props.scatterEos != null) {
       //this.getVaultStakedBalance();
-      //this.getStakedPTRBalance();
-      this.getPledges();
+      this.getStakedBalanceAmt();
+      //this.getPledges();
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.tokenInfo.pledges !== this.props.tokenInfo.pledges) {
-      this.updatePledgeDom(this.props.tokenInfo.pledges);
-    }
-    if (prevProps.patrBalance !== this.props.patrBalance) {
-      //console.log("Updated TokenInfo PATR Balance prop: " + this.props.patrBalance)
+    if (prevProps.patreosReducer.pledges !== this.props.patreosReducer.pledges) {
+      //this.updatePledgeDom(this.props.tokenInfo.pledges);
     }
   }
 
   componentDidMount() {
+    this.tokeInfoUpdate();
     this.interval = setInterval(() => this.tokeInfoUpdate(), this.config.updateInterval);
   }
 
@@ -41,11 +41,13 @@ class TokenInfo extends React.Component {
   }
 
   render() {
-    // Found in reducers/token
+
     const {
-      unstakedBalance, stakedBalance, receiverAccount, transferQuantity,
-      stakeQuantity, unstakeQuantity, pledgeQuantity, pledgeCycleDays, pledges
-    } = this.props.tokenInfo;
+      balanceAmt, stakedBalanceAmt, transferToAccountStr, transferAmt, stakeAmt,
+      unstakeAmt, followAccountStr, creatorNameStr, creatorDescriptionStr, creatorBannerStr,
+      creatorImageStr, publicationTitleStr, publicationDescriptionStr, publicationUrlStr,
+      publicationImageStr
+    } = this.props.patreosReducer;
 
     return (
       <div className='token-container'>
@@ -69,10 +71,10 @@ class TokenInfo extends React.Component {
               Send:
             </div>
             <div className='col-m'>
-              { transferQuantity } PTR
+              { '0.0000' } PTR
             </div>
             <div className='input-group mb-3'>
-              <input type='text' className='form-control' placeholder={ transferQuantity }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateTransferQuantity } />
+              <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateTransferQuantity } />
               <div className='input-group-append'>
                 <span className='input-group-text'>PTR</span>
               </div>
@@ -83,7 +85,7 @@ class TokenInfo extends React.Component {
               Receiver Account:
             </div>
             <div className='col-m'>
-              { receiverAccount }
+              { 'someaccount' }
             </div>
           </div>
           <div className='row'>
@@ -101,10 +103,10 @@ class TokenInfo extends React.Component {
           </div>
           <div className='row'>
             <div className='col-m mr-1'>
-              PTR Staked Balance:
+              Staked PATR Balance:
             </div>
             <div className='col-m'>
-              { stakedBalance }
+              { stakedBalanceAmt } PATR
             </div>
           </div>
           <br/>
@@ -113,12 +115,12 @@ class TokenInfo extends React.Component {
               Quantity to Stake:
             </div>
             <div className='col-m'>
-              { stakeQuantity } PTR
+              { stakeAmt } PTR
             </div>
           </div>
           <div className='row'>
             <div className='input-group mb-3'>
-              <input type='text' className='form-control' placeholder={ stakeQuantity }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateStakeQuantity } />
+              <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateStakeAmt } />
               <div className='input-group-append'>
                 <span className='input-group-text'>PTR</span>
               </div>
@@ -131,12 +133,12 @@ class TokenInfo extends React.Component {
               Quantity to Unstake:
             </div>
             <div className='col-m'>
-              { unstakeQuantity } PTR
+              { unstakeAmt } PTR
             </div>
           </div>
           <div className='row'>
             <div className='input-group mb-3'>
-              <input type='text' className='form-control' placeholder={ unstakeQuantity } aria-label='Amount (to the nearest dollar)' onChange={ this.updateUnstakeQuantity } />
+              <input type='text' className='form-control' placeholder={ '0.0000' } aria-label='Amount (to the nearest dollar)' onChange={ this.updateUnstakeAmt } />
               <div className='input-group-append'>
                 <span className='input-group-text'>PTR</span>
               </div>
@@ -144,31 +146,6 @@ class TokenInfo extends React.Component {
             <button className='btn btn-patreos' onClick={ () => this.unstakePatreos() }>Unstake</button>
           </div>
         </div>
-
-
-        <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
-          <div className='row'>
-            <div className='col-m'>
-              <h3>Pledge Vault</h3>
-            </div>
-          </div>
-          <br/>
-          <div className='row'>
-            <div className='col-m mr-1'>
-              Quantity to Withdraw:
-            </div>
-            <div className='col-m'>
-              { pledgeQuantity } PTR
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-m input-group mb-3'>
-              <input className='form-control' type='text' size='12' placeholder='Withdraw Account' onChange={ this.updateReceiverAccount } />
-            </div>
-            <button className='btn btn-patreos' onClick={ () => this.withdraw() }>Withdraw</button>
-          </div>
-        </div>
-
 
         <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
@@ -182,7 +159,7 @@ class TokenInfo extends React.Component {
               Quantity to Pledge:
             </div>
             <div className='col-m'>
-              { pledgeQuantity } PTR
+              { '0.0000' } PTR
             </div>
           </div>
           <div className='row'>
@@ -200,19 +177,19 @@ class TokenInfo extends React.Component {
   }
 
   updateTransferQuantity = (input) => {
-    this.props.tokenActions.updateTransferQuantity(input.target.value);
+    //this.props.tokenActions.updateTransferQuantity(input.target.value);
   };
 
   updateReceiverAccount = (input) => {
-    this.props.tokenActions.updateReceiverAccount(input.target.value);
+    //this.props.tokenActions.updateReceiverAccount(input.target.value);
   };
 
-  updateStakeQuantity = (input) => {
-    this.props.tokenActions.updateStakeQuantity(input.target.value);
+  updateStakeAmt = (input) => {
+    this.props.patreosActions.updateStakeAmt(input.target.value);
   };
 
-  updateUnstakeQuantity = (input) => {
-    this.props.tokenActions.updateUnstakeQuantity(input.target.value);
+  updateUnstakeAmt = (input) => {
+    this.props.patreosActions.updateUnstakeAmt(input.target.value);
   };
 
   sendPatreosToken = () => {
@@ -229,19 +206,13 @@ class TokenInfo extends React.Component {
   };
 
   stakePatreos = () => {
-    /*
-    const transaction = this.transaction_builder.transfer(this.props.account,
-      this.config.code.patreosvault, '1.0000', '<3',
-      this.config.code.patreostoken, this.config.patreosSymbol);
+    const transaction = this.transaction_builder.stake(this.props.eosAccountStr, this.props.patreosReducer.stakeAmt);
     this.props.scatterEos.transaction(transaction);
-    */
   };
 
   unstakePatreos = () => {
-    /*
-    const transaction = this.transaction_builder.withdraw(this.props.account, '1.0000', 'PATR');
+    const transaction = this.transaction_builder.unstake(this.props.eosAccountStr, this.props.patreosReducer.unstakeAmt);
     this.props.scatterEos.transaction(transaction);
-    */
   };
 
   pledgePatreos = () => {
@@ -281,39 +252,16 @@ class TokenInfo extends React.Component {
     this.props.scatterEos.transaction(transaction);
   };
 
-  withdraw = () => {
-    //const transaction = this.transaction_builder.withdraw(this.props.account, '10.0000');
-    //this.props.scatterEos.transaction(transaction);
-    const transaction2 = this.transaction_builder.withdraw(this.props.account, '120.0000', 'PATR');
-    this.props.scatterEos.transaction(transaction2);
-  };
-
-  getVaultStakedBalance = () => {
-    const patreosBalance = this.props.eos.getCurrencyBalance(this.config.code.patreosvault,
-      this.props.account, this.config.patreosSymbol)
-    patreosBalance.then((response) => {
-      console.log("VaultStakedBalance response is " + JSON.stringify(response));
-      if(response.length > 0) {
-        this.props.tokenActions.updateStakedBalance(response[0]);
-        return;
+  getStakedBalanceAmt = () => {
+    this.eosReader.getTable(
+      this.config.code.patreostoken,
+      this.props.eosAccountStr,
+      'stakes',
+      (val) => {
+        var amt = (val.length > 0) ? val[0].balance.replace(' PATR', '') : '0.0000'
+        this.props.patreosActions.updateStakedBalanceAmt(amt);
       }
-      this.props.tokenActions.updateStakedBalance('0.0000 PTR');
-    }).catch(error => {
-      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
-    });
-  };
-
-  getStakedPTRBalance = () => {
-    const table = this.props.eos.getTableRows(true, this.config.code.patreostoken, this.props.account, 'liquidstake')
-    table.then((response) => {
-      if(response.rows.length > 0) {
-        this.props.tokenActions.updateStakedBalance(response.rows[0].balance);
-        return;
-      }
-      this.props.tokenActions.updateStakedBalance('0.0000 PTR');
-    }).catch(error => {
-      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
-    });
+    );
   };
 
   updatePledgeDom = (pledges) => {
@@ -353,18 +301,19 @@ class TokenInfo extends React.Component {
       console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
     });
   };
+
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    tokenActions: bindActionCreators(PATREOS_TOKEN_ACTIONS, dispatch)
+    patreosActions: bindActionCreators(PATREOS_ACTIONS, dispatch)
   };
 }
 
 function mapStateToProps(state) {
   return {
-    tokenInfo: state.tokenInfo
+    patreosReducer: state.patreosReducer
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TokenInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(PatreosInfo);

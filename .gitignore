@@ -11,3 +11,4 @@ src/.DS_STORE
 .cache
 dist/
 build/
+generated

@@ -22,7 +22,7 @@ eos = Eos(config.eos);
 const transaction_builder = new TransactionBuilder(config);
 
 describe('Patreos Vault Tests', function() {
-
+/*
   it('Cannot withdraw PATR from vault without balance', function(done) {
     let tx = transaction_builder.withdraw('nomoneyuser1', '1.0000', 'PATR');
     eos.transaction(tx).then((response) => {
@@ -91,5 +91,5 @@ describe('Patreos Vault Tests', function() {
       done();
     });
   });
-
+*/
 });

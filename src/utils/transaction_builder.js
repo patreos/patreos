@@ -24,25 +24,8 @@ class TransactionBuilder {
 		}
 	}
 
-	withdraw(_from, _quantity, _symbol='EOS', _permission='active') {
-		return {
-			actions: [{
-				account: this.config.code.patreosvault,
-				name: 'withdraw',
-				authorization: [{
-					actor: _from,
-					permission: _permission
-				}],
-				data: {
-					owner: _from,
-					quantity: _quantity + ' ' + _symbol
-				}
-			}]
-		}
-	}
-
   // A custom transfer function for any eosio.token-like contract
-  stake(_from, _quantity, _memo='', _permission='active') {
+  stake(_from, _quantity, _permission='active') {
     return {
 			actions: [{
 				account: this.config.code.patreostoken,
@@ -53,15 +36,14 @@ class TransactionBuilder {
 				}],
 				data: {
 					account: _from,
-					quantity: _quantity + ' ' + this.config.patreosSymbol,
-					memo: _memo
+					quantity: _quantity + ' ' + this.config.patreosSymbol
 				}
 			}]
 		}
   }
 
   // A custom transfer function for any eosio.token-like contract
-  unstake(_from, _quantity, _memo='', _permission='active') {
+  unstake(_from, _quantity, _permission='active') {
     return {
       actions: [{
         account: this.config.code.patreostoken,
@@ -72,8 +54,7 @@ class TransactionBuilder {
         }],
         data: {
           account: _from,
-          quantity: _quantity + ' ' + this.config.patreosSymbol,
-          memo: _memo
+          quantity: _quantity + ' ' + this.config.patreosSymbol
         }
       }]
     }
@@ -193,17 +174,7 @@ class TransactionBuilder {
     }
   }
 
-/*
-uint64_t id;
-name from;
-name to;
-payer_token payer_token_amount;
-uint64_t cycle;
-uint64_t last_executed;
-asset fee;
-*/
-
-  _build_agreement(_from, _to, _quantity, _token_contract, _cycle) {
+  _build_agreement(_from, _to, _quantity, _token_contract, _cycle_seconds) {
     return {
       "from": _from,
       "to": _to,
@@ -211,7 +182,7 @@ asset fee;
         "contract": _token_contract,
         "quantity": _quantity
       },
-      "cycle": _cycle
+      "cycle_seconds": _cycle_seconds
     }
   }
 
@@ -268,7 +239,7 @@ asset fee;
     }
   }
 
-  recurringpay_withdraw(_from, _contract, _quantity, _permission='active') {
+  withdraw(_from, _contract, _quantity, _permission='active') {
     return {
       actions: [{
         account: this.config.code.recurringpay,

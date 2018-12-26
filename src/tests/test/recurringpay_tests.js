@@ -137,7 +137,7 @@ describe('Tests for recurringpay', function() {
         assert.strictEqual(0, 1, 'Subscription Not Verified');
         done();
       }
-      assert.strictEqual(target.cycle, 1, 'Subscription Verified');
+      assert.strictEqual(target.cycle_seconds, 1, 'Subscription Verified');
       done();
     }).catch((error) =>{
       console.log(error);
@@ -191,7 +191,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('testplanet2x Withdraw PATR', function(done) {
-    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreostoken', '0.5000 PATR');
+    let tx = transaction_builder.withdraw('testplanet2x', 'patreostoken', '0.5000 PATR');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -204,7 +204,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('testplanet2x Cannot Withdraw FAKE', function(done) {
-    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreostoken', '0.5000 FAKE');
+    let tx = transaction_builder.withdraw('testplanet2x', 'patreostoken', '0.5000 FAKE');
     eos.transaction(tx).then((response) => {
       console.log(response);
       assert.strictEqual(0, 1, 'Transaction was successful');
@@ -218,7 +218,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('testplanet2x Cannot Withdraw PATR from fake contract', function(done) {
-    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreosfaker', '0.5000 PATR');
+    let tx = transaction_builder.withdraw('testplanet2x', 'patreosfaker', '0.5000 PATR');
     eos.transaction(tx).then((response) => {
       console.log(response);
       assert.strictEqual(0, 1, 'Transaction was successful');
@@ -232,7 +232,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('testplanet2x Cannot Overdraw PATR balance', function(done) {
-    let tx = transaction_builder.recurringpay_withdraw('testplanet2x', 'patreostoken', '999999.0000 PATR');
+    let tx = transaction_builder.withdraw('testplanet2x', 'patreostoken', '999999.0000 PATR');
     eos.transaction(tx).then((response) => {
       console.log(response);
       assert.strictEqual(0, 1, 'Transaction was successful');

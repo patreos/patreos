@@ -22,7 +22,7 @@ eos = Eos(config.eos);
 const transaction_builder = new TransactionBuilder(config);
 
 describe('Patreos Pledge Tests', function() {
-
+/*
   it('Should error when pledge of min value is not met', function(done) {
     let tx = transaction_builder.pledge('xokayplanetx', 'patreosnexus', '1.0000', 10);
     eos.transaction(tx).then((response) => {
@@ -89,5 +89,5 @@ describe('Patreos Pledge Tests', function() {
       done();
     });
   });
-
+*/
 });

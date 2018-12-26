@@ -10,21 +10,21 @@ class AccountInfo extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.eosBalance !== this.props.eosBalance) {
-      //console.log("Updated EOS Balance prop: " + this.props.eosBalance)
+    if (prevProps.eosBalanceAmt !== this.props.eosBalanceAmt) {
+      //console.log("Updated EOS Balance prop: " + this.props.eosBalanceAmt)
     }
-    if (prevProps.patrBalance !== this.props.patrBalance) {
-      //console.log("Updated PATR Balance prop: " + this.props.patrBalance)
+    if (prevProps.patrBalanceAmt !== this.props.patrBalanceAmt) {
+      //console.log("Updated PATR Balance prop: " + this.props.patrBalanceAmt)
     }
-    if (prevProps.vaultInfo !== this.props.vaultInfo) {
-      //console.log("Updated Vault Info prop: " + this.props.vaultInfo)
+    if (prevProps.recurringpayBalancesArr !== this.props.recurringpayBalancesArr) {
+      //console.log("Updated Vault Info prop: " + this.props.recurringpayBalancesArr)
     }
   }
 
   render() {
     const {
-      userName, userInfo, webSite, scatterDetected
-    } = this.props.accountInfo;
+      eosAccountStr, eosAccountInfoObj, scatterDetectionStr, emailAddressStr
+    } = this.props.accountReducer;
 
     return (
       <div className='account-container'>
@@ -34,7 +34,7 @@ class AccountInfo extends React.Component {
               Scatter:
             </div>
             <div className='col-m'>
-              { scatterDetected }
+              { scatterDetectionStr }
             </div>
           </div>
           <br/>
@@ -43,7 +43,7 @@ class AccountInfo extends React.Component {
               Account:
             </div>
             <div className='col-m'>
-              <a href={ webSite } target='_blank'>{ userName }</a>
+              <a href='https://www.patreos.com' target='_blank'>{ eosAccountStr }</a>
             </div>
           </div>
           <div className='row'>
@@ -51,7 +51,7 @@ class AccountInfo extends React.Component {
               EOS Balance:
             </div>
             <div className='col-m'>
-              { this.props.eosBalance }
+              { this.props.eosBalanceAmt }
             </div>
           </div>
           <div className='row'>
@@ -59,18 +59,18 @@ class AccountInfo extends React.Component {
               PATR Balance:
             </div>
             <div className='col-m'>
-              { this.props.patrBalance }
+              { this.props.patrBalanceAmt }
             </div>
           </div>
           <br/>
           <div className='row'>
             <div className='col-m mr-1'>
-              Staked Balance in Vault:
+              RecurringPay Balances:
             </div>
           </div>
           <div className='row'>
             <div className='col-m'>
-              { this.props.vaultInfo.map((info, index) => <div key={ index }>{ info }</div>) }
+              { this.props.recurringpayBalancesArr.map((info, index) => <div key={ index }>{ info.quantity }</div>) }
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    accountInfo: state.accountInfo
+    accountReducer: state.accountReducer
   };
 }
 
