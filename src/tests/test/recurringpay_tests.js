@@ -43,7 +43,7 @@ function combineIds(name1, name2) {
 describe('Tests for recurringpay', function() {
 
   it('xokayplanetx Deposits PATR into recurringpay', function(done) {
-    let tx = transaction_builder.transfer('xokayplanetx', 'recurringpay', '15.0000','STAKE <3','patreostoken', 'PATR');
+    let tx = transaction_builder.transfer('xokayplanetx', 'recurringpay', '15.0000','Deposit <3','patreostoken', 'PATR');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -56,7 +56,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('testplanet1x Deposits PATR into recurringpay', function(done) {
-    let tx = transaction_builder.transfer('testplanet1x', 'recurringpay', '15.0000','STAKE <3','patreostoken', 'PATR');
+    let tx = transaction_builder.transfer('testplanet1x', 'recurringpay', '15.0000','Deposit <3','patreostoken', 'PATR');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -68,7 +68,33 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('Register Service Provider', function(done) {
+  it('xokayplanetx Deposits EOS into recurringpay', function(done) {
+    let tx = transaction_builder.transfer('xokayplanetx', 'recurringpay', '2.0000','Deposit <3','eosio.token', 'EOS');
+    eos.transaction(tx).then((response) => {
+      let ret = response.processed.receipt.status;
+      assert.equal('executed', ret);
+      done();
+    }).catch(err => {
+      console.log(err)
+      assert.strictEqual(0, 1, 'Transaction was not successful');
+      done();
+    });
+  });
+
+  it('xokayplanetx Registers Service with recurringpay', function(done) {
+    let tx = transaction_builder.transfer('xokayplanetx', 'recurringpay', '1.0000','regservice|MyOkayPlanet service is awesome!','eosio.token', 'EOS');
+    eos.transaction(tx).then((response) => {
+      let ret = response.processed.receipt.status;
+      assert.equal('executed', ret);
+      done();
+    }).catch(err => {
+      console.log(err)
+      assert.strictEqual(0, 1, 'Transaction was not successful');
+      done();
+    });
+  });
+
+  it('Register Tokens to xokayplanetx Provider', function(done) {
     let tokens = [
       {
         "token_contract": "eosio.token",
@@ -81,7 +107,7 @@ describe('Tests for recurringpay', function() {
         "percentage_fee": 1.2
       }
     ];
-    let tx = transaction_builder.regservice('xokayplanetx', tokens);
+    let tx = transaction_builder.addtokens('xokayplanetx', tokens);
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);

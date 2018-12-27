@@ -19,6 +19,11 @@ export default (
     publicationDescriptionStr: '',
     publicationUrlStr: '',
     publicationImageStr: '',
+    pledgeTokenSymbolStr: '',
+    pledgeTokenContractStr: '',
+    pledgeToAccountStr: '',
+    pledgeAmt: '0.0000',
+    pledgeCycleNum: 0,
   }, action) => {
   switch (action.type) {
   case PATREOS_ACTIONS.UPDATE_BALANCE_AMT:
@@ -51,6 +56,16 @@ export default (
     return { ...state, publicationUrlStr: action.data };
   case PATREOS_ACTIONS.UPDATE_PUBLICATION_IMAGE_STR:
     return { ...state, publicationImageStr: action.data };
+  case PATREOS_ACTIONS.UPDATE_PLEDGE_TOKEN_SYMBOL_STR:
+    return { ...state, pledgeTokenSymbolStr: action.data };
+  case PATREOS_ACTIONS.UPDATE_PLEDGE_TOKEN_CONTRACT_STR:
+    return { ...state, pledgeTokenContractStr: action.data };
+  case PATREOS_ACTIONS.UPDATE_PLEDGE_TO_ACCOUNT_STR:
+    return { ...state, pledgeToAccountStr: action.data };
+  case PATREOS_ACTIONS.UPDATE_PLEDGE_AMT:
+    return { ...state, pledgeAmt: action.data };
+  case PATREOS_ACTIONS.UPDATE_PLEDGE_CYCLE_NUM:
+    return { ...state, pledgeCycleNum: action.data };
   default:
     return state;
   }

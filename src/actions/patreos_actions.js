@@ -92,3 +92,33 @@ export function updatePublicationImageStr(publicationImageStr) {
   };
 }
 
+export function updatePledgeTokenSymbolStr(pledgeTokenSymbolStr) {
+  return (dispatch) => {
+   dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGE_TOKEN_SYMBOL_STR, data: pledgeTokenSymbolStr });
+  };
+}
+
+export function updatePledgeTokenContractStr(pledgeTokenContractStr) {
+  return (dispatch) => {
+   dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGE_TOKEN_CONTRACT_STR, data: pledgeTokenContractStr });
+  };
+}
+
+export function updatePledgeToAccountStr(pledgeToAccountStr) {
+  return (dispatch) => {
+   dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGE_TO_ACCOUNT_STR, data: pledgeToAccountStr });
+  };
+}
+
+export function updatePledgeAmt(pledgeAmt) {
+  return (dispatch) => {
+   dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGE_AMT, data: pledgeAmt });
+  };
+}
+
+export function updatePledgeCycleNum(pledgeCycleNum) {
+  return (dispatch) => {
+   dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGE_CYCLE_NUM, data: pledgeCycleNum });
+  };
+}
+

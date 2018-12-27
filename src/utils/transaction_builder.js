@@ -80,9 +80,23 @@ class TransactionBuilder {
 	}
 
   // Pledge a quantity to creator every n-days
-  pledge(_from, _to, _quantity, _days, _permission='active') {
+  pledge(_from, _to, _quantity, _code='eosio.token', _symbol='EOS', _permission='active') {
+    var _asset = _quantity + ' ' + _symbol;
+    var _agreement = this._build_agreement(_from, _to, _asset, _code, 1);
     return {
       actions: [{
+        account: this.config.code.recurringpay,
+        name: 'subscribe',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          provider: 'xokayplanetx',
+          agreement: _agreement
+        }
+      },
+      {
         account: this.config.code.patreosnexus,
         name: 'pledge',
         authorization: [{
@@ -90,20 +104,16 @@ class TransactionBuilder {
           permission: _permission
         }],
         data: {
-          pledger: _from,
-          _pledge: {
-            creator: _to,
-            quantity: _quantity + ' ' + this.config.patreosSymbol,
-            seconds: 10,
-            last_pledge: 0,
-            execution_count: 0
-          }
+          from: _from,
+          to: _to
         }
       }]
     }
   }
 
-  emptyVaultPledge(_from, _to, _quantity, _memo='', _code='eosio.token', _symbol='EOS', _permission='active') {
+  recurringpayDepositThenExecutePledge(_from, _to, _quantity, _memo='', _code='eosio.token', _symbol='EOS', _permission='active') {
+    var _asset = _quantity + ' ' + _symbol;
+    var _agreement = this._build_agreement(_from, _to, _asset, _code, 1);
     return {
       actions: [{
 				account: _code,
@@ -114,11 +124,23 @@ class TransactionBuilder {
 				}],
 				data: {
 					from: _from,
-					to: this.config.code.patreosvault,
-					quantity: _quantity + ' ' + _symbol,
+					to: this.config.code.recurringpay,
+					quantity: _asset,
 					memo: _memo
 				}
 			},
+      {
+        account: this.config.code.recurringpay,
+        name: 'subscribe',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          provider: 'xokayplanetx',
+          agreement: _agreement
+        }
+      },
       {
         account: this.config.code.patreosnexus,
         name: 'pledge',
@@ -127,14 +149,8 @@ class TransactionBuilder {
           permission: _permission
         }],
         data: {
-          pledger: _from,
-          _pledge: {
-            creator: _to,
-            quantity: _quantity + ' ' + this.config.patreosSymbol,
-            seconds: 10,
-            last_pledge: 0,
-            execution_count: 0
-          }
+          from: _from,
+          to: _to
         }
       }]
     }
@@ -157,11 +173,11 @@ class TransactionBuilder {
     }
   }
 
-  regservice(_provider, raw_service_tokens, _permission='active') {
+  addtokens(_provider, raw_service_tokens, _permission='active') {
     return {
       actions: [{
         account: this.config.code.recurringpay,
-        name: 'regservice',
+        name: 'addtokens',
         authorization: [{
           actor: _provider,
           permission: _permission
