@@ -20,6 +20,7 @@ process.on('unhandledRejection', (reason, promise) => {
 
 var config = configModule.config.development;
 config.eos.keyProvider = [
+  accounts.contracts[1].private_key, //patreosnexus
   accounts.users[0].private_key, //xokayplanetx
   accounts.users[1].private_key, //testairdropx
   accounts.users[2].private_key, //testplanet1x
@@ -82,7 +83,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('xokayplanetx Registers Service with recurringpay', function(done) {
-    let tx = transaction_builder.transfer('xokayplanetx', 'recurringpay', '1.0000','regservice|MyOkayPlanet service is awesome!','eosio.token', 'EOS');
+    let tx = transaction_builder.transfer('patreosnexus', 'recurringpay', '1.0000','regservice|Patreos','eosio.token', 'EOS');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -94,7 +95,7 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('Register Tokens to xokayplanetx Provider', function(done) {
+  it('Register Tokens to patreosnexus Provider', function(done) {
     let tokens = [
       {
         "token_contract": "eosio.token",
@@ -107,7 +108,7 @@ describe('Tests for recurringpay', function() {
         "percentage_fee": 1.2
       }
     ];
-    let tx = transaction_builder.addtokens('xokayplanetx', tokens);
+    let tx = transaction_builder.addtokens('patreosnexus', tokens);
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -123,7 +124,7 @@ describe('Tests for recurringpay', function() {
     let agreement = transaction_builder._build_agreement(
       'testplanet1x', 'testplanet2x', '2.0000 PATR', 'patreostoken', 1
     );
-    let tx = transaction_builder.subscribe('xokayplanetx', agreement);
+    let tx = transaction_builder.subscribe('patreosnexus', agreement);
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);
@@ -144,7 +145,7 @@ describe('Tests for recurringpay', function() {
     const lowerBound = bignum(encodedName, 10);
     eos.getTableRows({
       "json": true,
-      "scope": 'xokayplanetx',
+      "scope": 'patreosnexus',
       "code": config.code.recurringpay,
       "table": "agreements",
       "index_position": 3,
@@ -173,7 +174,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('Cannot Process Subscription Agreement Using xokayplanetx Provider', function(done) {
-    let tx = transaction_builder.process('xokayplanetx', 'testplanet1x', 'testplanet2x');
+    let tx = transaction_builder.process('patreosnexus', 'testplanet1x', 'testplanet2x');
     new Promise(resolve => setTimeout(() => {
       eos.transaction(tx).then((response) => {
         console.log(response);
@@ -189,7 +190,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('Process Subscription Agreement Using xokayplanetx Provider', function(done) {
-    let tx = transaction_builder.process('xokayplanetx', 'testplanet1x', 'testplanet2x');
+    let tx = transaction_builder.process('patreosnexus', 'testplanet1x', 'testplanet2x');
     new Promise(resolve => setTimeout(() => {
       eos.transaction(tx).then((response) => {
         let ret = response.processed.receipt.status;
@@ -204,7 +205,7 @@ describe('Tests for recurringpay', function() {
   });
 
   it('Remove Subscription Agreement Using xokayplanetx Provider', function(done) {
-    let tx = transaction_builder.unsubscribe('xokayplanetx', 'testplanet1x', 'testplanet2x');
+    let tx = transaction_builder.unsubscribe('patreosnexus', 'testplanet1x', 'testplanet2x');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
       assert.equal('executed', ret);

@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import logo from '../../public/img/patreos-logo.png';
+import DebugInfo from './debugInfo';
 
 class Sidebar extends React.Component {
   render() {
@@ -12,22 +13,22 @@ class Sidebar extends React.Component {
             <h3 className="m-2 light">PATR<span className="normal">EOS</span></h3>
          </div>
          <ul className="list-unstyled components">
-            <li>
-               <a href="#">
+            <li className="active">
+               <a href="/">
                <i className="fas fa-home ml-2 mr-2"></i>
                Home
                </a>
             </li>
-            <li className="active">
+            <li>
                <a href="#">
                <i className="fas fa-coins ml-2 mr-2"></i>
                Token
                </a>
             </li>
             <li>
-               <a href="#">
+               <a href="/account">
                <i className="fas fa-user-circle ml-2 mr-2"></i>
-               Profile
+               Account
                </a>
             </li>
             <li>

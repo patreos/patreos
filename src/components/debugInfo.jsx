@@ -1,55 +1,50 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
-import * as ACCOUNT_ACTIONS from '../actions/account_actions';
+import * as DEBUG_ACTIONS from '../actions/debug_actions';
 import connect from 'react-redux/es/connect/connect';
 
-class AccountInfo extends React.Component {
+class DebugInfo extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.debugActions.updateDebugEosAccountStr('testplanet1x');
+  }
+
   componentDidUpdate(prevProps) {
-    if (prevProps.eosBalanceAmt !== this.props.eosBalanceAmt) {
-      //console.log("Updated EOS Balance prop: " + this.props.eosBalanceAmt)
-    }
-    if (prevProps.patrBalanceAmt !== this.props.patrBalanceAmt) {
-      //console.log("Updated PATR Balance prop: " + this.props.patrBalanceAmt)
-    }
-    if (prevProps.recurringpayBalancesArr !== this.props.recurringpayBalancesArr) {
-      //console.log("Updated Vault Info prop: " + this.props.recurringpayBalancesArr)
-    }
+
   }
 
   render() {
     const {
-      eosAccountStr, eosAccountInfoObj, scatterDetectionStr, emailAddressStr
-    } = this.props.accountReducer;
+      debugEosAccountStr, eosAccountInfoObj, eosBalanceAmt, patrBalanceAmt,
+      pledgesReceivedArr, pledgesGivenArr, balancesArr, subscribersArr, subscriptionsArr
+    } = this.props.debugReducer;
 
     return (
       <div className='account-container'>
         <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
-            <div className='col-m mr-1'>
-              Scatter:
-            </div>
             <div className='col-m'>
-              { scatterDetectionStr }
+              <h3>Debug Account</h3>
             </div>
           </div>
-          <br/>
           <div className='row'>
+            <div className='col-m mr-1'>
+              Account:
+            </div>
             <div className='col-m'>
-              <h3>{ eosAccountStr }</h3>
+              { this.props.debugReducer.debugEosAccountStr }
             </div>
           </div>
-          <br/>
           <div className='row'>
             <div className='col-m mr-1'>
               EOS Balance:
             </div>
             <div className='col-m'>
-              { this.props.eosBalanceAmt }
+              { this.props.debugReducer.eosBalanceAmt }
             </div>
           </div>
           <div className='row'>
@@ -57,7 +52,7 @@ class AccountInfo extends React.Component {
               PATR Balance:
             </div>
             <div className='col-m'>
-              { this.props.patrBalanceAmt }
+              { this.props.debugReducer.patrBalanceAmt }
             </div>
           </div>
           <br/>
@@ -68,7 +63,7 @@ class AccountInfo extends React.Component {
           </div>
           <div className='row'>
             <div className='col-m'>
-              { this.props.recurringpayBalancesArr.map((info, index) => <div key={ index }>{ info.quantity }</div>) }
+              { this.props.debugReducer.balancesArr.map((info, index) => <div key={ index }>{ info.quantity }</div>) }
             </div>
           </div>
         </div>
@@ -79,14 +74,14 @@ class AccountInfo extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    accountActions: bindActionCreators(ACCOUNT_ACTIONS, dispatch)
+    debugActions: bindActionCreators(DEBUG_ACTIONS, dispatch)
   };
 }
 
 function mapStateToProps(state) {
   return {
-    accountReducer: state.accountReducer
+    debugReducer: state.debugReducer
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(DebugInfo);

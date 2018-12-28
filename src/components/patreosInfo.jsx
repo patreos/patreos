@@ -13,27 +13,26 @@ class PatreosInfo extends React.Component {
   constructor(props) {
     super(props);
     this.config = this.props.config;
-    this.transaction_builder = new TransactionBuilder(this.config);
+    this.transactionBuilder = new TransactionBuilder(this.config);
     this.eosReader = new EosReader(this.props.eos);
   }
 
-  tokeInfoUpdate() {
+  updatePatreosInfo() {
     if(this.props.scatterEos != null) {
-      //this.getVaultStakedBalance();
       this.getStakedBalanceAmt();
-      //this.getPledges();
+      this.getPledges();
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.patreosReducer.pledges !== this.props.patreosReducer.pledges) {
-      //this.updatePledgeDom(this.props.tokenInfo.pledges);
+    if (prevProps.patreosReducer.pledgesGivenArr !== this.props.patreosReducer.pledgesGivenArr) {
+      this.updatePledgeDom(this.props.patreosReducer.pledgesGivenArr);
     }
   }
 
   componentDidMount() {
-    this.tokeInfoUpdate();
-    this.interval = setInterval(() => this.tokeInfoUpdate(), this.config.updateInterval);
+    this.updatePatreosInfo();
+    this.interval = setInterval(() => this.updatePatreosInfo(), this.config.updateInterval);
     this.props.patreosActions.updatePledgeTokenSymbolStr('PATR');
     this.props.patreosActions.updatePledgeTokenContractStr('patreostoken');
   }
@@ -49,7 +48,8 @@ class PatreosInfo extends React.Component {
       unstakeAmt, followAccountStr, creatorNameStr, creatorDescriptionStr, creatorBannerStr,
       creatorImageStr, publicationTitleStr, publicationDescriptionStr, publicationUrlStr,
       publicationImageStr,
-      pledgeTokenSymbolStr, pledgeTokenContractStr, pledgeToAccountStr, pledgeAmt, pledgeCycleNum
+      pledgeTokenSymbolStr, pledgeTokenContractStr, pledgeToAccountStr, pledgeAmt, pledgeCycleNum,
+      pledgesReceivedArr, pledgesGivenArr
 
     } = this.props.patreosReducer;
 
@@ -58,7 +58,7 @@ class PatreosInfo extends React.Component {
         <div className='container bg-light rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Send</h3>
+              <h3>Send PATR</h3>
             </div>
           </div>
           <div className='row'>
@@ -66,7 +66,7 @@ class PatreosInfo extends React.Component {
               Unstaked Balance:
             </div>
             <div className='col-m'>
-              { this.props.patrBalance }
+              { this.props.patrBalanceAmt }
             </div>
           </div>
           <br/>
@@ -75,10 +75,10 @@ class PatreosInfo extends React.Component {
               Send:
             </div>
             <div className='col-m'>
-              { '0.0000' } PTR
+              { transferAmt } PTR
             </div>
             <div className='input-group mb-3'>
-              <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateTransferQuantity } />
+              <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateTransferAmt } />
               <div className='input-group-append'>
                 <span className='input-group-text'>PTR</span>
               </div>
@@ -89,12 +89,12 @@ class PatreosInfo extends React.Component {
               Receiver Account:
             </div>
             <div className='col-m'>
-              { 'someaccount' }
+              { transferToAccountStr }
             </div>
           </div>
           <div className='row'>
             <div className='col-m input-group mb-3'>
-              <input className='form-control' type='text' size='12' placeholder='Receiver Account' onChange={ this.updateReceiverAccount } />
+              <input className='form-control' type='text' size='12' placeholder='Receiver Account' onChange={ this.updateTransferToAccountStr } />
             </div>
             <button className='btn btn-patreos' onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
           </div>
@@ -102,7 +102,7 @@ class PatreosInfo extends React.Component {
         <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Staking</h3>
+              <h3>Stake PATR</h3>
             </div>
           </div>
           <div className='row'>
@@ -150,16 +150,13 @@ class PatreosInfo extends React.Component {
             <button className='btn btn-patreos' onClick={ () => this.unstakePatreos() }>Unstake</button>
           </div>
         </div>
-
         <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Pledging</h3>
+              <h3>Manage Pledges</h3>
             </div>
           </div>
-
           <br/>
-
           <div className='row'>
             <div className='col-m mr-1'>
               Pledge To:
@@ -173,8 +170,6 @@ class PatreosInfo extends React.Component {
               <input className='form-control' type='text' size='12' placeholder='Receiver Account' onChange={ this.updatePledgeToAccountStr } />
             </div>
           </div>
-
-
           <div className='row'>
             <div className='col-m mr-1'>
               Pledge Amount:
@@ -183,7 +178,6 @@ class PatreosInfo extends React.Component {
               { pledgeAmt } { pledgeTokenSymbolStr }
             </div>
           </div>
-
           <div className='row'>
             <div className='input-group mb-3'>
               <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updatePledgeAmt } />
@@ -199,24 +193,29 @@ class PatreosInfo extends React.Component {
                 </div>
               </div>
             </div>
-
             <button className='btn btn-patreos' onClick={ () => this.pledge() }>Pledge</button>
+          </div>
+          <br/>
 
-          </div>
           <div className='row'>
-            <div id="pledge-list" className='col-m'></div>
+            <div className='col-m mr-1'>
+              Pledges:
+            </div>
+            <div id="pledge-list" className='col-m'>
+            </div>
           </div>
+
         </div>
       </div>
     );
   }
 
-  updateTransferQuantity = (input) => {
-    //this.props.tokenActions.updateTransferQuantity(input.target.value);
+  updateTransferAmt = (input) => {
+    this.props.patreosActions.updateTransferAmt(input.target.value);
   };
 
-  updateReceiverAccount = (input) => {
-    //this.props.tokenActions.updateReceiverAccount(input.target.value);
+  updateTransferToAccountStr = (input) => {
+    this.props.patreosActions.updateTransferToAccountStr(input.target.value);
   };
 
   updatePledgeTokenContractStr = (input) => {
@@ -244,25 +243,30 @@ class PatreosInfo extends React.Component {
   };
 
   sendPatreosToken = () => {
-    const receiverAccount = this.props.tokenInfo.receiverAccount;
-    if(receiverAccount == '') {
+    const transferToAccountStr = this.props.patreosReducer.transferToAccountStr;
+    if(transferToAccountStr == '') {
       alert('receiver account cannot be blank');
       return;
     }
 
-    const transaction = this.transaction_builder.transfer(this.props.account,
-      receiverAccount, '1.0000', '<3',
-      this.config.code.patreostoken, this.config.patreosSymbol);
+    const transaction = this.transactionBuilder.transfer(
+      this.props.eosAccountStr,
+      transferToAccountStr,
+      this.props.patreosReducer.transferAmt,
+      'Transfer <3',
+      this.config.code.patreostoken,
+      this.config.patreosSymbol
+    );
     this.props.scatterEos.transaction(transaction);
   };
 
   stakePatreos = () => {
-    const transaction = this.transaction_builder.stake(this.props.eosAccountStr, this.props.patreosReducer.stakeAmt);
+    const transaction = this.transactionBuilder.stake(this.props.eosAccountStr, this.props.patreosReducer.stakeAmt);
     this.props.scatterEos.transaction(transaction);
   };
 
   unstakePatreos = () => {
-    const transaction = this.transaction_builder.unstake(this.props.eosAccountStr, this.props.patreosReducer.unstakeAmt);
+    const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, this.props.patreosReducer.unstakeAmt);
     this.props.scatterEos.transaction(transaction);
   };
 
@@ -302,7 +306,7 @@ class PatreosInfo extends React.Component {
     console.log(this.props.patreosReducer.pledgeTokenContractStr)
     console.log(this.props.patreosReducer.pledgeTokenSymbolStr)
 
-    const transaction = this.transaction_builder.recurringpayDepositThenExecutePledge(
+    const transaction = this.transactionBuilder.recurringpayDepositThenExecutePledge(
       this.props.eosAccountStr,
       this.props.patreosReducer.pledgeToAccountStr,
       this.props.patreosReducer.pledgeAmt,
@@ -314,7 +318,7 @@ class PatreosInfo extends React.Component {
   };
 
   executePledge = () => {
-    const transaction = this.transaction_builder.pledge(
+    const transaction = this.transactionBuilder.pledge(
       this.props.eosAccountStr,
       this.props.patreosReducer.pledgeToAccountStr,
       this.props.patreosReducer.pledgeAmt,
@@ -324,13 +328,8 @@ class PatreosInfo extends React.Component {
     this.props.scatterEos.transaction(transaction);
   };
 
-  unpledgePatreosAccount = (account) => {
-  const transaction = this.transaction_builder.unpledge(this.props.account, account);
-  this.props.scatterEos.transaction(transaction);
-  }
-
   unpledgePatreos = () => {
-    const transaction = this.transaction_builder.unpledge(this.props.account, this.props.tokenInfo.receiverAccount);
+    const transaction = this.transactionBuilder.unpledge(this.props.account, this.props.tokenInfo.receiverAccount);
     this.props.scatterEos.transaction(transaction);
   };
 
@@ -346,41 +345,47 @@ class PatreosInfo extends React.Component {
     );
   };
 
+  unpledgeByCreatorAccount = (creator) => {
+    const transaction = this.transactionBuilder.unpledge(this.props.eosAccountStr, creator);
+    this.props.scatterEos.transaction(transaction);
+  }
+
   updatePledgeDom = (pledges) => {
     if(pledges == null) {
       return;
     }
     var indents = [];
     for (var i = 0; i < pledges.length; i++) {
-      let boundItemClick = this.unpledgePatreosAccount.bind(this, pledges[i]['creator']);
+      let boundItemClick = this.unpledgeByCreatorAccount.bind(this, pledges[i]['to']);
       indents.push(
         <div className='row' key={i}>
-          <span className='col' key={4*i + 1}>Creator: {pledges[i]['creator']}</span>
-          <span className='col' key={4*i + 2}>Pledge: {pledges[i]['quantity']}</span>
-          <span className='col' key={4*i + 3}>Days: {pledges[i]['seconds']}</span>
+          <span className='col' key={4*i + 1}>Creator: {pledges[i]['to']}</span>
+          <span className='col' key={4*i + 2}>Pledge: {pledges[i]['token_profile_amount']['quantity']}</span>
+          <span className='col' key={4*i + 3}>Days: {pledges[i]['cycle_seconds']}</span>
           <button type="button" className="col close" aria-label="Close" key={4*i + 4} onClick={ boundItemClick } >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
       );
     }
-
     ReactDOM.render(indents, document.getElementById('pledge-list'));
   }
 
   getPledges = () => {
-    const table = this.props.eos.getTableRows(true, this.config.code.patreosnexus, this.props.account, 'pledges')
-    table.then((response) => {
-      if(response.rows.length > 0) {
-        // TODO: Better way to compare this objects
-        if(JSON.stringify(this.props.tokenInfo.pledges) != JSON.stringify(response.rows)) {
-          this.props.tokenActions.updatePledges(response.rows);
-        }
-        return;
-      }
-      this.props.tokenActions.updatePledges([]);
-    }).catch(error => {
-      console.log('An error occurred: ' + JSON.stringify(error)); //eslint-disable-line
+    this.props.eos.getTableRows({
+      "json": true,
+      "scope": 'patreosnexus',
+      "code": this.config.code.recurringpay,
+      "table": "agreements",
+      "index_position": 3,
+      "table_key": 'from',
+      "key_type": 'i64',
+      "lower_bound": this.props.eosAccountStr,
+      "limit": 10
+    }).then(result => {
+      this.props.patreosActions.updatePledgesGivenArr(result.rows);
+    }).catch((error) =>{
+      console.log(error);
     });
   };
 

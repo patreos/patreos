@@ -2,11 +2,13 @@
 
 import { combineReducers } from 'redux';
 import accountReducer from './account';
+import debugReducer from './debug';
 import patreosReducer from './patreos';
 import recurringpayReducer from './recurringpay';
 
 const reducers = {
     accountReducer,
+    debugReducer,
     patreosReducer,
     recurringpayReducer,
 };

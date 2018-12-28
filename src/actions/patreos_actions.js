@@ -122,3 +122,15 @@ export function updatePledgeCycleNum(pledgeCycleNum) {
   };
 }
 
+export function updatePledgesReceivedArr(pledgesReceivedArr) {
+  return (dispatch) => {
+   dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGES_RECEIVED_ARR, data: pledgesReceivedArr });
+  };
+}
+
+export function updatePledgesGivenArr(pledgesGivenArr) {
+  return (dispatch) => {
+   dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGES_GIVEN_ARR, data: pledgesGivenArr });
+  };
+}
+

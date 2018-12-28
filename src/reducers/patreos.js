@@ -24,6 +24,8 @@ export default (
     pledgeToAccountStr: '',
     pledgeAmt: '0.0000',
     pledgeCycleNum: 0,
+    pledgesReceivedArr: [],
+    pledgesGivenArr: [],
   }, action) => {
   switch (action.type) {
   case PATREOS_ACTIONS.UPDATE_BALANCE_AMT:
@@ -66,6 +68,10 @@ export default (
     return { ...state, pledgeAmt: action.data };
   case PATREOS_ACTIONS.UPDATE_PLEDGE_CYCLE_NUM:
     return { ...state, pledgeCycleNum: action.data };
+  case PATREOS_ACTIONS.UPDATE_PLEDGES_RECEIVED_ARR:
+    return { ...state, pledgesReceivedArr: action.data };
+  case PATREOS_ACTIONS.UPDATE_PLEDGES_GIVEN_ARR:
+    return { ...state, pledgesGivenArr: action.data };
   default:
     return state;
   }

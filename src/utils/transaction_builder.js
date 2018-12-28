@@ -92,7 +92,7 @@ class TransactionBuilder {
           permission: _permission
         }],
         data: {
-          provider: 'xokayplanetx',
+          provider: 'patreosnexus',
           agreement: _agreement
         }
       },
@@ -137,7 +137,7 @@ class TransactionBuilder {
           permission: _permission
         }],
         data: {
-          provider: 'xokayplanetx',
+          provider: 'patreosnexus',
           agreement: _agreement
         }
       },
@@ -159,6 +159,19 @@ class TransactionBuilder {
   unpledge(_from, _to, _permission='active') {
     return {
       actions: [{
+        account: this.config.code.recurringpay,
+        name: 'unsubscribe',
+        authorization: [{
+          actor: _from,
+          permission: _permission
+        }],
+        data: {
+          provider: 'patreosnexus',
+          from: _from,
+          to: _to
+        }
+      },
+      {
         account: this.config.code.patreosnexus,
         name: 'unpledge',
         authorization: [{
@@ -166,8 +179,8 @@ class TransactionBuilder {
           permission: _permission
         }],
         data: {
-          pledger: _from,
-          creator: _to
+          from: _from,
+          to: _to
         }
       }]
     }

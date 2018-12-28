@@ -31,7 +31,7 @@ const config = {
     },
     patreosSymbol: 'PATR',
     systemSymbol: 'EOS',
-    updateInterval: 6000
+    updateInterval: 3000
   },
   testnet: {
     env: 'testnet',
