@@ -1,10 +1,11 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
-import AccountInfo from './accountInfo';
-import DebugInfo from './debugInfo';
-import PatreosInfo from './patreosInfo';
-import RecurringPayInfo from './recurringpayInfo';
+
+import AccountInfo from './children/accountInfo';
+import DebugInfo from './children/debugInfo';
+import PatreosInfo from './children/patreosInfo';
+import RecurringPayInfo from './children/recurringpayInfo';
 
 class Account extends React.Component {
 
@@ -16,6 +17,7 @@ class Account extends React.Component {
     return (
       <div>
         <AccountInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } eosBalanceAmt={ this.props.eosBalanceAmt } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
+        <PatreosInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } config={ this.props.config } eosAccountStr={ this.props.eosAccountStr } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
       </div>
     );
   }

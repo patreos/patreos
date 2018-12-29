@@ -1,21 +1,26 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { BrowserRouter, Route } from 'react-router-dom'
-import Home from './components/home';
-import Account from './components/account';
-import Sidebar from './components/sidebar';
-import Menu from './components/menu';
-import * as ACCOUNT_ACTIONS from './actions/account_actions';
-import * as DEBUG_ACTIONS from './actions/debug_actions';
-import * as PATREOS_ACTIONS from './actions/patreos_actions';
-import * as RECURRINGPAY_ACTIONS from './actions/recurringpay_actions';
-import './styles/custom.css';
-import './styles/index.scss';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
-import TransactionBuilder from './utils/transaction_builder'
-import EosReader from './utils/eos_reader'
+
+import '../styles/custom.css';
+import '../styles/index.scss';
+
+import Menu from './menu';
+import Sidebar from './sidebar';
+import Home from './routes/home';
+import Account from './routes/account';
+import Balance from './routes/balance';
+
+import * as ACCOUNT_ACTIONS from '../actions/account_actions';
+import * as DEBUG_ACTIONS from '../actions/debug_actions';
+import * as PATREOS_ACTIONS from '../actions/patreos_actions';
+import * as RECURRINGPAY_ACTIONS from '../actions/recurringpay_actions';
+
+import TransactionBuilder from '../utils/transaction_builder'
+import EosReader from '../utils/eos_reader'
 import ScatterJS from 'scatter-js/dist/scatter.esm';
 
 class App extends React.Component {
@@ -91,6 +96,12 @@ class App extends React.Component {
                 exact path='/account'
                 render={
                   (props) => <Account {...props} config={ this.config } eos={this.eos} scatterEos={ this.scatterEos } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } recurringpayBalancesArr={ this.props.recurringpayReducer.balancesArr }/>
+                }
+              />
+              <Route
+                exact path='/balance'
+                render={
+                  (props) => <Balance {...props} config={ this.config } eos={this.eos} scatterEos={ this.scatterEos } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } recurringpayBalancesArr={ this.props.recurringpayReducer.balancesArr }/>
                 }
               />
             </div>

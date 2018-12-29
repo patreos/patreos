@@ -2,7 +2,6 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import logo from '../../public/img/patreos-logo.png';
-import DebugInfo from './debugInfo';
 
 class Sidebar extends React.Component {
   render() {
@@ -20,15 +19,15 @@ class Sidebar extends React.Component {
                </a>
             </li>
             <li>
-               <a href="#">
-               <i className="fas fa-coins ml-2 mr-2"></i>
-               Token
-               </a>
-            </li>
-            <li>
                <a href="/account">
                <i className="fas fa-user-circle ml-2 mr-2"></i>
                Account
+               </a>
+            </li>
+            <li>
+               <a href="/balance">
+               <i className="fas fa-coins ml-2 mr-2"></i>
+               Balance
                </a>
             </li>
             <li>

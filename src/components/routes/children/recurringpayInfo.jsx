@@ -1,9 +1,10 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
-import * as RECURRINGPAY_ACTIONS from '../actions/recurringpay_actions';
+import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
-import TransactionBuilder from '../utils/transaction_builder';
 import util from 'util';
+
+import * as RECURRINGPAY_ACTIONS from '../../../actions/recurringpay_actions';
+import TransactionBuilder from '../../../utils/transaction_builder';
 
 class RecurringPayInfo extends React.Component {
 
