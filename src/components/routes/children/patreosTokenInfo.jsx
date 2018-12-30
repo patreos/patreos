@@ -18,19 +18,21 @@ class PatreosTokenInfo extends React.Component {
     this.eosReader = new EosReader(this.props.eos);
   }
 
-  updatePatreosInfo() {
+  updatePatreosTokenInfo() {
     if(this.props.scatterEos != null) {
       this.getStakedBalanceAmt();
     }
   }
 
   componentDidUpdate(prevProps) {
-
+    if (prevProps.scatterEos !== this.props.scatterEos) {
+      this.updatePatreosTokenInfo();
+    }
   }
 
   componentDidMount() {
-    this.updatePatreosInfo();
-    this.interval = setInterval(() => this.updatePatreosInfo(), this.config.updateInterval);
+    this.updatePatreosTokenInfo();
+    this.interval = setInterval(() => this.updatePatreosTokenInfo(), this.config.updateInterval);
   }
 
   componentWillUnmount() {

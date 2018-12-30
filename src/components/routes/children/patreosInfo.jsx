@@ -20,12 +20,15 @@ class PatreosInfo extends React.Component {
 
   updatePatreosInfo() {
     if(this.props.scatterEos != null) {
-      this.getStakedBalanceAmt();
       this.getPledges();
     }
   }
 
   componentDidUpdate(prevProps) {
+    // This means we got all info from app.js
+    if (prevProps.scatterEos !== this.props.scatterEos) {
+      this.updatePatreosInfo();
+    }
     if (prevProps.patreosReducer.pledgesGivenArr !== this.props.patreosReducer.pledgesGivenArr) {
       this.updatePledgeDom(this.props.patreosReducer.pledgesGivenArr);
     }
@@ -167,12 +170,6 @@ class PatreosInfo extends React.Component {
   };
 
   recurringpayDepositThenExecutePledge = () => {
-    console.log(this.props.eosAccountStr)
-    console.log(this.props.patreosReducer.pledgeToAccountStr)
-    console.log(this.props.patreosReducer.pledgeAmt)
-    console.log(this.props.patreosReducer.pledgeTokenContractStr)
-    console.log(this.props.patreosReducer.pledgeTokenSymbolStr)
-
     const transaction = this.transactionBuilder.recurringpayDepositThenExecutePledge(
       this.props.eosAccountStr,
       this.props.patreosReducer.pledgeToAccountStr,
@@ -198,18 +195,6 @@ class PatreosInfo extends React.Component {
   unpledgePatreos = () => {
     const transaction = this.transactionBuilder.unpledge(this.props.account, this.props.tokenInfo.receiverAccount);
     this.props.scatterEos.transaction(transaction);
-  };
-
-  getStakedBalanceAmt = () => {
-    this.eosReader.getTable(
-      this.config.code.patreostoken,
-      this.props.eosAccountStr,
-      'stakes',
-      (val) => {
-        var amt = (val.length > 0) ? val[0].balance.replace(' PATR', '') : '0.0000'
-        this.props.patreosActions.updateStakedBalanceAmt(amt);
-      }
-    );
   };
 
   unpledgeByCreatorAccount = (creator) => {

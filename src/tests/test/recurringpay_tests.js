@@ -1,16 +1,11 @@
 Eos = require('eosjs')
-var fs = require("fs");
-var assert = require('assert');
-var accounts = fs.readFileSync("accounts.json");
-accounts = JSON.parse(accounts);
-var messagesModule = require("./messages.js");
-var configModule = require("../../config/test_config.js");
-var bignum = require('bignum');
-
-//Adding agreement with secondary key (from.to): 269426230777718110912747792682672604624
-//Adding agreement with secondary key: (from): 14605625236689142736
-
-var TransactionBuilder = require('../../utils/transaction_builder');
+const fs = require("fs");
+const assert = require('assert');
+const accounts = JSON.parse(fs.readFileSync("accounts.json"));
+const messagesModule = require("./messages.js");
+const configModule = require("../../config/test_config.js");
+const bignum = require('bignum');
+const TransactionBuilder = require('../../utils/transaction_builder');
 
 process.on('unhandledRejection', (reason, promise) => {
   //console.log('Unhandled Rejection at:', reason.stack || reason)
@@ -26,7 +21,7 @@ config.eos.keyProvider = [
   accounts.users[2].private_key, //testplanet1x
   accounts.users[3].private_key //testplanet2x
 ];
-var messages = messagesModule.messages;
+const messages = messagesModule.messages;
 
 eos = Eos(config.eos);
 
@@ -136,7 +131,7 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('Verify Subscription Agreement', function(done) {
+  it('Verify Subscription Agreement Was Processed Once', function(done) {
     const from = 'testplanet1x';
     const to = 'testplanet2x';
 
@@ -174,7 +169,7 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('Cannot Process Subscription Agreement Using patreosnexus Provider', function(done) {
+  it('Subscription Agreement Not Yet Due', function(done) {
     let tx = transaction_builder.process('patreosnexus', 'testplanet1x', 'testplanet2x');
     eos.transaction(tx).then((response) => {
       console.log(response);
@@ -188,7 +183,7 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('Process Subscription Agreement Using patreosnexus Provider', function(done) {
+  it('Process Due Subscription Agreement Using patreosnexus Provider', function(done) {
     this.timeout(20000);
     let tx = transaction_builder.process('patreosnexus', 'testplanet1x', 'testplanet2x');
     new Promise(resolve => setTimeout(() => {
@@ -202,6 +197,44 @@ describe('Tests for recurringpay', function() {
         done();
       });
     }, 15000));
+  });
+
+  it('Verify Subscription Agreement Was Processed Twice And Not Due', function(done) {
+    const from = 'testplanet1x';
+    const to = 'testplanet2x';
+
+    const encodedName = Eos.modules.format.encodeName(from, false);
+    // const lowerBound = combineIds('testplanet1x', 'testplanet2x')
+    const lowerBound = bignum(encodedName, 10);
+    eos.getTableRows({
+      "json": true,
+      "scope": 'patreosnexus',
+      "code": config.code.recurringpay,
+      "table": "agreements",
+      "index_position": 3,
+      "table_key": 'from',
+      "key_type": 'i64',
+      "lower_bound": lowerBound.toString(),
+      "limit": 1
+    }).then(result => {
+      target = undefined;
+      for(var r of result.rows) {
+        if(r.from == from && r.to == to) {
+          target = r;
+        }
+      }
+      if(target == undefined) {
+        assert.strictEqual(0, 1, 'Subscription Not Verified');
+        done();
+      }
+      assert.strictEqual(target.pending_payments, 0, 'Subscription Has No Pending Payments');
+      assert.strictEqual(target.execution_count, 2, 'Subscription Was Executed Once');
+      done();
+    }).catch((error) =>{
+      console.log(error);
+      assert.strictEqual(0, 1, 'Subscription Not Verified');
+      done();
+    });
   });
 
   it('Remove Subscription Agreement Using patreosnexus Provider', function(done) {

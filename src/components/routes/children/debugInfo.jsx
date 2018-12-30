@@ -15,7 +15,10 @@ class DebugInfo extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    // This means we got all info from app.js
+    if (prevProps.scatterEos !== this.props.scatterEos) {
 
+    }
   }
 
   render() {

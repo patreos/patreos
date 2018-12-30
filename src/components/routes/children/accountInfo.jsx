@@ -11,14 +11,9 @@ class AccountInfo extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.eosBalanceAmt !== this.props.eosBalanceAmt) {
-      //console.log("Updated EOS Balance prop: " + this.props.eosBalanceAmt)
-    }
-    if (prevProps.patrBalanceAmt !== this.props.patrBalanceAmt) {
-      //console.log("Updated PATR Balance prop: " + this.props.patrBalanceAmt)
-    }
-    if (prevProps.recurringpayBalancesArr !== this.props.recurringpayBalancesArr) {
-      //console.log("Updated Vault Info prop: " + this.props.recurringpayBalancesArr)
+    // This means we got all info from app.js
+    if (prevProps.scatterEos !== this.props.scatterEos) {
+
     }
   }
 
