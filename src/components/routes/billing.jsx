@@ -4,10 +4,10 @@ import connect from 'react-redux/es/connect/connect';
 
 import AccountInfo from './children/accountInfo';
 import DebugInfo from './children/debugInfo';
-import PatreosInfo from './children/patreosInfo';
+import PatreosTokenInfo from './children/patreosTokenInfo';
 import RecurringPayInfo from './children/recurringpayInfo';
 
-class Account extends React.Component {
+class Billing extends React.Component {
 
   constructor(props) {
     super(props);
@@ -17,6 +17,7 @@ class Account extends React.Component {
     return (
       <div>
         <AccountInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } eosBalanceAmt={ this.props.eosBalanceAmt } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
+        <RecurringPayInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } config={ this.props.config } eosAccountStr={ this.props.eosAccountStr } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
       </div>
     );
   }
@@ -30,4 +31,4 @@ function mapStateToProps(state) {
   return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+export default connect(mapStateToProps, mapDispatchToProps)(Billing);

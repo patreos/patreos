@@ -286,6 +286,22 @@ class TransactionBuilder {
     }
   }
 
+  unregservice(_provider, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.recurringpay,
+        name: 'unregservice',
+        authorization: [{
+          actor: _provider,
+          permission: _permission
+        }],
+        data: {
+          provider: _provider
+        }
+      }]
+    }
+  }
+
   // Creator publishes new content
   publish(_from, _title, _description, _url) {}
 

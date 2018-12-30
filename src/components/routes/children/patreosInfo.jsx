@@ -106,6 +106,7 @@ class PatreosInfo extends React.Component {
             <div className='col-m mr-1'>
               Pledges:
             </div>
+            <br/><br/>
             <div id="pledge-list" className='col-m'>
             </div>
           </div>
@@ -224,15 +225,20 @@ class PatreosInfo extends React.Component {
     for (var i = 0; i < pledges.length; i++) {
       let boundItemClick = this.unpledgeByCreatorAccount.bind(this, pledges[i]['to']);
       indents.push(
-        <div className='row' key={i}>
-          <span className='col' key={4*i + 1}>Creator: {pledges[i]['to']}</span>
-          <span className='col' key={4*i + 2}>Pledge: {pledges[i]['token_profile_amount']['quantity']}</span>
-          <span className='col' key={4*i + 3}>Days: {pledges[i]['cycle_seconds']}</span>
-          <button type="button" className="col close" aria-label="Close" key={4*i + 4} onClick={ boundItemClick } >
+        <div className='row' key={'pledges-' + i}>
+          <span className='col' key={'creator-' + i}>Creator: {pledges[i]['to']}</span>
+          <span className='col' key={'pledge-' + i}>Pledge: {pledges[i]['token_profile_amount']['quantity']}</span>
+          <span className='col' key={'data-' + i}>Days: {pledges[i]['cycle_seconds']}</span>
+          <button type="button" className="col close" aria-label="Close" key={'pledges-button-' + i} onClick={ boundItemClick } >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
       );
+      if(i < pledges.length - 1) {
+        indents.push(
+          <br key={'pledges-break-' + i}/>
+        );
+      }
     }
     ReactDOM.render(indents, document.getElementById('pledge-list'));
   }

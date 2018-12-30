@@ -82,7 +82,7 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('xokayplanetx Registers Service with recurringpay', function(done) {
+  it('patreosnexus Registers Service with recurringpay', function(done) {
     let tx = transaction_builder.transfer('patreosnexus', 'recurringpay', '1.0000','regservice|Patreos','eosio.token', 'EOS');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
@@ -120,9 +120,9 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('Create Unique Subscription Agreement Using xokayplanetx Provider', function(done) {
+  it('Create Unique Subscription Agreement Using patreosnexus Provider', function(done) {
     let agreement = transaction_builder._build_agreement(
-      'testplanet1x', 'testplanet2x', '2.0000 PATR', 'patreostoken', 1
+      'testplanet1x', 'testplanet2x', '2.0000 PATR', 'patreostoken', 15
     );
     let tx = transaction_builder.subscribe('patreosnexus', agreement);
     eos.transaction(tx).then((response) => {
@@ -164,7 +164,8 @@ describe('Tests for recurringpay', function() {
         assert.strictEqual(0, 1, 'Subscription Not Verified');
         done();
       }
-      assert.strictEqual(target.cycle_seconds, 1, 'Subscription Verified');
+      assert.strictEqual(target.pending_payments, 0, 'Subscription Has No Pending Payments');
+      assert.strictEqual(target.execution_count, 1, 'Subscription Was Executed Once');
       done();
     }).catch((error) =>{
       console.log(error);
@@ -173,23 +174,22 @@ describe('Tests for recurringpay', function() {
     });
   });
 
-  it('Cannot Process Subscription Agreement Using xokayplanetx Provider', function(done) {
+  it('Cannot Process Subscription Agreement Using patreosnexus Provider', function(done) {
     let tx = transaction_builder.process('patreosnexus', 'testplanet1x', 'testplanet2x');
-    new Promise(resolve => setTimeout(() => {
-      eos.transaction(tx).then((response) => {
-        console.log(response);
-        assert.strictEqual(0, 1, 'Transaction was successful');
-        done();
-      }).catch(err => {
-        error = JSON.parse(err).error;
-        let message = error.details[0].message;
-        assert.ok(message.includes("Subscription is not due"));
-        done();
-      });
-    }, 400));
+    eos.transaction(tx).then((response) => {
+      console.log(response);
+      assert.strictEqual(0, 1, 'Transaction was successful');
+      done();
+    }).catch(err => {
+      error = JSON.parse(err).error;
+      let message = error.details[0].message;
+      assert.ok(message.includes("Subscription is not due"));
+      done();
+    });
   });
 
-  it('Process Subscription Agreement Using xokayplanetx Provider', function(done) {
+  it('Process Subscription Agreement Using patreosnexus Provider', function(done) {
+    this.timeout(20000);
     let tx = transaction_builder.process('patreosnexus', 'testplanet1x', 'testplanet2x');
     new Promise(resolve => setTimeout(() => {
       eos.transaction(tx).then((response) => {
@@ -201,10 +201,10 @@ describe('Tests for recurringpay', function() {
         assert.strictEqual(0, 1, 'Transaction was not successful');
         done();
       });
-    }, 1600));
+    }, 15000));
   });
 
-  it('Remove Subscription Agreement Using xokayplanetx Provider', function(done) {
+  it('Remove Subscription Agreement Using patreosnexus Provider', function(done) {
     let tx = transaction_builder.unsubscribe('patreosnexus', 'testplanet1x', 'testplanet2x');
     eos.transaction(tx).then((response) => {
       let ret = response.processed.receipt.status;
@@ -268,6 +268,19 @@ describe('Tests for recurringpay', function() {
       error = JSON.parse(err).error;
       let message = error.details[0].message;
       assert.ok(message.includes("overdrawn balance"));
+      done();
+    });
+  });
+
+  it('patreosnexus Unregisters Service with recurringpay', function(done) {
+    let tx = transaction_builder.unregservice('patreosnexus');
+    eos.transaction(tx).then((response) => {
+      let ret = response.processed.receipt.status;
+      assert.equal('executed', ret);
+      done();
+    }).catch(err => {
+      console.log(err)
+      assert.strictEqual(0, 1, 'Transaction was not successful');
       done();
     });
   });

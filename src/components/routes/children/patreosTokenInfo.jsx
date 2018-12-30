@@ -54,13 +54,10 @@ class PatreosTokenInfo extends React.Component {
         <div className='container bg-light rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Send PATR</h3>
+              <h3>PATR Balance</h3>
             </div>
           </div>
           <div className='row'>
-            <div className='col-m mr-1'>
-              Unstaked Balance:
-            </div>
             <div className='col-m'>
               { this.props.patrBalanceAmt }
             </div>
@@ -98,13 +95,10 @@ class PatreosTokenInfo extends React.Component {
         <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Stake PATR</h3>
+              <h3>Staked PATR</h3>
             </div>
           </div>
           <div className='row'>
-            <div className='col-m mr-1'>
-              Staked PATR Balance:
-            </div>
             <div className='col-m'>
               { stakedBalanceAmt } PATR
             </div>

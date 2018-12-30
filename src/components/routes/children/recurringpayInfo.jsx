@@ -46,15 +46,10 @@ class RecurringPayInfo extends React.Component {
       <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
         <div className='row'>
           <div className='col-m'>
-            <h3>Manage RecurringPay Balances</h3>
+            <h3>RecurringPay Deposits</h3>
           </div>
         </div>
         <br/>
-        <div className='row'>
-          <div className='col-m mr-1'>
-            RecurringPay Balances:
-          </div>
-        </div>
         <div className='row'>
           <div className='col-m'>
             { this.props.recurringpayBalancesArr.map((info, index) => <div key={ index }>{ info.quantity }</div>) }

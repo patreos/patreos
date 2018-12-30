@@ -12,7 +12,9 @@ import Menu from './menu';
 import Sidebar from './sidebar';
 import Home from './routes/home';
 import Account from './routes/account';
+import Pledge from './routes/pledge';
 import Balance from './routes/balance';
+import Billing from './routes/billing';
 
 import * as ACCOUNT_ACTIONS from '../actions/account_actions';
 import * as DEBUG_ACTIONS from '../actions/debug_actions';
@@ -99,9 +101,21 @@ class App extends React.Component {
                 }
               />
               <Route
+                exact path='/pledge'
+                render={
+                  (props) => <Pledge {...props} config={ this.config } eos={this.eos} scatterEos={ this.scatterEos } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } recurringpayBalancesArr={ this.props.recurringpayReducer.balancesArr }/>
+                }
+              />
+              <Route
                 exact path='/balance'
                 render={
                   (props) => <Balance {...props} config={ this.config } eos={this.eos} scatterEos={ this.scatterEos } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } recurringpayBalancesArr={ this.props.recurringpayReducer.balancesArr }/>
+                }
+              />
+              <Route
+                exact path='/billing'
+                render={
+                  (props) => <Billing {...props} config={ this.config } eos={this.eos} scatterEos={ this.scatterEos } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } recurringpayBalancesArr={ this.props.recurringpayReducer.balancesArr }/>
                 }
               />
             </div>

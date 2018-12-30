@@ -25,15 +25,21 @@ class Sidebar extends React.Component {
                </a>
             </li>
             <li>
-               <a href="/balance">
-               <i className="fas fa-coins ml-2 mr-2"></i>
-               Balance
+               <a href="/pledge">
+               <i className="fas fa-user-circle ml-2 mr-2"></i>
+               Pledge
                </a>
             </li>
             <li>
-               <a href="#">
+               <a href="/balance">
+               <i className="fas fa-coins ml-2 mr-2"></i>
+               PATR
+               </a>
+            </li>
+            <li>
+               <a href="/billing">
                <i className="fas fa-question ml-2 mr-2"></i>
-               FAQ
+               Billing
                </a>
             </li>
             <li>
