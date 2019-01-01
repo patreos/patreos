@@ -54,51 +54,10 @@ class PatreosTokenInfo extends React.Component {
 
     return (
       <div className='token-container'>
-        <div className='container bg-light rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
-          <div className='row'>
-            <div className='col-m'>
-              <h3>PATR Balance</h3>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-m'>
-              { this.props.patrBalanceAmt }
-            </div>
-          </div>
-          <br/>
-          <div className='row'>
-            <div className='col-m mr-1'>
-              Send:
-            </div>
-            <div className='col-m'>
-              { transferAmt } PTR
-            </div>
-            <div className='input-group mb-3'>
-              <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateTransferAmt } />
-              <div className='input-group-append'>
-                <span className='input-group-text'>PTR</span>
-              </div>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-m mr-1'>
-              Receiver Account:
-            </div>
-            <div className='col-m'>
-              { transferToAccountStr }
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-m input-group mb-3'>
-              <input className='form-control' type='text' size='12' placeholder='Receiver Account' onChange={ this.updateTransferToAccountStr } />
-            </div>
-            <button className='btn btn-patreos' onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
-          </div>
-        </div>
         <div className='container rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
           <div className='row'>
             <div className='col-m'>
-              <h3>Staked PATR</h3>
+              <h3>Stake PATR</h3>
             </div>
           </div>
           <div className='row'>
@@ -141,6 +100,47 @@ class PatreosTokenInfo extends React.Component {
               </div>
             </div>
             <button className='btn btn-patreos' onClick={ () => this.unstakePatreos() }>Unstake</button>
+          </div>
+        </div>
+        <div className='container bg-light rounded p-5 col-xs-6 col-lg-4 border border-patreos bg-light mb-3'>
+          <div className='row'>
+            <div className='col-m'>
+              <h3>PATR Balance</h3>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-m'>
+              { this.props.patrBalanceAmt }
+            </div>
+          </div>
+          <br/>
+          <div className='row'>
+            <div className='col-m mr-1'>
+              Send:
+            </div>
+            <div className='col-m'>
+              { transferAmt } PTR
+            </div>
+            <div className='input-group mb-3'>
+              <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updateTransferAmt } />
+              <div className='input-group-append'>
+                <span className='input-group-text'>PTR</span>
+              </div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-m mr-1'>
+              Receiver Account:
+            </div>
+            <div className='col-m'>
+              { transferToAccountStr }
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-m input-group mb-3'>
+              <input className='form-control' type='text' size='12' placeholder='Receiver Account' onChange={ this.updateTransferToAccountStr } />
+            </div>
+            <button className='btn btn-patreos' onClick={ () => this.sendPatreosToken() }>Send Transaction</button>
           </div>
         </div>
       </div>

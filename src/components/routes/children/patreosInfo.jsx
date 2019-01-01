@@ -174,6 +174,7 @@ class PatreosInfo extends React.Component {
       this.props.eosAccountStr,
       this.props.patreosReducer.pledgeToAccountStr,
       this.props.patreosReducer.pledgeAmt,
+      30,
       'PLEDGE <3',
       this.props.patreosReducer.pledgeTokenContractStr,
       this.props.patreosReducer.pledgeTokenSymbolStr
@@ -186,6 +187,7 @@ class PatreosInfo extends React.Component {
       this.props.eosAccountStr,
       this.props.patreosReducer.pledgeToAccountStr,
       this.props.patreosReducer.pledgeAmt,
+      30,
       this.props.patreosReducer.pledgeTokenContractStr,
       this.props.patreosReducer.pledgeTokenSymbolStr
     );

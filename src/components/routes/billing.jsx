@@ -4,7 +4,7 @@ import connect from 'react-redux/es/connect/connect';
 
 import AccountInfo from './children/accountInfo';
 import DebugInfo from './children/debugInfo';
-import PatreosTokenInfo from './children/patreosTokenInfo';
+import SubscriptionInfo from './children/subscriptionInfo';
 import RecurringPayInfo from './children/recurringpayInfo';
 
 class Billing extends React.Component {
@@ -18,6 +18,7 @@ class Billing extends React.Component {
       <div>
         <AccountInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } eosBalanceAmt={ this.props.eosBalanceAmt } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
         <RecurringPayInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } config={ this.props.config } eosAccountStr={ this.props.eosAccountStr } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
+        <SubscriptionInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } config={ this.props.config } eosAccountStr={ this.props.eosAccountStr } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
       </div>
     );
   }

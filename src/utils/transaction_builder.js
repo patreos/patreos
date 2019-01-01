@@ -80,9 +80,9 @@ class TransactionBuilder {
 	}
 
   // Pledge a quantity to creator every n-days
-  pledge(_from, _to, _quantity, _code='eosio.token', _symbol='EOS', _permission='active') {
+  pledge(_from, _to, _quantity, _cycle, _code='eosio.token', _symbol='EOS', _permission='active') {
     var _asset = _quantity + ' ' + _symbol;
-    var _agreement = this._build_agreement(_from, _to, _asset, _code, 1);
+    var _agreement = this._build_agreement(_from, _to, _asset, _code, _cycle);
     return {
       actions: [{
         account: this.config.code.recurringpay,
@@ -111,9 +111,9 @@ class TransactionBuilder {
     }
   }
 
-  recurringpayDepositThenExecutePledge(_from, _to, _quantity, _memo='', _code='eosio.token', _symbol='EOS', _permission='active') {
+  recurringpayDepositThenExecutePledge(_from, _to, _quantity, _cycle, _memo='', _code='eosio.token', _symbol='EOS', _permission='active') {
     var _asset = _quantity + ' ' + _symbol;
-    var _agreement = this._build_agreement(_from, _to, _asset, _code, 1);
+    var _agreement = this._build_agreement(_from, _to, _asset, _code, _cycle);
     return {
       actions: [{
 				account: _code,
