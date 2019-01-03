@@ -193,9 +193,13 @@ class PatreosTokenInfo extends React.Component {
 
   getStakedBalanceAmt = () => {
     this.eosReader.getTable(
-      this.config.code.patreostoken,
-      this.props.eosAccountStr,
-      'stakes',
+      {
+        "json": true,
+        "scope": this.props.eosAccountStr,
+        "code": this.config.code.patreostoken,
+        "table": 'stakes',
+        "limit": 10
+      },
       (val) => {
         var amt = (val.length > 0) ? val[0].balance.replace(' PATR', '') : '0.0000'
         this.props.patreosActions.updateStakedBalanceAmt(amt);

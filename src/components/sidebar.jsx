@@ -3,7 +3,15 @@ import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import logo from '../../public/img/patreos-logo.png';
 
+import DebugInfo from './routes/children/debugInfo';
+
 class Sidebar extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.config = this.props.config;
+  }
+
   render() {
     return (
       <nav id="sidebar">
@@ -57,6 +65,8 @@ class Sidebar extends React.Component {
                </a>
             </li>
          </ul>
+         <br/>
+         <DebugInfo config={ this.config } eos={this.props.eos} scatterEos={ this.props.scatterEos } />
       </nav>
     );
   }

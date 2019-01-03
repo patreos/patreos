@@ -136,10 +136,6 @@ class PatreosInfo extends React.Component {
     this.props.patreosActions.updatePledgeToAccountStr(input.target.value);
   };
 
-
-
-
-
   pledge = () => {
     var symbol = this.props.patreosReducer.pledgeTokenSymbolStr;
     var regex = undefined;

@@ -8,51 +8,51 @@ export function updateDebugEosAccountStr(debugEosAccountStr) {
   };
 }
 
-export function updateEosAccountInfoObj(eosAccountInfoObj) {
+export function updateDebugEosAccountInfoObj(debugEosAccountInfoObj) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_EOS_ACCOUNT_INFO_OBJ, data: eosAccountInfoObj });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_EOS_ACCOUNT_INFO_OBJ, data: debugEosAccountInfoObj });
   };
 }
 
-export function updateEosBalanceAmt(eosBalanceAmt) {
+export function updateDebugEosBalanceAmt(debugEosBalanceAmt) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_EOS_BALANCE_AMT, data: eosBalanceAmt });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_EOS_BALANCE_AMT, data: debugEosBalanceAmt });
   };
 }
 
-export function updatePatrBalanceAmt(patrBalanceAmt) {
+export function updateDebugPatrBalanceAmt(debugPatrBalanceAmt) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_PATR_BALANCE_AMT, data: patrBalanceAmt });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_PATR_BALANCE_AMT, data: debugPatrBalanceAmt });
   };
 }
 
-export function updatePledgesReceivedArr(pledgesReceivedArr) {
+export function updateDebugPledgesReceivedArr(debugPledgesReceivedArr) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_PLEDGES_RECEIVED_ARR, data: pledgesReceivedArr });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_PLEDGES_RECEIVED_ARR, data: debugPledgesReceivedArr });
   };
 }
 
-export function updatePledgesGivenArr(pledgesGivenArr) {
+export function updateDebugPledgesGivenArr(debugPledgesGivenArr) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_PLEDGES_GIVEN_ARR, data: pledgesGivenArr });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_PLEDGES_GIVEN_ARR, data: debugPledgesGivenArr });
   };
 }
 
-export function updateBalancesArr(balancesArr) {
+export function updateDebugBalancesArr(debugBalancesArr) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_BALANCES_ARR, data: balancesArr });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_BALANCES_ARR, data: debugBalancesArr });
   };
 }
 
-export function updateSubscribersArr(subscribersArr) {
+export function updateDebugSubscribersArr(debugSubscribersArr) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_SUBSCRIBERS_ARR, data: subscribersArr });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_SUBSCRIBERS_ARR, data: debugSubscribersArr });
   };
 }
 
-export function updateSubscriptionsArr(subscriptionsArr) {
+export function updateDebugSubscriptionsArr(debugSubscriptionsArr) {
   return (dispatch) => {
-   dispatch({ type: DEBUG_ACTIONS.UPDATE_SUBSCRIPTIONS_ARR, data: subscriptionsArr });
+   dispatch({ type: DEBUG_ACTIONS.UPDATE_DEBUG_SUBSCRIPTIONS_ARR, data: debugSubscriptionsArr });
   };
 }
 

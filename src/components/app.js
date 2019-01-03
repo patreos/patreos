@@ -83,11 +83,11 @@ class App extends React.Component {
   render() {
     return (
       <div className='wrapper'>
-        <Sidebar/>
+        <Sidebar config={ this.config } eos={this.eos} scatterEos={ this.scatterEos }/>
         <div id="content">
           <BrowserRouter>
             <div>
-              <Menu eos={this.eos} scatterEos={ this.scatterEos }/>
+              <Menu config={ this.config } eos={this.eos} scatterEos={ this.scatterEos }/>
               <Route
                 exact path='/'
                 render={
@@ -166,9 +166,13 @@ class App extends React.Component {
 
   getRecurringPayBalances = () => {
     this.eosReader.getTable(
-      this.config.code.recurringpay,
-      this.props.accountReducer.eosAccountStr,
-      'balances',
+      {
+        "json": true,
+        "scope": this.props.accountReducer.eosAccountStr,
+        "code": this.config.code.recurringpay,
+        "table": 'balances',
+        "limit": 10
+      },
       (val) => this.props.recurringpayActions.updateBalancesArr(val)
     );
   };

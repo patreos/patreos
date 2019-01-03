@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 
 import AccountInfo from './children/accountInfo';
-import DebugInfo from './children/debugInfo';
 import SubscriptionInfo from './children/subscriptionInfo';
 import RecurringPayInfo from './children/recurringpayInfo';
 

@@ -20,7 +20,8 @@ class SubscriptionInfo extends React.Component {
 
   updatePatreosInfo() {
     if(this.props.scatterEos != null) {
-      this.getPledges();
+      this.getPledgesToCreators();
+      this.getPledgesFromFans();
     }
   }
 
@@ -28,6 +29,7 @@ class SubscriptionInfo extends React.Component {
     // This means we got all info from app.js
     if (prevProps.scatterEos !== this.props.scatterEos) {
       this.updatePatreosInfo();
+      this.interval = setInterval(() => this.updatePatreosInfo(), this.config.updateInterval);
     }
     if (prevProps.patreosReducer.pledgesGivenArr !== this.props.patreosReducer.pledgesGivenArr) {
       this.updatePledgeDom(this.props.patreosReducer.pledgesGivenArr);
@@ -36,7 +38,6 @@ class SubscriptionInfo extends React.Component {
 
   componentDidMount() {
     this.updatePatreosInfo();
-    this.interval = setInterval(() => this.updatePatreosInfo(), this.config.updateInterval);
     this.props.patreosActions.updatePledgeTokenSymbolStr('PATR');
     this.props.patreosActions.updatePledgeTokenContractStr('patreostoken');
   }
@@ -115,22 +116,38 @@ class SubscriptionInfo extends React.Component {
     ReactDOM.render(indents, document.getElementById('pledge-list'));
   }
 
-  getPledges = () => {
-    this.props.eos.getTableRows({
-      "json": true,
-      "scope": 'patreosnexus',
-      "code": this.config.code.recurringpay,
-      "table": "agreements",
-      "index_position": 3,
-      "table_key": 'from',
-      "key_type": 'i64',
-      "lower_bound": this.props.eosAccountStr,
-      "limit": 10
-    }).then(result => {
-      this.props.patreosActions.updatePledgesGivenArr(result.rows);
-    }).catch((error) =>{
-      console.log(error);
-    });
+  getPledgesToCreators = () => {
+    this.eosReader.getTable(
+      {
+        "json": true,
+        "scope": 'patreosnexus',
+        "code": this.config.code.recurringpay,
+        "table": 'agreements',
+        "index_position": 3,
+        "table_key": 'from',
+        "key_type": 'i64',
+        "lower_bound": this.props.eosAccountStr,
+        "limit": 10
+      },
+      (val) => this.props.patreosActions.updatePledgesGivenArr(val)
+    );
+  };
+
+  getPledgesFromFans = () => {
+    this.eosReader.getTable(
+      {
+        "json": true,
+        "scope": 'patreosnexus',
+        "code": this.config.code.recurringpay,
+        "table": 'agreements',
+        "index_position": 3,
+        "table_key": 'to',
+        "key_type": 'i64',
+        "lower_bound": this.props.eosAccountStr,
+        "limit": 10
+      },
+      (val) => {}
+    );
   };
 
 }

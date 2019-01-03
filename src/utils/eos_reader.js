@@ -13,8 +13,8 @@ class EosReader {
     });
   };
 
-  getTable = (contract, account, table, action) => {
-    const getTable = this.connection.getTableRows(true, contract, account, table);
+  getTable = (query, action) => {
+    const getTable = this.connection.getTableRows(query);
     getTable.then((response) => {
       action(response.rows);
     }).catch(error => {
