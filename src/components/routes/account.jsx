@@ -16,7 +16,7 @@ class Account extends React.Component {
   render() {
     return (
       <div>
-        <AccountInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } eosBalanceAmt={ this.props.eosBalanceAmt } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
+        <AccountInfo eos={this.props.eos} scatterEos={ this.props.scatterEos } config={ this.props.config } eosBalanceAmt={ this.props.eosBalanceAmt } patrBalanceAmt={ this.props.patrBalanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
       </div>
     );
   }

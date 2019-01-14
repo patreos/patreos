@@ -306,7 +306,7 @@ class TransactionBuilder {
   publish(_from, _title, _description, _url) {}
 
   // Update basic profile information
-  set_profile(_account, _name, _description, _img_url) {}
+  set_profile(_account, _name, _description, _img_url, _banner_url) {}
   unset_profile(_account) {}
 
 }

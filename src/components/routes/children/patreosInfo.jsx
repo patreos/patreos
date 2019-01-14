@@ -106,10 +106,6 @@ class PatreosInfo extends React.Component {
           </div>
           <br/>
           <div className='row'>
-            <div className='col-m mr-1'>
-              Pledges:
-            </div>
-            <br/><br/>
             <div id="pledge-list" className='col-m'>
             </div>
           </div>
@@ -205,6 +201,14 @@ class PatreosInfo extends React.Component {
       return;
     }
     var indents = [];
+
+    if(pledges.length > 0) {
+      indents.push(<div className='col-m mr-1' key='pledges-header'>Pledges:</div>)
+      indents.push(<br key='pledges-header-br-1'/>)
+      indents.push(<br key='pledges-header-br-2'/>)
+    } else {
+      indents.push(<div className='col-m mr-1' key='pledges-header'>No Pledges Currently</div>)
+    }
     for (var i = 0; i < pledges.length; i++) {
       let boundItemClick = this.unpledgeByCreatorAccount.bind(this, pledges[i]['to']);
       indents.push(
