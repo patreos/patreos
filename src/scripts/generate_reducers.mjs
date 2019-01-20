@@ -1,4 +1,4 @@
-import { ACCOUNT_ACTIONS, DEBUG_ACTIONS, PATREOS_ACTIONS, RECURRINGPAY_ACTIONS } from '../constants/action_types';
+import { ACCOUNT_ACTIONS, CREATOR_ACTIONS, DEBUG_ACTIONS, PATREOS_ACTIONS, RECURRINGPAY_ACTIONS } from '../constants/action_types';
 import fs from 'fs';
 import util from 'util';
 
@@ -76,6 +76,7 @@ function generate(importedActionString, importedAction) {
 }
 
 generate('ACCOUNT_ACTIONS', ACCOUNT_ACTIONS);
+generate('CREATOR_ACTIONS', CREATOR_ACTIONS);
 generate('DEBUG_ACTIONS', DEBUG_ACTIONS);
 generate('PATREOS_ACTIONS', PATREOS_ACTIONS);
 generate('RECURRINGPAY_ACTIONS', RECURRINGPAY_ACTIONS);

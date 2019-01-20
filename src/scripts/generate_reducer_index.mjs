@@ -31,6 +31,7 @@ function generate(actions) {
 
 var actionsArr = [
   "account",
+  "creator",
   "debug",
   "patreos",
   "recurringpay"

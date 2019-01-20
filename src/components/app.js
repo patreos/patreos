@@ -8,8 +8,6 @@ import config from 'react-global-configuration';
 import '../styles/custom.css';
 import '../styles/index.scss';
 
-import Menu from './menu';
-import Sidebar from './sidebar';
 import Home from './routes/home';
 import Account from './routes/account';
 import Pledge from './routes/pledge';
@@ -82,12 +80,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='wrapper'>
-        <Sidebar config={ this.config } eos={this.eos} scatterEos={ this.scatterEos }/>
-        <div id="content">
+      <div>
           <BrowserRouter>
             <div>
-              <Menu config={ this.config } eos={this.eos} scatterEos={ this.scatterEos }/>
               <Route
                 exact path='/'
                 render={
@@ -120,7 +115,6 @@ class App extends React.Component {
               />
             </div>
           </BrowserRouter>
-        </div>
       </div>
     );
   }

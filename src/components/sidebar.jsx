@@ -12,6 +12,10 @@ class Sidebar extends React.Component {
     this.config = this.props.config;
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <nav id="sidebar">
@@ -20,37 +24,37 @@ class Sidebar extends React.Component {
             <h3 className="m-2 light">PATR<span className="normal">EOS</span></h3>
          </div>
          <ul className="list-unstyled components">
-            <li className="active">
+            <li className={ this.props.homeMenuActive || 'inactive'}>
                <a href="/">
                <i className="fas fa-home ml-2 mr-2"></i>
                Home
                </a>
             </li>
-            <li>
+            <li className={ this.props.accountMenuActive || 'inactive'}>
                <a href="/account">
                <i className="fas fa-user-circle ml-2 mr-2"></i>
                Account
                </a>
             </li>
-            <li>
+            <li className={ this.props.pledgeMenuActive || 'inactive'}>
                <a href="/pledge">
                <i className="fas fa-user-circle ml-2 mr-2"></i>
                Pledge
                </a>
             </li>
-            <li>
+            <li className={ this.props.balanceMenuActive || 'inactive'}>
                <a href="/balance">
                <i className="fas fa-coins ml-2 mr-2"></i>
                PATR
                </a>
             </li>
-            <li>
+            <li className={ this.props.billingMenuActive || 'inactive'}>
                <a href="/billing">
                <i className="fas fa-question ml-2 mr-2"></i>
                Billing
                </a>
             </li>
-            <li>
+            <li className={ this.props.contactMenuActive || 'inactive'}>
                <a href="#">
                <i className="fas fa-paper-plane ml-2 mr-2"></i>
                Contact

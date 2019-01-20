@@ -306,7 +306,28 @@ class TransactionBuilder {
   publish(_from, _title, _description, _url) {}
 
   // Update basic profile information
-  set_profile(_account, _name, _description, _img_url, _banner_url) {}
+  set_profile(_account, _name, _description, _img_url, _banner_url, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreosnexus,
+        name: 'setprofile',
+        authorization: [{
+          actor: _account,
+          permission: _permission
+        }],
+        data: {
+          _profile: {
+            owner: _account,
+            name: _name,
+            description: _description,
+            image_url: _img_url,
+            banner_url: _banner_url,
+            last_publication: 0
+          }
+        }
+      }]
+    }
+  }
   unset_profile(_account) {}
 
 }
