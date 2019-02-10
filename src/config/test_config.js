@@ -23,25 +23,23 @@ const config = {
     code: {
       eosiotoken: 'eosio.token',
       patreostoken: 'patreostoken',
-      patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
       recurringpay: 'recurringpay',
-      patreosnexus: 'patreosnexus',
-      patreosvault: 'patreosvault'
+      patreosnexus: 'patreosnexus'
     },
     patreosSymbol: 'PATR',
     systemSymbol: 'EOS',
-    updateInterval: 6000
+    updateInterval: 3000
   },
   testnet: {
     env: 'testnet',
     requiredFields: {
       accounts:[
         {
-          protocol: 'http',
+          protocol: 'https',
           blockchain: 'eos',
-          chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
-          host: 'jungle.cryptolions.io',
+          chainId: 'e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473',
+          host: 'https://jungle2.cryptolions.io',
           expireInSeconds: 3600,
           verbose: false,
           port: 38888
@@ -49,18 +47,16 @@ const config = {
       ]
     },
     eos: {
-      httpEndpoint: 'http://jungle.cryptolions.io:38888',
-      chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
+      httpEndpoint: 'https://jungle2.cryptolions.io:443',
+      chainId: 'e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473',
       verbose: true
     },
     code: {
       eosiotoken: 'eosio.token',
       patreostoken: 'patreostoken',
-      patreosblurb: 'patreostests',
-      patreosmoney: 'patreostests',
+      patreosmoney: '',
       recurringpay: 'recurringpay',
-      patreosnexus: 'patreosnexus',
-      patreosvault: 'patreosvault'
+      patreosnexus: 'patreosnexus'
     },
     patreosSymbol: 'PATR',
     systemSymbol: 'EOS',
@@ -87,11 +83,9 @@ const config = {
     code: {
       eosiotoken: 'eosio.token',
       patreostoken: 'patreostoken',
-      patreosblurb: 'patreosblurb',
       patreosmoney: 'patreosmoney',
       recurringpay: 'recurringpay',
-      patreosnexus: 'patreosnexus',
-      patreosvault: 'patreosvault'
+      patreosnexus: 'patreosnexus'
     },
     patreosSymbol: 'PATR',
     systemSymbol: 'EOS',
