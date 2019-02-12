@@ -21,9 +21,7 @@ process.on('exit', function(code) {
 
 var config = configModule.config.development;
 config.eos.keyProvider = [
-  accounts.contracts[0].private_key, //patreostoken
-  accounts.contracts[1].private_key, //patreosnexus
-  accounts.users[0].private_key, //xokayplanetx
+  accounts.contracts[9].private_key, //patreosvault
 ];
 
 const transaction_builder = new TransactionBuilder(config);
@@ -31,6 +29,8 @@ const transaction_builder = new TransactionBuilder(config);
 eos = Eos(config.eos);
 
 let dropped = 0;
+let skipUntil = 0;
+let stopAt = 22836;
 
 function buildIssuePatr(to, quantity, memo) {
   return {
@@ -38,7 +38,7 @@ function buildIssuePatr(to, quantity, memo) {
       account: 'patreostoken',
       name: 'issue',
       authorization: [{
-        actor: 'xokayplanetx',
+        actor: 'patreosvault',
         permission: 'active'
       }],
       data: {
@@ -61,21 +61,28 @@ csv({
 
 async function handleDrops(dropResultsJson) {
   for (drop of dropResultsJson) {
+    dropped++
+    if(skipUntil > 0 && dropped < skipUntil) {
+      continue;
+    }
+    if(stopAt > 0 && dropped >= stopAt) {
+      continue;
+    }
     await issuePatr(drop.account, drop.PATR)
   }
 }
 
 async function issuePatr(account, patr) {
-  await eos.transaction(buildIssuePatr(account, patr, 'Stake PATR at patreos.com.  Welcome to the content revolution!')).then((response) => {
+  await eos.transaction(buildIssuePatr(account, patr, 'Stake PATR at patreos.com to earn rewards.  Welcome to the content revolution!')).then((response) => {
     let ret = response.processed.receipt.status;
     if(ret == 'executed') {
-      console.log(util.format('%s) Dropped %s PATR to %s', ++dropped, patr, account))
+      console.log(util.format('%s) Dropped %s PATR to %s', dropped, patr, account))
     } else {
-      console.log(util.format('Failed at dropping %s PATR to %s', patr, account))
+      console.log(util.format('%s) Failed at dropping %s PATR to %s', dropped, patr, account))
       process.exit(400);
     }
   }).catch(err => {
-    console.log(util.format('Failed at dropping %s PATR to %s', patr, account));
+    console.log(util.format('%s) Failed at dropping %s PATR to %s', dropped, patr, account));
     console.log(err);
     process.exit(500); // out of ram, cpu, bandwidth, etc.
   });

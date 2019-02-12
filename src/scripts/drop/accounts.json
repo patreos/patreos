@@ -23,11 +23,6 @@
       "public_key": "EOS7YZQ7PbeFY8KPA9XAe3K7dkME3JKwWadMcggRPeVHRQ2DZDeoZ"
     },
     {
-      "name": "patreosvault",
-      "private_key": "5JoEQenCL5WEaWyxZCRbgGvxuyKnWYUcBKmtD1oc3HnYfBttHPB",
-      "public_key": "EOS7YZQ7PbeFY8KPA9XAe3K7dkME3JKwWadMcggRPeVHRQ2DZDeoZ"
-    },
-    {
       "name": "patreosmoney",
       "private_key": "5JoEQenCL5WEaWyxZCRbgGvxuyKnWYUcBKmtD1oc3HnYfBttHPB",
       "public_key": "EOS7YZQ7PbeFY8KPA9XAe3K7dkME3JKwWadMcggRPeVHRQ2DZDeoZ"
@@ -80,7 +75,7 @@
       "public_key": "EOS4wAP4BFUAMLtt3WkXeVssY8jPQrr2tfAfpNuuDU92F4yDCxLed"
     },
     {
-      "name": "testplanet14",
+      "name": "patreosvault",
       "private_key": "5KgggZQ3vrF7T8kaXgQ3ePvvCLG31iUm2wEAn7r258LiZVCiQjq",
       "public_key": "EOS4wAP4BFUAMLtt3WkXeVssY8jPQrr2tfAfpNuuDU92F4yDCxLed"
     }
