@@ -7,6 +7,7 @@ import config from 'react-global-configuration';
 import ReactTooltip from 'react-tooltip'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { css } from 'glamor'
 
 import * as PATREOS_ACTIONS from '../../../actions/patreos_actions';
 
@@ -190,12 +191,15 @@ class PatreosStake extends React.Component {
 
     let amt = this.props.patreosReducer.transferAmt
     try {
+      if (Number(amt) <= 0) throw new Error("Enter a positive ammount");
       amt = Eos.modules.format.DecimalPad(this.props.patreosReducer.transferAmt, 4)
     } catch(error) {
-      toast.error("Try an amount with 4 decimal places ;)", {
-        position: toast.POSITION.BOTTOM_CENTER
+      return toast.error("Try an amount with 4 decimal places ;)", {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 4000,
+        className: css({ background: '#9B3042' }),
+        bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
       });
-      return
     }
 
     const transaction = this.transactionBuilder.transfer(
@@ -212,10 +216,14 @@ class PatreosStake extends React.Component {
   stakePatreos = () => {
     let amt = this.props.patreosReducer.stakeAmt
     try {
+      if (Number(amt) <= 0) throw new Error("Enter a positive ammount");
       amt = Eos.modules.format.DecimalPad(this.props.patreosReducer.stakeAmt, 4)
     } catch(error) {
-      toast.error("Try an amount with 4 decimal places ;)", {
-        position: toast.POSITION.BOTTOM_CENTER
+      toast.error("Enter a positive amount with 4 decimal places ;)", {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 4000,
+        className: css({ background: '#9B3042' }),
+        bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
       });
       return
     }
@@ -224,12 +232,18 @@ class PatreosStake extends React.Component {
       let ret = response.processed.receipt.status;
       if(ret == 'executed') {
         toast.success("Stake Successful", {
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          autoClose: 4000,
+          className: css({ background: '#1B866D' }),
+          bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
         });
       }
     }).catch(err => {
       toast.error(JSON.parse(err).error.details[0].message, {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 4000,
+        className: css({ background: '#9B3042' }),
+        bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
       });
     });
   };
@@ -237,24 +251,33 @@ class PatreosStake extends React.Component {
   unstakePatreos = () => {
     let amt = this.props.patreosReducer.unstakeAmt
     try {
+      if (Number(amt) <= 0) throw new Error("Enter a positive ammount");
       amt = Eos.modules.format.DecimalPad(this.props.patreosReducer.unstakeAmt, 4)
     } catch(error) {
-      toast.error("Try an amount with 4 decimal places ;)", {
-        position: toast.POSITION.BOTTOM_CENTER
+      return toast.error("Enter a positive amount with 4 decimal places ;)", {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 4000,
+        className: css({ background: '#9B3042' }),
+        bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
       });
-      return
     }
     const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, amt);
     this.props.scatterEos.transaction(transaction).then((response) => {
       let ret = response.processed.receipt.status;
       if(ret == 'executed') {
         toast.success("Unstake Successful", {
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          autoClose: 4000,
+          className: css({ background: '#1B866D' }),
+          bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
         });
       }
     }).catch(err => {
       toast.error(JSON.parse(err).error.details[0].message, {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 4000,
+        className: css({ background: '#9B3042' }),
+        bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
       });
     });
   };
