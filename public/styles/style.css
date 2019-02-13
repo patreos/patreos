@@ -1,0 +1,124 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Ridley Grotesk";
+}
+
+h4.alt {
+  color: #4EBFAE;
+}
+
+p, .btn {
+  font-family: "Proxima Nova";
+}
+
+.token-mgmt dt {
+  font-weight: normal;
+  font-size: .9em;
+  color: #959E9D;
+}
+
+.token-mgmt dd {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #4EBFAE;
+  border-color: #4EBFAE;
+}
+
+.btn-primary:hover, .btn-primary:active {
+  background-color: #4EBFAE !important;
+  border-color: #4EBFAE !important;
+}
+
+.patr-benefits h4 {
+  color: #72808A;
+}
+
+.patr-benefits h6 {
+  color: #72808A;
+}
+
+.patr-benefits .card-title {
+  font-size: 1.5em;
+  color: #4EBFAE;
+}
+
+.patr-benefits .card-image {
+  width: 109px;
+  height: 133px;
+  margin-bottom: 1em;
+}
+
+.patr-benefits .card-image-1 {
+  background-image: url("../img/card-sprite.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.patr-benefits .card-image-2 {
+  background-image: url("../img/card-sprite.svg");
+  background-repeat: no-repeat;
+  background-position: -109px 0;
+}
+
+.patr-benefits .card-image-3 {
+  background-image: url("../img/card-sprite.svg");
+  background-repeat: no-repeat;
+  background-position: -218px 0;
+}
+
+.patr-benefits .card:hover {
+  background-color: #4EBFAE;
+  color: #ffffff;
+}
+
+.patr-benefits .card:hover h6 {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.patr-benefits .card:hover .card-title {
+  color: #ffffff;
+}
+
+.patr-benefits .card:hover .card-image-1 {
+  background-position: 0 -133px;
+}
+
+.patr-benefits .card:hover .card-image-2 {
+  background-position: -109px -133px;
+}
+
+.patr-benefits .card:hover .card-image-3 {
+  background-position: -218px -133px;
+}
+
+.patr-social-banner {
+  background-color: #4EBFAE;
+}
+
+.patr-social-banner .lead {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+  background-color: #4EBFAE;
+  color: #ffffff;
+  font-size: 1.1em;
+}
+
+.footer a {
+  color: inherit;
+}
+
+.icn-telegram {
+  background-image: url('../img/icn-telegram.svg');
+  width: 44px;
+  height: 44px;
+  margin-right: 44px;
+}
+
+.icn-twitter {
+  background-image: url('../img/icn-twitter.svg');
+  width: 44px;
+  height: 38px;
+}
