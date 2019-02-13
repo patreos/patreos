@@ -5,6 +5,8 @@ import connect from 'react-redux/es/connect/connect';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
 import ReactTooltip from 'react-tooltip'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import * as PATREOS_ACTIONS from '../../../actions/patreos_actions';
 
@@ -62,6 +64,7 @@ class PatreosStake extends React.Component {
     if (isConnectedToScatterBool) {
       conditionalDom = (
         <div className="col-md-6 pr-5 mb-5">
+          <ToastContainer/>
           <a href="/" className="d-inline-block">
             <img src={ logo } className="my-5" />
           </a>
@@ -185,10 +188,20 @@ class PatreosStake extends React.Component {
       return;
     }
 
+    let amt = this.props.patreosReducer.transferAmt
+    try {
+      amt = Eos.modules.format.DecimalPad(this.props.patreosReducer.transferAmt, 4)
+    } catch(error) {
+      toast.error("Try an amount with 4 decimal places ;)", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+      return
+    }
+
     const transaction = this.transactionBuilder.transfer(
       this.props.eosAccountStr,
       transferToAccountStr,
-      Eos.modules.format.DecimalPad(this.props.patreosReducer.transferAmt, 4),
+      amt,
       'Transfer <3',
       this.config.code.patreostoken,
       this.config.patreosSymbol
@@ -197,13 +210,53 @@ class PatreosStake extends React.Component {
   };
 
   stakePatreos = () => {
-    const transaction = this.transactionBuilder.stake(this.props.eosAccountStr, Eos.modules.format.DecimalPad(this.props.patreosReducer.stakeAmt, 4));
-    this.props.scatterEos.transaction(transaction);
+    let amt = this.props.patreosReducer.stakeAmt
+    try {
+      amt = Eos.modules.format.DecimalPad(this.props.patreosReducer.stakeAmt, 4)
+    } catch(error) {
+      toast.error("Try an amount with 4 decimal places ;)", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+      return
+    }
+    const transaction = this.transactionBuilder.stake(this.props.eosAccountStr, amt);
+    this.props.scatterEos.transaction(transaction).then((response) => {
+      let ret = response.processed.receipt.status;
+      if(ret == 'executed') {
+        toast.success("Stake Successful", {
+          position: toast.POSITION.BOTTOM_CENTER
+        });
+      }
+    }).catch(err => {
+      toast.error(JSON.parse(err).error.details[0].message, {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+    });
   };
 
   unstakePatreos = () => {
-    const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, Eos.modules.format.DecimalPad(this.props.patreosReducer.unstakeAmt, 4));
-    this.props.scatterEos.transaction(transaction);
+    let amt = this.props.patreosReducer.unstakeAmt
+    try {
+      amt = Eos.modules.format.DecimalPad(this.props.patreosReducer.unstakeAmt, 4)
+    } catch(error) {
+      toast.error("Try an amount with 4 decimal places ;)", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+      return
+    }
+    const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, amt);
+    this.props.scatterEos.transaction(transaction).then((response) => {
+      let ret = response.processed.receipt.status;
+      if(ret == 'executed') {
+        toast.success("Unstake Successful", {
+          position: toast.POSITION.BOTTOM_CENTER
+        });
+      }
+    }).catch(err => {
+      toast.error(JSON.parse(err).error.details[0].message, {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+    });
   };
 
   getStakedBalanceAmt = () => {
