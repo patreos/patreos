@@ -38,6 +38,10 @@ class ManagePatr extends React.Component {
   }
 
   componentWillMount() {
+    this.props.accountActions.updateEosAccountStr('Loading...');
+    this.props.accountActions.updateEosBalanceAmt('0.0000 EOS')
+    this.props.patreosActions.updateBalanceAmt('0.0000 PATR')
+
     this.recoverScatter();
   }
 
@@ -102,7 +106,7 @@ class ManagePatr extends React.Component {
 
   disconnectScatter = () => {
     ScatterJS.logout().then(id => {
-        this.props.accountActions.updateEosAccountStr('');
+        this.props.accountActions.updateEosAccountStr('Loading...');
         this.props.accountActions.updateEosAccountAuthorityStr('');
         this.props.accountActions.updateEosAccountInfoObj('')
         this.props.accountActions.updateEosBalanceAmt('0.0000 EOS')

@@ -37,6 +37,10 @@ class PatreosStake extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.props.patreosActions.updateUnstakeAmt('0.0000 PATR');
+  }
+
   componentDidMount() {
     this.updatePatreosTokenInfo();
     this.interval = setInterval(() => this.updatePatreosTokenInfo(), this.config.updateInterval);
@@ -62,13 +66,14 @@ class PatreosStake extends React.Component {
             <img src={ logo } className="my-5" />
           </a>
           <div className="row">
+
             <div className="col">
               <h2>Account Overview</h2>
 
               <button onClick={ () => this.props.disconnectScatter() } role="button" className="btn btn-primary btn-lg btn-block">Disconnect Scatter Desktop</button>
 
               <div className="d-flex flex-row my-3">
-                <div className="">
+                <div>
                   <dt>Account Name</dt>
                   <dd>{ this.props.eosAccountStr }</dd>
                 </div>
@@ -93,7 +98,7 @@ class PatreosStake extends React.Component {
           <div className="row my-3">
             <div className="col">
               <h4 className="alt">Earn more PATR</h4>
-              <p>Pledging is coming soon. In the meantime, stake your PATR balance to start earning rewards! Learn more about <a href="staking.html">how staking works.</a></p>
+              <p>Pledging is coming soon. In the meantime, stake your PATR balance to start earning rewards! </p>
               <label htmlFor="stake">Stake PATR</label>
               <div className="input-group mb-3">
                 <input type="text" className="form-control" id="stake" placeholder="Amount to stake" onChange={ this.updateStakeAmt } />
@@ -102,7 +107,7 @@ class PatreosStake extends React.Component {
                 </div>
               </div>
               <label htmlFor="unstake">Unstake PATR</label>
-              <div className="input-group mb-3">
+              <div className="input-group">
                 <input type="text" className="form-control" id="unstake" placeholder="Amount to unstake" onChange={ this.updateUnstakeAmt } />
                 <div className="input-group-append">
                   <button className="btn btn-outline-secondary" onClick={ () => this.unstakePatreos() } type="button" id="">Unstake</button>
