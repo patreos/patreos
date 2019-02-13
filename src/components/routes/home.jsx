@@ -41,10 +41,6 @@ class Home extends React.Component {
                 <h4>Bummed you missed our airdrop? Stay in the loop! </h4>
                 <p className="lead mb-0">Join the community and we’ll keep you posted about new opportunities to earn PATR.</p>
               </div>
-              <div className="col">
-                <a href="https://t.me/patreos" className="d-inline-block text-hide icn-telegram">Telegram</a>
-                <a href="https://twitter.com/PatreosDapp" className="d-inline-block text-hide icn-twitter">Twitter</a>
-              </div>
             </div>
           </div>
         </div>
@@ -63,7 +59,7 @@ class Home extends React.Component {
                   <div className="card-image card-image-1 d-none d-md-block"></div>
                   <h5 className="card-title card-title">Creators First</h5>
                   <h6>Fortify your wallet</h6>
-                  <p className="card-text">Unlike outmoded content platforms, Patreos doesn’t monetize your work. You keep 100 percent of what you earn.</p>
+                  <p className="card-text">Unlike outmoded content platforms, Patreos doesn’t monetize your work. You can keep 100 percent of what you earn.</p>
                 </div>
               </div>
               <div className="card border-0 rounded-0">
