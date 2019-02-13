@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import Eos from 'eosjs';
 import config from 'react-global-configuration';
+import ReactTooltip from 'react-tooltip'
 
 import * as PATREOS_ACTIONS from '../../../actions/patreos_actions';
 
@@ -48,13 +49,7 @@ class PatreosStake extends React.Component {
   render() {
 
     const {
-      balanceAmt, stakedBalanceAmt, transferToAccountStr, transferAmt, stakeAmt,
-      unstakeAmt, followAccountStr, creatorNameStr, creatorDescriptionStr, creatorBannerStr,
-      creatorImageStr, publicationTitleStr, publicationDescriptionStr, publicationUrlStr,
-      publicationImageStr,
-      pledgeTokenSymbolStr, pledgeTokenContractStr, pledgeToAccountStr, pledgeAmt, pledgeCycleNum,
-      pledgesReceivedArr, pledgesGivenArr
-
+      stakedBalanceAmt
     } = this.props.patreosReducer;
 
     const isConnectedToScatterBool = this.props.scatterDetectionStr == 'true';
@@ -88,7 +83,8 @@ class PatreosStake extends React.Component {
                   <dd>{ this.props.patrBalanceAmt }</dd>
                 </div>
                 <div className="mr-5">
-                  <dt>Staked PATR <i className="fas fa-question-circle" data-container="body" data-toggle="popover" data-placement="right" data-content="When you stake PATR you are eligible to earn network rewards in proportion to the amount of PATR you stake."></i></dt>
+                  <ReactTooltip />
+                  <dt>Staked PATR <i className="fas fa-question-circle" data-container="body" data-toggle="popover" data-placement="right" data-tip="When you stake PATR you are eligible to earn network rewards in proportion to the amount of PATR you stake."></i></dt>
                   <dd>{ stakedBalanceAmt }</dd>
                 </div>
               </div>
