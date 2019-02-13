@@ -25,7 +25,7 @@ class PatreosStake extends React.Component {
   }
 
   updatePatreosTokenInfo() {
-    if(this.props.scatterEos != null) {
+    if(Object.keys(this.props.scatterEos).length > 0 && this.props.scatterIdentity) {
       this.getStakedBalanceAmt();
     }
   }
@@ -38,7 +38,7 @@ class PatreosStake extends React.Component {
   }
 
   componentWillMount() {
-    this.props.patreosActions.updateUnstakeAmt('0.0000 PATR');
+    this.props.patreosActions.updateStakedBalanceAmt('0.0000 PATR');
   }
 
   componentDidMount() {
@@ -188,7 +188,7 @@ class PatreosStake extends React.Component {
     const transaction = this.transactionBuilder.transfer(
       this.props.eosAccountStr,
       transferToAccountStr,
-      this.props.patreosReducer.transferAmt,
+      Eos.modules.format.DecimalPad(this.props.patreosReducer.transferAmt, 4),
       'Transfer <3',
       this.config.code.patreostoken,
       this.config.patreosSymbol
@@ -197,12 +197,12 @@ class PatreosStake extends React.Component {
   };
 
   stakePatreos = () => {
-    const transaction = this.transactionBuilder.stake(this.props.eosAccountStr, this.props.patreosReducer.stakeAmt);
+    const transaction = this.transactionBuilder.stake(this.props.eosAccountStr, Eos.modules.format.DecimalPad(this.props.patreosReducer.stakeAmt, 4));
     this.props.scatterEos.transaction(transaction);
   };
 
   unstakePatreos = () => {
-    const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, this.props.patreosReducer.unstakeAmt);
+    const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, Eos.modules.format.DecimalPad(this.props.patreosReducer.unstakeAmt, 4));
     this.props.scatterEos.transaction(transaction);
   };
 

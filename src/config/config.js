@@ -29,7 +29,7 @@ const config = {
     },
     patreosSymbol: 'PATR',
     systemSymbol: 'EOS',
-    updateInterval: 2000
+    updateInterval: 3000
   },
   testnet: {
     env: 'testnet',
@@ -62,7 +62,7 @@ const config = {
     systemSymbol: 'EOS',
     updateInterval: 3000
   },
-  mainnet: {
+  production: {
     env: 'mainnet',
     requiredFields: {
       accounts:[
@@ -89,7 +89,7 @@ const config = {
     },
     patreosSymbol: 'PATR',
     systemSymbol: 'EOS',
-    updateInterval: 3000
+    updateInterval: 2000
   }
 };
 

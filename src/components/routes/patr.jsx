@@ -30,7 +30,7 @@ class ManagePatr extends React.Component {
   }
 
   accountInfoUpdate() {
-    if(Object.keys(this.props.accountReducer.scatterEosObj).length > 0) {
+    if(Object.keys(this.props.accountReducer.scatterEosObj).length > 0 && ScatterJS.identity) {
       this.getEOSBalance();
       this.getPATRBalance();
       this.getEosAccountInfo();
@@ -64,7 +64,7 @@ class ManagePatr extends React.Component {
 
   render() {
     return (
-      <PatreosStake connectScatter={this.connectScatter} disconnectScatter={this.disconnectScatter} eos={this.eos} scatterEos={ this.props.accountReducer.scatterEosObj } scatterDetectionStr={ this.props.accountReducer.scatterDetectionStr } config={ this.props.config } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } />
+      <PatreosStake connectScatter={this.connectScatter} disconnectScatter={this.disconnectScatter} eos={this.eos} scatterEos={ this.props.accountReducer.scatterEosObj } scatterDetectionStr={ this.props.accountReducer.scatterDetectionStr } config={ this.props.config } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } scatterIdentity={ScatterJS.identity} />
     );
   }
 
@@ -72,8 +72,31 @@ class ManagePatr extends React.Component {
     const network = ScatterJS.Network.fromJson(this.network);
     ScatterJS.connect('patreos.com', {network}).then(connected => {
       if (this.props.accountReducer.scatterDetectionStr == '' && ScatterJS.identity) {
-        this.connectScatter();
+        if(!connected) {
+          this.props.accountActions.updateScatterDetectionStr('false');
+          return
+        }
+
+        const scatterEos = ScatterJS.eos(this.network, Eos);
+        this.props.accountActions.updateScatterEosObj(scatterEos)
+
+        this.loginScatter();
       }
+    });
+  }
+
+  loginScatter = () => {
+    ScatterJS.login().then(id => {
+        if(!id) {
+          this.props.accountActions.updateScatterDetectionStr('false');
+          return
+        }
+        const account = ScatterJS.account('eos');
+        this.props.accountActions.updateEosAccountStr(account.name);
+        this.props.accountActions.updateEosAccountAuthorityStr(account.authority);
+        this.props.accountActions.updateScatterDetectionStr('true');
+        this.accountInfoUpdate();
+        this.interval = setInterval(() => this.accountInfoUpdate(), this.props.config.updateInterval);
     });
   }
 
@@ -89,18 +112,7 @@ class ManagePatr extends React.Component {
         const scatterEos = ScatterJS.eos(this.network, Eos);
         this.props.accountActions.updateScatterEosObj(scatterEos)
 
-        ScatterJS.login().then(id => {
-            if(!id) {
-              this.props.accountActions.updateScatterDetectionStr('false');
-              return
-            }
-            const account = ScatterJS.account('eos');
-            this.props.accountActions.updateEosAccountStr(account.name);
-            this.props.accountActions.updateEosAccountAuthorityStr(account.authority);
-            this.props.accountActions.updateScatterDetectionStr('true');
-            this.accountInfoUpdate();
-            this.interval = setInterval(() => this.accountInfoUpdate(), this.props.config.updateInterval);
-        });
+        this.loginScatter();
     });
   }
 
@@ -137,7 +149,9 @@ class ManagePatr extends React.Component {
       this.props.config.code.patreostoken,
       this.props.accountReducer.eosAccountStr,
       this.props.config.patreosSymbol,
-      (val) => this.props.patreosActions.updateBalanceAmt(val)
+      (val) => {
+        if(val) this.props.patreosActions.updateBalanceAmt(val)
+      }
     );
   };
 

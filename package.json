@@ -1,11 +1,12 @@
 {
-  "name": "react-parcel-boilerplate",
+  "name": "patreos-web",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "private": false,
   "scripts": {
     "dev": "ENV_VAR=development parcel public/index.html -p 3000 --no-cache",
+    "qa": "ENV_VAR=testnet parcel public/index.html -p 3000",
     "prod": "ENV_VAR=production parcel public/index.html -p 3000",
     "build": "ENV_VAR=production parcel build public/index.html --out-dir ./build"
   },
