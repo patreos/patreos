@@ -233,7 +233,7 @@ class PatreosStake extends React.Component {
       if(ret == 'executed') {
         toast.success("Stake Successful", {
           position: toast.POSITION.BOTTOM_CENTER,
-          autoClose: 4000,
+          autoClose: 2000,
           className: css({ background: '#1B866D' }),
           bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
         });
@@ -267,7 +267,7 @@ class PatreosStake extends React.Component {
       if(ret == 'executed') {
         toast.success("Unstake Successful", {
           position: toast.POSITION.BOTTOM_CENTER,
-          autoClose: 4000,
+          autoClose: 2000,
           className: css({ background: '#1B866D' }),
           bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
         });
