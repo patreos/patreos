@@ -211,7 +211,7 @@ fieldset[disabled] .btn-patreos-signup.active {
 
 .btn-xlarge {
     padding: 12px 14px;
-    font-size: 22px; //change this to your desired size
+    font-size: 22px;
     line-height: normal;
     -webkit-border-radius: 8px;
        -moz-border-radius: 8px;
