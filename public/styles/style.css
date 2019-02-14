@@ -6,6 +6,11 @@ h4.alt {
   color: #4EBFAE;
 }
 
+.mailchimp {
+  position: absolute;
+  left: -5000px;
+}
+
 .vert-align {
     display: flex;
     align-items: center;
@@ -136,4 +141,79 @@ p, .btn {
   background-image: url('../img/icn-twitter.svg');
   width: 44px;
   height: 38px;
+}
+
+.btn-whitepaper {
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+  color: #52BBAB;
+}
+
+.btn-whitepaper:hover,
+.btn-whitepaper:focus,
+.btn-whitepaper:active,
+.btn-whitepaper.active,
+.open .dropdown-toggle.btn-whitepaper {
+  color: #52BBAB;
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.input-big-text {
+  height: 49px;
+}
+
+.btn-patreos-signup {
+  color: #52BBAB;
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.btn-patreos-signup:hover,
+.btn-patreos-signup:focus,
+.btn-patreos-signup:active,
+.btn-patreos-signup.active,
+.open .dropdown-toggle.btn-patreos-signup {
+  color: #52BBAB;
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.btn-patreos-signup:active,
+.btn-patreos-signup.active,
+.open .dropdown-toggle.btn-patreos-signup {
+  background-image: none;
+}
+
+.btn-patreos-signup.disabled,
+.btn-patreos-signup[disabled],
+fieldset[disabled] .btn-patreos-signup,
+.btn-patreos-signup.disabled:hover,
+.btn-patreos-signup[disabled]:hover,
+fieldset[disabled] .btn-patreos-signup:hover,
+.btn-patreos-signup.disabled:focus,
+.btn-patreos-signup[disabled]:focus,
+fieldset[disabled] .btn-patreos-signup:focus,
+.btn-patreos-signup.disabled:active,
+.btn-patreos-signup[disabled]:active,
+fieldset[disabled] .btn-patreos-signup:active,
+.btn-patreos-signup.disabled.active,
+.btn-patreos-signup[disabled].active,
+fieldset[disabled] .btn-patreos-signup.active {
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.btn-patreos-signup .badge {
+  color: #FFFFFF;
+  background-color: #52BBAB;
+}
+
+.btn-xlarge {
+    padding: 12px 14px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
 }

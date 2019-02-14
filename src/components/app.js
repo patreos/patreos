@@ -13,6 +13,7 @@ import Pledge from './routes/pledge';
 import Balance from './routes/balance';
 import Billing from './routes/billing';
 import ManagePatr from './routes/patr';
+import PageNotFound from './routes/404';
 
 class App extends React.Component {
 
@@ -97,7 +98,7 @@ class App extends React.Component {
                     }
                   }
                 />
-                <Route render={ (props) => <div>Page Not Found...</div> } />
+                <Route render={ (props) => <PageNotFound /> } />
               </Switch>
             </div>
           </BrowserRouter>
