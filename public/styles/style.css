@@ -1,0 +1,219 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Ridley Grotesk";
+}
+
+h4.alt {
+  color: #4EBFAE;
+}
+
+.mailchimp {
+  position: absolute;
+  left: -5000px;
+}
+
+.vert-align {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.align-items-center {
+  -ms-flex-align: center!important;
+  align-items: center!important;
+}
+.d-flex {
+  display: -ms-flexbox!important;
+  display: flex!important;
+}
+
+p, .btn {
+  font-family: "Proxima Nova";
+}
+
+.token-mgmt dt {
+  font-weight: normal;
+  font-size: .9em;
+  color: #959E9D;
+}
+
+.token-mgmt dd {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #4EBFAE;
+  border-color: #4EBFAE;
+}
+
+.btn-primary:hover, .btn-primary:active {
+  background-color: #4EBFAE !important;
+  border-color: #4EBFAE !important;
+}
+
+.patr-benefits h4 {
+  color: #72808A;
+}
+
+.patr-benefits h6 {
+  color: #72808A;
+}
+
+.patr-benefits .card-title {
+  font-size: 1.5em;
+  color: #4EBFAE;
+}
+
+.patr-benefits .card-image {
+  width: 109px;
+  height: 133px;
+  margin-bottom: 1em;
+}
+
+.patr-benefits .card-image-1 {
+  background-image: url("../img/card-sprite.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.patr-benefits .card-image-2 {
+  background-image: url("../img/card-sprite.svg");
+  background-repeat: no-repeat;
+  background-position: -109px 0;
+}
+
+.patr-benefits .card-image-3 {
+  background-image: url("../img/card-sprite.svg");
+  background-repeat: no-repeat;
+  background-position: -218px 0;
+}
+
+.patr-benefits .card:hover {
+  background-color: #4EBFAE;
+  color: #ffffff;
+}
+
+.patr-benefits .card:hover h6 {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.patr-benefits .card:hover .card-title {
+  color: #ffffff;
+}
+
+.patr-benefits .card:hover .card-image-1 {
+  background-position: 0 -133px;
+}
+
+.patr-benefits .card:hover .card-image-2 {
+  background-position: -109px -133px;
+}
+
+.patr-benefits .card:hover .card-image-3 {
+  background-position: -218px -133px;
+}
+
+.patr-social-banner {
+  background-color: #4EBFAE;
+}
+
+.patr-social-banner .lead {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+  background-color: #4EBFAE;
+  color: #ffffff;
+  font-size: 1.1em;
+}
+
+.footer a {
+  color: inherit;
+}
+
+.icn-telegram {
+  background-image: url('../img/icn-telegram.svg');
+  width: 44px;
+  height: 44px;
+  margin-right: 44px;
+}
+
+.icn-twitter {
+  background-image: url('../img/icn-twitter.svg');
+  width: 44px;
+  height: 38px;
+}
+
+.btn-whitepaper {
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+  color: #52BBAB;
+}
+
+.btn-whitepaper:hover,
+.btn-whitepaper:focus,
+.btn-whitepaper:active,
+.btn-whitepaper.active,
+.open .dropdown-toggle.btn-whitepaper {
+  color: #52BBAB;
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.input-big-text {
+  height: 49px;
+}
+
+.btn-patreos-signup {
+  color: #52BBAB;
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.btn-patreos-signup:hover,
+.btn-patreos-signup:focus,
+.btn-patreos-signup:active,
+.btn-patreos-signup.active,
+.open .dropdown-toggle.btn-patreos-signup {
+  color: #52BBAB;
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.btn-patreos-signup:active,
+.btn-patreos-signup.active,
+.open .dropdown-toggle.btn-patreos-signup {
+  background-image: none;
+}
+
+.btn-patreos-signup.disabled,
+.btn-patreos-signup[disabled],
+fieldset[disabled] .btn-patreos-signup,
+.btn-patreos-signup.disabled:hover,
+.btn-patreos-signup[disabled]:hover,
+fieldset[disabled] .btn-patreos-signup:hover,
+.btn-patreos-signup.disabled:focus,
+.btn-patreos-signup[disabled]:focus,
+fieldset[disabled] .btn-patreos-signup:focus,
+.btn-patreos-signup.disabled:active,
+.btn-patreos-signup[disabled]:active,
+fieldset[disabled] .btn-patreos-signup:active,
+.btn-patreos-signup.disabled.active,
+.btn-patreos-signup[disabled].active,
+fieldset[disabled] .btn-patreos-signup.active {
+  background-color: #FFFFFF;
+  border-color: #52BBAB;
+}
+
+.btn-patreos-signup .badge {
+  color: #FFFFFF;
+  background-color: #52BBAB;
+}
+
+.btn-xlarge {
+    padding: 12px 14px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}

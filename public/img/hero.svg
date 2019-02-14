@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="618px" height="839px" viewBox="0 0 618 839" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>header/patern</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="208" height="631"></rect>
+        <polygon id="path-3" points="2.04636308e-12 636 388 636 388 -1.36424205e-12 2.04636308e-12 -1.36424205e-12"></polygon>
+        <polygon id="path-5" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-7" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-9" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-11" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-13" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-15" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-17" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-19" points="0 212 207 212 207 0 0 0"></polygon>
+        <polygon id="path-21" points="0 212 207 212 207 0 0 0"></polygon>
+    </defs>
+    <g id="header/patern" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pattern/elements/tile/3x3-copy-17" transform="translate(410.000000, 210.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#D8D8D8" xlink:href="#path-1"></use>
+            <g id="pattern/artwork/tile/stripes" mask="url(#mask-2)">
+                <g id="pattern/tile">
+                    <polygon id="pattern/bg" fill="#4EBFAE" points="15.3583333 636 388 636 388 -1.36424205e-12 15.3583333 -1.36424205e-12"></polygon>
+                    <g id="Group-2">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="Mask" fill="#4EBFAE" xlink:href="#path-3"></use>
+                        <g id="pattern/elements/stripes/45deg" mask="url(#mask-4)">
+                            <g id="Group-5">
+                                <polygon id="Fill-1" fill="#4EBEAD" points="0 636 388 636 388 0 0 0"></polygon>
+                                <polygon id="Fill-2" fill="#233545" points="290.626026 0 0 476.378133 0 636 97.3836812 636 388 159.636 388 0"></polygon>
+                                <polygon id="Fill-3" fill="#233545" points="226.333333 636 388 636 388 371"></polygon>
+                                <polygon id="Fill-4" fill="#233545" points="0 0 0 272.95 166.516667 0"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/dots/small" transform="translate(0.000000, 419.000000)">
+            <g id="pattern/tile">
+                <g id="Group-2">
+                    <mask id="mask-6" fill="white">
+                        <use xlink:href="#path-5"></use>
+                    </mask>
+                    <use id="Mask" fill="#FFFFFF" xlink:href="#path-5"></use>
+                    <g id="pattern/elements/dots/small/black" mask="url(#mask-6)">
+                        <g transform="translate(11.212500, 11.483333)">
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 70.209302)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(-3.767442, 139.139535)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(65.000000, 139.139535)">
+                                <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 139.139535)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(-3.767442, 70.209302)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(65.000000, 70.209302)">
+                                <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                            </g>
+                            <g id="pattern/elements/dots/small/icon-group/none">
+                                <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                    <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                    <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                    <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/icon/small/icon/eye" transform="translate(205.000000, 419.000000)">
+            <g id="pattern/artwork/tile/dots/small" fill-rule="evenodd" stroke-width="1">
+                <g id="pattern/tile">
+                    <g id="Group-2">
+                        <mask id="mask-8" fill="white">
+                            <use xlink:href="#path-7"></use>
+                        </mask>
+                        <use id="Mask" fill="#FFFFFF" xlink:href="#path-7"></use>
+                        <g id="pattern/elements/dots/small/black" mask="url(#mask-8)">
+                            <g transform="translate(11.212500, 11.483333)">
+                                <g id="pattern/elements/dot/black" transform="translate(-3.767442, 139.139535)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(65.000000, 139.139535)">
+                                    <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 139.139535)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dots/small/icon-group/none">
+                                    <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                        <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/dot/icon/eye" transform="translate(52.431250, 55.883333)" fill-rule="evenodd" stroke-width="1">
+                <g id="eye" transform="translate(0.000000, 16.320000)">
+                    <g>
+                        <path d="M51.4761574,0 C85.5927377,0 102.952315,34.4361111 102.952315,34.4361111 C102.952315,34.4361111 85.5927377,65.8777778 51.4761574,65.8777778 C17.3595771,65.8777778 0,34.4361111 0,34.4361111 C0,34.4361111 17.3595771,0 51.4761574,0 Z" id="Shape" fill="#4EBFAE"></path>
+                        <ellipse id="Oval" fill="#233545" cx="51.4761574" cy="32.9388889" rx="18.1680556" ry="17.9666667"></ellipse>
+                        <ellipse id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="51.4761574" cy="32.9388889" rx="9.08402778" ry="8.98333333"></ellipse>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/line/green" transform="translate(17.250000, 107.766667) rotate(-180.000000) translate(-17.250000, -107.766667) translate(-9.750000, 106.766667)" stroke="#4EBFAE" stroke-dasharray="3,11" stroke-linecap="square" stroke-width="6">
+                <path d="M0,1 L52.5405405,1" id="Line"></path>
+            </g>
+            <g id="pattern/elements/line/green" transform="translate(181.125000, 107.766667) rotate(-180.000000) translate(-181.125000, -107.766667) translate(154.125000, 106.766667)" stroke="#4EBFAE" stroke-dasharray="3,11" stroke-linecap="square" stroke-width="6">
+                <path d="M0,1 L52.5405405,1" id="Line"></path>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/icon/small/icon/flag" transform="translate(0.000000, 209.000000)">
+            <g id="pattern/tile" stroke-width="1" fill-rule="evenodd">
+                <g id="Group-2">
+                    <mask id="mask-10" fill="white">
+                        <use xlink:href="#path-9"></use>
+                    </mask>
+                    <use id="Mask" fill="#FFFFFF" xlink:href="#path-9"></use>
+                    <g id="pattern/elements/dots/small/black" mask="url(#mask-10)">
+                        <g transform="translate(11.212500, 11.483333)">
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 70.209302)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(65.000000, 139.139535)">
+                                <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 139.139535)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dots/small/icon-group/none">
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                    <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/dot/icon/flag" transform="translate(6.275000, 18.500000)" fill-rule="evenodd" stroke-width="1">
+                <g id="flag-2" transform="translate(20.000000, 4.880000)">
+                    <g id="flag">
+                        <polygon id="Shape" fill="#4EBFAE" points="72.9230769 54.4884558 100 79.5103448 28.9230769 79.5103448 28.9230769 63.8716642 12 63.8716642 12 7.57241379 59.3846154 7.57241379 59.3846154 29.4665667 100 29.4665667"></polygon>
+                        <polygon id="Path" fill="#233545" points="0 0 12 0 12 109.8 0 109.8"></polygon>
+                        <polygon id="Path" fill="#233545" points="56 60.5793103 28 75.7241379 28 60.5793103"></polygon>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/line/green" transform="translate(24.500000, 177.135922) rotate(-90.000000) translate(-24.500000, -177.135922) translate(8.000000, 176.271845)" stroke="#4EBFAE" stroke-dasharray="3,11" stroke-linecap="square" stroke-width="6">
+                <path d="M0,1 L32.1081081,1" id="Line"></path>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/icon/small/icon/heart" transform="translate(205.000000, 209.000000)">
+            <g id="pattern/artwork/tile/dots/small" fill-rule="evenodd" stroke-width="1">
+                <g id="pattern/tile">
+                    <g id="Group-2">
+                        <mask id="mask-12" fill="white">
+                            <use xlink:href="#path-11"></use>
+                        </mask>
+                        <use id="Mask" fill="#4EBFAE" xlink:href="#path-11"></use>
+                        <g id="pattern/elements/dots/small/black" mask="url(#mask-12)">
+                            <g transform="translate(11.212500, 11.483333)">
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 70.209302)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(-3.767442, 139.139535)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 139.139535)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(-3.767442, 70.209302)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dots/small/icon-group/none">
+                                    <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                        <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/line/green" transform="translate(103.786118, 181.525000) rotate(-270.000000) translate(-103.786118, -181.525000) translate(82.286118, 169.193269)" stroke="#FFFFFF" stroke-dasharray="3,11" stroke-linecap="square" stroke-width="6">
+                <path d="M0,12.5 L41.8378378,12.5" id="Line"></path>
+            </g>
+            <g id="pattern/elements/dot/icon/heart" transform="translate(73.312500, 78.616667)" fill="#FFFFFF" fill-rule="evenodd">
+                <path d="M30.6,59.52 C30.6,59.52 0.6,51.637785 0.6,21.164165 C0.6,11.8292125 8.27470588,2.48 17.7423529,2.48 C22.7171934,2.68376257 27.380222,4.98254501 30.6,8.81857 C33.819778,4.98254501 38.4828066,2.68376257 43.4576471,2.48 C52.9252941,2.48 60.6,11.8292125 60.6,21.164165 C60.6,51.5397475 30.6,59.52 30.6,59.52 Z" id="Shape"></path>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/icon/small/icon/cog" transform="translate(0.000000, -1.000000)">
+            <g id="pattern/artwork/tile/dots/small" fill-rule="evenodd" stroke-width="1">
+                <g id="pattern/tile">
+                    <g id="Group-2">
+                        <mask id="mask-14" fill="white">
+                            <use xlink:href="#path-13"></use>
+                        </mask>
+                        <use id="Mask" fill="#4EBFAE" xlink:href="#path-13"></use>
+                        <g id="pattern/elements/dots/small/black" mask="url(#mask-14)">
+                            <g transform="translate(11.212500, 11.483333)">
+                                <g id="pattern/elements/dot/black" transform="translate(-3.767442, 139.139535)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(65.000000, 139.139535)">
+                                    <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 139.139535)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dots/small/icon-group/none">
+                                    <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                        <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/dot/icon/cog" transform="translate(56.431250, 59.883333)" fill-rule="evenodd" stroke-width="1">
+                <g id="cog" transform="translate(5.700000, 4.700000)">
+                    <g transform="translate(0.000000, 0.940000)" id="Shape">
+                        <path d="M31.065,14.3867 L35.625,0 L49.875,0 L54.435,14.3867 L31.065,14.3867 Z M30.84175,70.5 L35.4445,84.6 L50.057875,84.6 L54.660625,70.5 L30.84175,70.5 Z M70.96025,30.738 L85.5,35.25 L85.5,49.35 L70.96025,53.862 L70.96025,30.738 Z M14.25,30.5171 L0,35.0714 L0,49.53095 L14.25,54.08525 L14.25,30.5171 Z M54.435,14.3867 L67.93925,7.40485 L78.016375,17.3759 L70.96025,30.738 L54.435,14.3867 Z M14.171625,53.9137 L7.3625,67.09955 L17.686625,77.315 L31.01275,70.5705 L14.171625,53.9137 Z M70.96025,53.862 L78.016375,67.2241 L67.93925,77.19515 L54.435,70.2133 L70.96025,53.862 Z M31.01275,14.02245 L17.686625,7.285 L7.3625,17.50045 L14.17875,30.6863 L31.01275,14.02245 Z" fill="#233545"></path>
+                        <path d="M42.75,72.85 C25.6982083,72.85 11.875,59.1722991 11.875,42.3 C11.875,25.4277009 25.6982083,11.75 42.75,11.75 C59.8017917,11.75 73.625,25.4277009 73.625,42.3 C73.625,59.1722991 59.8017917,72.85 42.75,72.85 Z M42.75,30.84375 C36.3555781,30.84375 31.171875,35.9728878 31.171875,42.3 C31.171875,48.6271122 36.3555781,53.75625 42.75,53.75625 C49.1444219,53.75625 54.328125,48.6271122 54.328125,42.3 C54.328125,35.9728878 49.1444219,30.84375 42.75,30.84375 Z" fill="#FFFFFF"></path>
+                        <path d="M42.75,58.75 C36.0258152,58.75 29.9637369,54.7420862 27.3905028,48.5951425 C24.8172686,42.4481988 26.2396331,35.3727605 30.9943498,30.6680934 C35.7490664,25.9634264 42.8997753,24.5560342 49.1121121,27.1021817 C55.3244488,29.6483291 59.375,35.6465961 59.375,42.3 C59.375,51.3850841 51.931734,58.75 42.75,58.75 L42.75,58.75 Z M42.75,35.25 C38.8149712,35.25 35.625,38.4063925 35.625,42.3 C35.625,46.1936075 38.8149712,49.35 42.75,49.35 C46.6850288,49.35 49.875,46.1936075 49.875,42.3 C49.875,38.4063925 46.6850288,35.25 42.75,35.25 Z" fill="#233545"></path>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/line/green" transform="translate(17.250000, 107.766667) rotate(-180.000000) translate(-17.250000, -107.766667) translate(-9.750000, 106.766667)" stroke="#FFFFFF" stroke-dasharray="3,11" stroke-linecap="square" stroke-width="6">
+                <path d="M0,1 L52.5405405,1" id="Line"></path>
+            </g>
+            <g id="pattern/elements/line/green" transform="translate(181.125000, 107.766667) rotate(-180.000000) translate(-181.125000, -107.766667) translate(154.125000, 106.766667)" stroke="#FFFFFF" stroke-dasharray="3,11" stroke-linecap="square" stroke-width="6">
+                <path d="M0,1 L52.5405405,1" id="Line"></path>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/dots/small" transform="translate(205.000000, -1.000000)">
+            <g id="pattern/tile">
+                <g id="Group-2">
+                    <mask id="mask-16" fill="white">
+                        <use xlink:href="#path-15"></use>
+                    </mask>
+                    <use id="Mask" fill="#4EBFAE" xlink:href="#path-15"></use>
+                    <g id="pattern/elements/dots/small/black" mask="url(#mask-16)">
+                        <g transform="translate(11.212500, 11.483333)">
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 70.209302)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(-3.767442, 139.139535)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(65.000000, 139.139535)">
+                                <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 139.139535)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(-3.767442, 70.209302)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(65.000000, 70.209302)">
+                                <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                            </g>
+                            <g id="pattern/elements/dots/small/icon-group/none">
+                                <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                    <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                    <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                    <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/icon/small/icon/lightbulb" transform="translate(411.000000, -1.000000)">
+            <g id="pattern/artwork/tile/dots/small" fill-rule="evenodd" stroke-width="1">
+                <g id="pattern/tile">
+                    <g id="Group-2">
+                        <mask id="mask-18" fill="white">
+                            <use xlink:href="#path-17"></use>
+                        </mask>
+                        <use id="Mask" fill="#4EBFAE" xlink:href="#path-17"></use>
+                        <g id="pattern/elements/dots/small/black" mask="url(#mask-18)">
+                            <g transform="translate(11.212500, 11.483333)">
+                                <g id="pattern/elements/dot/black" transform="translate(-3.767442, 70.209302)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dots/small/icon-group/none">
+                                    <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                        <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/dot/icon/" transform="translate(86.250000, 83.033333)" fill-rule="evenodd" stroke-width="1">
+                <g id="bulb" transform="translate(16.800000, 0.000000)">
+                    <g>
+                        <rect id="Rectangle-path" fill="#233545" x="22.5573694" y="92.8172043" width="28.1110075" height="14.9577573"></rect>
+                        <path d="M56.2905784,71.8763441 C50.9016982,75.4243241 50.6683769,83.0707296 50.6683769,89.8256528 L50.6683769,92.8172043 L22.5573694,92.8172043 L22.5573694,89.8256528 C22.5573694,83.0707296 22.2256595,75.244831 16.9351679,71.8763441 C6.27010686,64.3891514 -0.0846696025,51.6437096 0.0685634328,38.0478802 C0.310860034,16.8253321 16.6703942,-0.171880697 36.6128731,0.079109063 C56.5553521,-0.171880697 72.9148862,16.8253321 73.1571828,38.0478802 C73.3104159,51.6437096 66.9556394,64.3891514 56.2905784,71.8763441 Z" id="Shape" fill="#FFFFFF"></path>
+                        <path d="M42.2350746,64.7953418 L42.2350746,92.8172043 L30.9906716,92.8172043 L30.9906716,64.7953418 C24.2652799,62.2820487 19.7595137,55.5294883 19.7462687,47.9439324 L29.8662313,47.9439324 C29.8662313,51.9091842 32.8868058,55.1236559 36.6128731,55.1236559 C40.3389405,55.1236559 43.3595149,51.9091842 43.3595149,47.9439324 L53.4794776,47.9439324 C53.4662325,55.5294883 48.9604664,62.2820487 42.2350746,64.7953418 L42.2350746,64.7953418 Z" id="Shape" fill="#4EBFAE"></path>
+                    </g>
+                </g>
+            </g>
+            <g id="pattern/elements/line/green" transform="translate(41.500000, 173.955369) rotate(-360.000000) translate(-41.500000, -173.955369) translate(24.000000, 163.247276)" stroke="#FFFFFF" stroke-dasharray="3,11" stroke-linecap="square" stroke-width="6">
+                <path d="M0,10.5 L34.0540541,10.5" id="Line"></path>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/icon/small/icon/patreos" transform="translate(-2.000000, 629.000000)">
+            <g id="pattern/artwork/tile/dots/small">
+                <g id="pattern/tile">
+                    <g id="Group-2">
+                        <mask id="mask-20" fill="white">
+                            <use xlink:href="#path-19"></use>
+                        </mask>
+                        <use id="Mask" fill="#FFFFFF" xlink:href="#path-19"></use>
+                        <g id="pattern/elements/dots/small/black" mask="url(#mask-20)">
+                            <g transform="translate(11.212500, 11.483333)">
+                                <g id="pattern/elements/dot/black" transform="translate(-3.767442, 139.139535)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(-3.767442, 70.209302)">
+                                    <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                                <g id="pattern/elements/dots/small/icon-group/none">
+                                    <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                        <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                    </g>
+                                    <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                        <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Brand/Logomark/Regular_Filled" transform="translate(76.412500, 82.333333)">
+                <g id="Group-8" transform="translate(8.850000, 5.900000)">
+                    <path d="M69.3248664,43.1055493 C69.3430872,45.5439311 67.4936802,47.0369982 65.9358054,47.8497921 L40.0258874,61.4640906 C39.3972712,61.7909751 38.7231032,61.95 38.0580455,61.95 C36.5912745,61.95 35.1791657,61.1902144 34.4230043,59.8473374 C33.3388691,57.9036998 34.0859202,55.4741527 36.0902036,54.4237048 L57.4540425,43.2027312 L36.1813074,32.6452447 C34.1496929,31.638087 33.3388691,29.2262093 34.3774524,27.2560675 C35.4160356,25.2859257 37.9122794,24.5084706 39.943894,25.5156283 L65.8264809,38.3524717 C65.8447016,38.3613064 65.8629224,38.3701411 65.8720328,38.3789758 C68.1587379,39.5539932 69.315756,41.1354075 69.3248664,43.1055493" id="Fill-1" fill="#FFFFFF"></path>
+                    <path d="M81.7264997,-9.00000001e-05 C91.8012765,-9.00000001e-05 99.9954283,8.23491 99.9954283,18.35991 L99.9954283,65.33991 C99.9954283,75.46491 91.8012765,83.69991 81.7264997,83.69991 L45.8871604,83.69991 C42.0453122,83.69991 38.3646604,84.87891 35.2302854,87.11091 L15.9494015,103.78791 C14.1045979,105.38991 11.8120265,106.19991 9.52841045,106.19991 C7.42390152,106.19991 5.32834795,105.51591 3.59996402,104.12091 C1.30739259,102.28491 -8.95535716e-05,99.53091 -8.95535716e-05,96.56991 L-8.95535716e-05,18.35991 C-8.95535716e-05,8.23491 8.19406223,-9.00000001e-05 18.268839,-9.00000001e-05 L81.7264997,-9.00000001e-05 Z M65.8720328,38.3789758 C65.8629224,38.3701411 65.8447016,38.3613064 65.8264809,38.3524717 L39.943894,25.5156283 C37.9122794,24.5084706 35.4160356,25.2859257 34.3774524,27.2560675 C33.3388691,29.2262093 34.1496929,31.638087 36.1813074,32.6452447 L57.4540425,43.2027312 L36.0902036,54.4237048 C34.0859202,55.4741527 33.3388691,57.9036998 34.4230043,59.8473374 C35.1791657,61.1902144 36.5912745,61.95 38.0580455,61.95 C38.7231032,61.95 39.3972712,61.7909751 40.0258874,61.4640906 L65.9358054,47.8497921 C67.4936802,47.0369982 69.3430872,45.5439311 69.3248664,43.1055493 C69.315756,41.1354075 68.1587379,39.5539932 65.8720328,38.3789758 Z" id="Combined-Shape" fill="#4EBFAE"></path>
+                </g>
+            </g>
+        </g>
+        <g id="pattern/artwork/tile/dots/small" transform="translate(205.000000, 629.000000)">
+            <g id="pattern/tile">
+                <g id="Group-2">
+                    <mask id="mask-22" fill="white">
+                        <use xlink:href="#path-21"></use>
+                    </mask>
+                    <use id="Mask" fill="#4EBFAE" xlink:href="#path-21"></use>
+                    <g id="pattern/elements/dots/small/black" mask="url(#mask-22)">
+                        <g transform="translate(11.212500, 11.483333)">
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 70.209302)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(-3.767442, 139.139535)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(65.000000, 139.139535)">
+                                <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(134.767442, 139.139535)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(-3.767442, 70.209302)">
+                                <circle id="dot/r1" fill="#233545" cx="27" cy="27" r="20.25"></circle>
+                            </g>
+                            <g id="pattern/elements/dot/black" transform="translate(65.000000, 70.209302)">
+                                <ellipse id="dot/r1" fill="#233545" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                            </g>
+                            <g id="pattern/elements/dots/small/icon-group/none">
+                                <g id="pattern/elements/dot/black" transform="translate(65.000000, 3.000000)" fill="#233545">
+                                    <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(-3.837209, 3.000000)" fill="#233545">
+                                    <ellipse id="dot/r1" cx="27.5" cy="27" rx="20.625" ry="20.25"></ellipse>
+                                </g>
+                                <g id="pattern/elements/dot/black" transform="translate(134.767442, 3.000000)" fill="#233545">
+                                    <circle id="dot/r1" cx="27" cy="27" r="20.25"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
