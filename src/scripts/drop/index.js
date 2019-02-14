@@ -3,7 +3,7 @@ const csv = require('csvtojson');
 const fs = require("fs");
 const assert = require('assert');
 const accounts = JSON.parse(fs.readFileSync("accounts.json"));
-const dropResults = fs.readFileSync("airdrop_results_test.txt");
+const dropResults = fs.readFileSync("airdrop_results_2018-10-01-sorted.txt");
 const configModule = require("../../config/test_config.js");
 const util = require('util');
 const TransactionBuilder = require('../../utils/transaction_builder');
@@ -21,7 +21,7 @@ process.on('exit', function(code) {
 
 var config = configModule.config.development;
 config.eos.keyProvider = [
-  accounts.contracts[9].private_key, //patreosvault
+  accounts.users[9].private_key, //patreosvault
 ];
 
 const transaction_builder = new TransactionBuilder(config);
@@ -59,6 +59,8 @@ csv({
   handleDrops(jsonObj)
 })
 
+let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 async function handleDrops(dropResultsJson) {
   for (drop of dropResultsJson) {
     dropped++
@@ -69,6 +71,7 @@ async function handleDrops(dropResultsJson) {
       continue;
     }
     await issuePatr(drop.account, drop.PATR)
+    await sleep(1000)
   }
 }
 
