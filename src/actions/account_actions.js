@@ -2,9 +2,21 @@
 
 import { ACCOUNT_ACTIONS } from '../constants/action_types'
 
+export function updateEosObj(eosObj) {
+  return (dispatch) => {
+   dispatch({ type: ACCOUNT_ACTIONS.UPDATE_EOS_OBJ, data: eosObj });
+  };
+}
+
 export function updateEosAccountStr(eosAccountStr) {
   return (dispatch) => {
    dispatch({ type: ACCOUNT_ACTIONS.UPDATE_EOS_ACCOUNT_STR, data: eosAccountStr });
+  };
+}
+
+export function updateEosAccountAuthorityStr(eosAccountAuthorityStr) {
+  return (dispatch) => {
+   dispatch({ type: ACCOUNT_ACTIONS.UPDATE_EOS_ACCOUNT_AUTHORITY_STR, data: eosAccountAuthorityStr });
   };
 }
 
@@ -17,6 +29,18 @@ export function updateEosAccountInfoObj(eosAccountInfoObj) {
 export function updateEosBalanceAmt(eosBalanceAmt) {
   return (dispatch) => {
    dispatch({ type: ACCOUNT_ACTIONS.UPDATE_EOS_BALANCE_AMT, data: eosBalanceAmt });
+  };
+}
+
+export function updateScatterObj(scatterObj) {
+  return (dispatch) => {
+   dispatch({ type: ACCOUNT_ACTIONS.UPDATE_SCATTER_OBJ, data: scatterObj });
+  };
+}
+
+export function updateScatterEosObj(scatterEosObj) {
+  return (dispatch) => {
+   dispatch({ type: ACCOUNT_ACTIONS.UPDATE_SCATTER_EOS_OBJ, data: scatterEosObj });
   };
 }
 

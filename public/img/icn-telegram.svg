@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>Path</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Wireframes/Post-Drop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="section/missed-airdrop" transform="translate(-1162.000000, -75.000000)">
+            <rect fill="#FFFFFF" x="0" y="0" width="1440" height="195"></rect>
+            <rect id="Rectangle" fill="#4EBFAE" x="0" y="0" width="1442" height="195"></rect>
+            <g id="telegram-plane-brands" opacity="0.800000012" transform="translate(1162.000000, 75.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M43.8746274,7.41219982 L37.23475,39.2189336 C36.7338125,41.4637627 35.4274461,42.0224757 33.5710306,40.9649118 L23.4540576,33.392355 L18.5723726,38.1613697 C18.0321459,38.7101057 17.5803199,39.1690485 16.5391557,39.1690485 L17.2660062,28.7031565 L36.0167843,11.4928002 C36.8320355,10.7545009 35.8399828,10.3454431 34.7497071,11.0837425 L11.5690699,25.9095914 L1.58960919,22.7368997 C-0.581119971,22.0484854 -0.620409186,20.5319787 2.04143517,19.4744147 L41.0752708,4.19959998 C42.8825747,3.51118573 44.4639656,4.60865772 43.8746274,7.41219982 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

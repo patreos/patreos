@@ -4,19 +4,31 @@ import { ACCOUNT_ACTIONS } from '../constants/action_types'
 
 export default (
   state = {
+    eosObj: {},
     eosAccountStr: '',
+    eosAccountAuthorityStr: '',
     eosAccountInfoObj: {},
     eosBalanceAmt: '0.0000',
+    scatterObj: {},
+    scatterEosObj: {},
     scatterDetectionStr: '',
     emailAddressStr: '',
   }, action) => {
   switch (action.type) {
+  case ACCOUNT_ACTIONS.UPDATE_EOS_OBJ:
+    return { ...state, eosObj: action.data };
   case ACCOUNT_ACTIONS.UPDATE_EOS_ACCOUNT_STR:
     return { ...state, eosAccountStr: action.data };
+  case ACCOUNT_ACTIONS.UPDATE_EOS_ACCOUNT_AUTHORITY_STR:
+    return { ...state, eosAccountAuthorityStr: action.data };
   case ACCOUNT_ACTIONS.UPDATE_EOS_ACCOUNT_INFO_OBJ:
     return { ...state, eosAccountInfoObj: action.data };
   case ACCOUNT_ACTIONS.UPDATE_EOS_BALANCE_AMT:
     return { ...state, eosBalanceAmt: action.data };
+  case ACCOUNT_ACTIONS.UPDATE_SCATTER_OBJ:
+    return { ...state, scatterObj: action.data };
+  case ACCOUNT_ACTIONS.UPDATE_SCATTER_EOS_OBJ:
+    return { ...state, scatterEosObj: action.data };
   case ACCOUNT_ACTIONS.UPDATE_SCATTER_DETECTION_STR:
     return { ...state, scatterDetectionStr: action.data };
   case ACCOUNT_ACTIONS.UPDATE_EMAIL_ADDRESS_STR:
