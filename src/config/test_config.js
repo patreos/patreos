@@ -62,7 +62,7 @@ const config = {
     systemSymbol: 'EOS',
     updateInterval: 3000
   },
-  mainnet: {
+  production: {
     env: 'mainnet',
     requiredFields: {
       accounts:[

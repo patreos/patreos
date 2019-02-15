@@ -19,7 +19,7 @@ process.on('exit', function(code) {
     return console.log(`Exiting with code ${code}`);
 });
 
-var config = configModule.config.development;
+var config = configModule.config.production;
 config.eos.keyProvider = [
   accounts.users[9].private_key, //patreosvault
 ];
@@ -30,7 +30,7 @@ eos = Eos(config.eos);
 
 let dropped = 0;
 let skipUntil = 0;
-let stopAt = 22836;
+let stopAt = 0;
 
 function buildIssuePatr(to, quantity, memo) {
   return {
@@ -70,8 +70,9 @@ async function handleDrops(dropResultsJson) {
     if(stopAt > 0 && dropped >= stopAt) {
       continue;
     }
+
     await issuePatr(drop.account, drop.PATR)
-    await sleep(1000)
+    await sleep(100)
   }
 }
 
