@@ -64,7 +64,7 @@ class ManagePatr extends React.Component {
 
   render() {
     return (
-      <PatreosStake connectScatter={this.connectScatter} disconnectScatter={this.disconnectScatter} eos={this.eos} scatterEos={ this.props.accountReducer.scatterEosObj } scatterDetectionStr={ this.props.accountReducer.scatterDetectionStr } config={ this.props.config } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } scatterIdentity={ScatterJS.identity} />
+      <PatreosStake connectScatter={this.connectScatter} disconnectScatter={this.disconnectScatter} eos={this.eos} scatterEos={ this.props.accountReducer.scatterEosObj } scatterDetectionStr={ this.props.accountReducer.scatterDetectionStr } config={ this.props.config } eosAccountStr={ this.props.accountReducer.eosAccountStr } eosAccountAuthorityStr={ this.props.accountReducer.eosAccountAuthorityStr } eosBalanceAmt={ this.props.accountReducer.eosBalanceAmt } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } scatterIdentity={ScatterJS.identity} />
     );
   }
 

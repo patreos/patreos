@@ -36,10 +36,7 @@ class Home extends React.Component {
             <div className="row text-light">
               <div className="col-md-9">
                 <h4 className="mb-3">Bummed you missed our airdrop? Stay in the loop! </h4>
-
                 <p className="lead mb-3">Join the community and we’ll keep you posted about new opportunities to earn PATR.</p>
-
-
                 <div className="patreos-email-signup mb-4">
                   <form action="https://patreos.us20.list-manage.com/subscribe/post?u=663c52e28e14a6699086b4828&amp;id=00065a0223" method="post" target="_blank">
                     <div className="row">
@@ -55,10 +52,8 @@ class Home extends React.Component {
                     <div className="mailchimp" aria-hidden="true"><input type="text" name="b_97f1bc02efa56031b67a2b00f_fc7b4ce646" tabIndex="-1" readOnly="" /></div>
                   </form>
                 </div>
-
                 <p className="lead mb-1">Don't forget to checkout our whitepaper!</p>
                 <a href="/whitepaper" className="btn btn-whitepaper btn-lg" role="button">Read the Whitepaper</a>
-
               </div>
             </div>
           </div>

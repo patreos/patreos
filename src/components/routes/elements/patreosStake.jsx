@@ -227,7 +227,7 @@ class PatreosStake extends React.Component {
       });
       return
     }
-    const transaction = this.transactionBuilder.stake(this.props.eosAccountStr, amt);
+    const transaction = this.transactionBuilder.stake(this.props.eosAccountStr, amt, this.props.eosAccountAuthorityStr);
     this.props.scatterEos.transaction(transaction).then((response) => {
       let ret = response.processed.receipt.status;
       if(ret == 'executed') {
@@ -239,6 +239,7 @@ class PatreosStake extends React.Component {
         });
       }
     }).catch(err => {
+      console.log(err);
       toast.error(JSON.parse(err).error.details[0].message, {
         position: toast.POSITION.BOTTOM_CENTER,
         autoClose: 4000,
@@ -261,7 +262,7 @@ class PatreosStake extends React.Component {
         bodyClassName: css({ fontFamily: 'Proxima Nova', fontWeight: 'normal', fontSize: '.9em' })
       });
     }
-    const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, amt);
+    const transaction = this.transactionBuilder.unstake(this.props.eosAccountStr, amt, this.props.eosAccountAuthorityStr);
     this.props.scatterEos.transaction(transaction).then((response) => {
       let ret = response.processed.receipt.status;
       if(ret == 'executed') {
@@ -273,6 +274,7 @@ class PatreosStake extends React.Component {
         });
       }
     }).catch(err => {
+      console.log(err);
       toast.error(JSON.parse(err).error.details[0].message, {
         position: toast.POSITION.BOTTOM_CENTER,
         autoClose: 4000,
