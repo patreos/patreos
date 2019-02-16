@@ -6,6 +6,17 @@ import logo from '../../../public/img/patreos-logo.svg';
 import hero from '../../../public/img/hero.svg';
 import icnPatreos from '../../../public/img/icn-patreos.svg';
 
+import britt from '../../../public/img/headshot-britt.png';
+import britt2 from '../../../public/img/headshot-britt@2x.jpg';
+import jordan from '../../../public/img/headshot-jordan.jpg';
+import jordan2 from '../../../public/img/headshot-jordan@2x.jpg';
+import kat from '../../../public/img/headshot-kat.jpg';
+import kat2 from '../../../public/img/headshot-kat@2x.jpg';
+import mike from '../../../public/img/headshot-mike.jpg';
+import mike2 from '../../../public/img/headshot-mike@2x.jpg';
+
+
+
 class Home extends React.Component {
 
   constructor(props) {
@@ -90,6 +101,67 @@ class Home extends React.Component {
                   <h5 className="card-title">Tell Your Story</h5>
                   <h6>Your story. Not Ours.</h6>
                   <p className="card-text">Patreos places a premium on creativity. Your work remains your work: unaltered, uncensored and undeniably yours.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="container patr-team">
+          <div className="row">
+            <div className="col-lg-6 offset-lg-3">
+              <h2 className="text-center">Meet Our Team</h2>
+              <p className="text-center mb-5 lead">Say Hi! To the people who make Patreos possible.</p>
+            </div>
+          </div>
+          <div className="row d-flex justify-content-center">
+            <div className="mx-3 patr-headshot border rounded mb-5">
+              <div className="overlay rounded"></div>
+              <img src={ britt } srcSet={`${ britt } 1x, ${ britt2 } 2x`} className="image-fluid rounded" />
+              <div className="info rounded">
+                <i className="fas fa-ellipsis-h viewinfo"></i>
+                <div className="name">Britt Kim</div>
+                <div className="title">@okayplanet</div>
+                <div className="bio mt-2">
+                  Britt is a Y Combinator alumnus and co-founder of DataRank (acquired by Simply Measured, Inc in 2015). He is a computer programmer and has been working with blockchain technologies since 2013.
+                </div>
+              </div>
+            </div>
+            <div className="mx-3 patr-headshot border rounded mb-5">
+              <div className="overlay rounded"></div>
+              <img src={ jordan } srcSet={`${ jordan } 1x, ${ jordan2 } 2x`} className="image-fluid rounded" />
+              <div className="info rounded">
+                <i className="fas fa-ellipsis-h viewinfo"></i>
+                <div className="name">Jordan Carsile</div>
+                <div className="title">@jordantcarlisle</div>
+                <div className="bio mt-2">
+                  Jordan Carlisle is a startup strategist and entrepreneurial community builder. In 2015 he co-founded Strengthen Labs, a company that uses evidence based practices to build behavioral change software. He began investing in and promoting crypto in 2013.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row d-flex justify-content-center">
+            <div className="mx-3 patr-headshot border rounded mb-5">
+              <div className="overlay rounded"></div>
+              <img src={ kat } srcSet={`${ kat } 1x, ${ kat2 } 2x`} className="image-fluid rounded" />
+              <div className="info rounded">
+                <i className="fas fa-ellipsis-h viewinfo"></i>
+                <div className="name">Kathryn Gadberry</div>
+                <div className="title">@kgadberry91</div>
+                <div className="bio mt-2">
+                  Kat is the founder of Distributed Tech Partners, a blockchain and cryptocurrency consultancy. She is also finishing up a Master's Degree in Digital Currency from the University of Nicosia, while maintaining her current job in the data science field.
+                </div>
+              </div>
+            </div>
+            <div className="mx-3 patr-headshot border rounded mb-5">
+              <div className="overlay rounded"></div>
+              <img src={ mike } srcSet={`${ mike } 1x, ${ mike2 } 2x`} className="image-fluid rounded" />
+              <div className="info rounded">
+                <i className="fas fa-ellipsis-h viewinfo"></i>
+                <div className="name">Michael Oh</div>
+                <div className="title">@michaeloh2014</div>
+                <div className="bio mt-2">
+                  Before geeking out on crypto economics and designing tokens for cool projects (see Bucket Technologies), Michael was an international economist with the U.S. Treasury. He received his A.B. from Harvard and M.B.A. from MIT Sloan.
                 </div>
               </div>
             </div>

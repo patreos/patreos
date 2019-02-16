@@ -217,3 +217,58 @@ fieldset[disabled] .btn-patreos-signup.active {
        -moz-border-radius: 8px;
             border-radius: 8px;
 }
+
+.patr-headshot {
+  position: relative;
+  max-width: 350px;
+}
+
+.patr-headshot:hover .info {
+  height: 240px;
+}
+
+.patr-headshot:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.patr-headshot .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 100;
+}
+
+.patr-headshot .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1em;
+  height: 95px;
+  overflow: hidden;
+  transition: .5s ease;
+  z-index: 200;
+  background-color: #ffffff;
+}
+
+.patr-headshot img {
+  width: 100%;
+}
+
+.patr-headshot .viewinfo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.patr-headshot .name {
+  font-size: 1.75em;
+}
+
+.patr-headshot .viewinfo, .patr-headshot .title, .patr-headshot .bio {
+  color: #72808A;
+}
