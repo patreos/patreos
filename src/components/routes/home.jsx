@@ -15,8 +15,6 @@ import kat2 from '../../../public/img/headshot-kat@2x.jpg';
 import mike from '../../../public/img/headshot-mike.jpg';
 import mike2 from '../../../public/img/headshot-mike@2x.jpg';
 
-
-
 class Home extends React.Component {
 
   constructor(props) {
@@ -106,7 +104,6 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-
         <div className="container patr-team">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -167,7 +164,6 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-
         <div className="container-fluid footer">
           <div className="row mt-5 py-5 mb-0">
             <div className="col text-center">

@@ -4,8 +4,12 @@ import { bindActionCreators } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import config from 'react-global-configuration';
 
-import '../styles/custom.css';
-import '../styles/index.scss';
+//import '../styles/custom.css';
+//import '../styles/index.scss';
+
+import '../../public/styles/style.css';
+import '../../public/fonts/ridley_grotesk/stylesheet.css';
+import '../../public/fonts/proxima_nova/stylesheet.css';
 
 import Home from './routes/home';
 import Account from './routes/account';
