@@ -132,7 +132,7 @@ class Home extends React.Component {
                 <div className="name">Jordan Carsile</div>
                 <div className="title">@jordantcarlisle</div>
                 <div className="bio mt-2">
-                  Jordan Carlisle is a startup strategist and entrepreneurial community builder. In 2015 he co-founded Strengthen Labs, a company that uses evidence based practices to build behavioral change software. He began investing in and promoting crypto in 2013.
+                  Jordan Carlisle is a startup strategist and entrepreneurial community builder. In 2015 he co-founded Strengthen Labs, which uses evidence based practices to build behavioral change software. He leaped into crypto in 2013.
                 </div>
               </div>
             </div>
