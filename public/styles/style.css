@@ -220,6 +220,7 @@ fieldset[disabled] .btn-patreos-signup.active {
 
 .patr-headshot {
   position: relative;
+  cursor: pointer;
   max-width: 350px;
 }
 
@@ -227,15 +228,7 @@ fieldset[disabled] .btn-patreos-signup.active {
   height: 240px;
 }
 
-.patr-headshot:active .info {
-  height: 240px;
-}
-
 .patr-headshot:hover .overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.patr-headshot:active .overlay {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
