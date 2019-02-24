@@ -38,6 +38,19 @@ function combineIds(name1, name2) {
 
 describe('Tests for recurringpay', function() {
 
+  it('xokayplanetx Transfers PATR to testplanet1x', function(done) {
+    let tx = transaction_builder.transfer('xokayplanetx', 'testplanet1x', '16.0000','Xfer','patreostoken', 'PATR');
+    eos.transaction(tx).then((response) => {
+      let depositBalanceIntoVault = response.processed.receipt.status;
+      assert.equal('executed', depositBalanceIntoVault);
+      done();
+    }).catch(err => {
+      console.log(err)
+      assert.fail(0, 1, 'Transaction was not successful');
+      done();
+    });
+  });
+
   it('xokayplanetx Deposits PATR into recurringpay', function(done) {
     let tx = transaction_builder.transfer('xokayplanetx', 'recurringpay', '15.0000','Deposit <3','patreostoken', 'PATR');
     eos.transaction(tx).then((response) => {
