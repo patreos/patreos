@@ -15,15 +15,19 @@ process.on('unhandledRejection', (reason, promise) => {
 
 var config = configModule.config.development;
 config.eos.keyProvider = [
+  accounts.contracts[0].private_key, //patreostoken
   accounts.contracts[1].private_key, //patreosnexus
+  accounts.contracts[3].private_key, //patreosmoney
   accounts.users[0].private_key, //xokayplanetx
-  accounts.users[1].private_key, //testairdropx
   accounts.users[2].private_key, //testplanet1x
-  accounts.users[3].private_key //testplanet2x
+  accounts.users[3].private_key, //testplanet2x
+  accounts.users[4].private_key, //testplanet3x
+  accounts.users[9].private_key //patreosvault
 ];
 const messages = messagesModule.messages;
 
 eos = Eos(config.eos);
+//console.log(config.eos.keyProvider)
 
 const transaction_builder = new TransactionBuilder(config);
 

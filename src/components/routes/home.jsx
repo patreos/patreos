@@ -62,7 +62,7 @@ class Home extends React.Component {
                   </form>
                 </div>
                 <p className="lead mb-1">Don't forget to checkout our whitepaper!</p>
-                <a href="/whitepaper" className="btn btn-whitepaper btn-lg" role="button">Read the Whitepaper</a>
+                <a href="/whitepaper/patreos_whitepaper_1_30_19.pdf" className="btn btn-whitepaper btn-lg" role="button">Read the Whitepaper</a>
               </div>
             </div>
           </div>
@@ -171,6 +171,8 @@ class Home extends React.Component {
               <ul className="list-inline">
                 <li className="list-inline-item"><a href="mailto:hello@patreos.com">Contact</a></li>
                 <li className="list-inline-item"><a href="mailto:press@patreos.com">Press</a></li>
+                <li className="list-inline-item"><a href="/faq">FAQ</a></li>
+                <li className="list-inline-item"><a href="/news">News</a></li>
                 <li className="list-inline-item"><a href="https://t.me/patreos">Telegram</a></li>
                 <li className="list-inline-item"><a href="https://twitter.com/PatreosDapp">Twitter</a></li>
               </ul>

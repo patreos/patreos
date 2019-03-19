@@ -12,6 +12,8 @@ import '../../public/fonts/ridley_grotesk/stylesheet.css';
 import '../../public/fonts/proxima_nova/stylesheet.css';
 
 import Home from './routes/home';
+import Faq from './routes/faq';
+import News from './routes/news';
 import Account from './routes/account';
 import Pledge from './routes/pledge';
 import Balance from './routes/balance';
@@ -44,6 +46,20 @@ class App extends React.Component {
                   render={
                     (props) => {
                       return <ManagePatr {...props} config={ this.config } />
+                    }
+                  }
+                />
+                <Route exact path='/faq'
+                  render={
+                    (props) => {
+                      return <Faq {...props} config={ this.config } />
+                    }
+                  }
+                />
+                <Route exact path='/news'
+                  render={
+                    (props) => {
+                      return <News {...props} config={ this.config } />
                     }
                   }
                 />
