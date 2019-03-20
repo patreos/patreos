@@ -10,11 +10,7 @@ import TransactionBuilder from '../../utils/transaction_builder'
 import EosReader from '../../utils/eos_reader'
 import ScatterHelper from '../../utils/scatter'
 
-import ScatterJS from 'scatterjs-core';
-import ScatterEOS from 'scatterjs-plugin-eosjs';
 import Eos from 'eosjs';
-
-ScatterJS.plugins( new ScatterEOS() );
 
 import Sidebar from '../sidebar';
 import Menu from '../menu';
@@ -32,7 +28,7 @@ class Pledge extends React.Component {
   }
 
   accountInfoUpdate() {
-    if(Object.keys(this.props.accountReducer.scatterEosObj).length > 0 && ScatterJS.identity) {
+    if(Object.keys(this.props.accountReducer.scatterEosObj).length > 0 && this.scatterHelper.getScatterIdentity()) {
       this.getEOSBalance();
       this.getPATRBalance();
       this.getEosAccountInfo();
@@ -44,11 +40,11 @@ class Pledge extends React.Component {
     this.props.accountActions.updateEosBalanceAmt('0.0000 EOS')
     this.props.patreosActions.updateBalanceAmt('0.0000 PATR')
 
-    this.scatterHelper.recoverScatter();
+    this.scatterHelper.recoverScatter( () => { this.accountInfoUpdate() } );
   }
 
   componentDidMount() {
-
+    this.interval = setInterval(() => this.accountInfoUpdate(), this.props.config.updateInterval);
   }
 
   componentDidUpdate(prevProps) {
@@ -63,7 +59,6 @@ class Pledge extends React.Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
 
   render() {
     return (

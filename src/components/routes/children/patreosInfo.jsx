@@ -27,11 +27,10 @@ class PatreosInfo extends React.Component {
   componentDidUpdate(prevProps) {
     // This means we got all info from app.js
     if (prevProps.scatterEos !== this.props.scatterEos) {
-      console.log("ScatterEos set")
       this.updatePatreosInfo();
     }
     if (prevProps.patreosReducer.pledgesGivenArr !== this.props.patreosReducer.pledgesGivenArr) {
-      console.log("pledgesGivenArr set")
+      console.log("why is this pledgesGivenArr set")
       this.updatePledgeDom(this.props.patreosReducer.pledgesGivenArr);
     }
   }
