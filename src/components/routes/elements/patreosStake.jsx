@@ -25,11 +25,14 @@ class PatreosStake extends React.Component {
     this.config = this.props.config;
     this.transactionBuilder = new TransactionBuilder(this.config);
     this.eosReader = new EosReader(this.props.eos);
+    this.scatterHelper = this.props.scatterHelper;
   }
 
   updatePatreosTokenInfo() {
-    if(Object.keys(this.props.scatterEos).length > 0 && this.props.scatterIdentity) {
-      this.getStakedBalanceAmt();
+    if(Object.keys(this.props.scatterEos).length > 0 && this.scatterHelper.getScatterIdentity()) {
+      if(this.props.eosAccountStr) {
+        this.getStakedBalanceAmt();
+      }
     }
   }
 
@@ -74,7 +77,7 @@ class PatreosStake extends React.Component {
             <div className="col">
               <h2>Account Overview</h2>
 
-              <button onClick={ () => this.props.disconnectScatter() } role="button" className="btn btn-primary btn-lg btn-block">Disconnect Scatter Desktop</button>
+              <button onClick={ () => this.scatterHelper.disconnectScatter() } role="button" className="btn btn-primary btn-lg btn-block">Disconnect Scatter Desktop</button>
 
               <div className="d-flex flex-row my-3">
                 <div>
@@ -129,7 +132,7 @@ class PatreosStake extends React.Component {
           </a>
           <h2>Account Overview</h2>
           <p className="lead">Got some PATR from the Airdrop? Connect your Scatter Desktop wallet to check your balance and earn even more.</p>
-          <button onClick={ () => this.props.connectScatter() } role="button" className="btn btn-primary btn-lg btn-block">Connect Scatter Desktop</button>
+          <button onClick={ () => this.scatterHelper.connectScatter( () => { this.updatePatreosTokenInfo() } ) } role="button" className="btn btn-primary btn-lg btn-block">Connect Scatter Desktop</button>
         </div>
       );
     }

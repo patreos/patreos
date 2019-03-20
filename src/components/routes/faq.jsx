@@ -6,15 +6,6 @@ import logo from '../../../public/img/patreos-logo.svg';
 import hero from '../../../public/img/hero.svg';
 import icnPatreos from '../../../public/img/icn-patreos.svg';
 
-import britt from '../../../public/img/headshot-britt.png';
-import britt2 from '../../../public/img/headshot-britt@2x.jpg';
-import jordan from '../../../public/img/headshot-jordan.jpg';
-import jordan2 from '../../../public/img/headshot-jordan@2x.jpg';
-import kat from '../../../public/img/headshot-kat.jpg';
-import kat2 from '../../../public/img/headshot-kat@2x.jpg';
-import mike from '../../../public/img/headshot-mike.jpg';
-import mike2 from '../../../public/img/headshot-mike@2x.jpg';
-
 class Faq extends React.Component {
 
   constructor(props) {
