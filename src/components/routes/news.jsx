@@ -26,6 +26,14 @@ class News extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-6 pr-5 mb-5">
+              <h5 className="mb-4 mt-4">In the Eyes of a Blockchain Developer: Britt Kim From Patreos</h5>
+              <p className="lead mb-3 mt-3">As a heavy Patreon user, I started noticing issues with the platform in early 2018. I knew a content platform would be perfect for blockchain...</p>
+              <a href="https://www.dfuse.io/en/blog/in-the-eyes-of-a-blockchain-developer-britt-kim-from-patreos" className="btn btn-primary btn-md" target="_blank" role="button">Read more</a>
+            </div>
+          </div>
+          <hr/>
+          <div className="row">
+            <div className="col-md-6 pr-5 mb-5">
               <h5 className="mb-4 mt-4">How Blockchain Can — and Will — Liberate Content Creators</h5>
               <p className="lead mb-3 mt-3">Why do content creators agree to operate in such a cloud of uncertainty? Up until recently, they had little choice...</p>
               <a href="https://medium.com/@patreos/how-blockchain-can-and-will-liberate-content-creators-4740f216c4c1" className="btn btn-primary btn-md" target="_blank" role="button">Read more</a>
