@@ -11,14 +11,6 @@ export default (
     stakeAmt: '0.0000',
     unstakeAmt: '0.0000',
     followAccountStr: '',
-    creatorNameStr: '',
-    creatorDescriptionStr: '',
-    creatorBannerStr: '',
-    creatorImageStr: '',
-    publicationTitleStr: '',
-    publicationDescriptionStr: '',
-    publicationUrlStr: '',
-    publicationImageStr: '',
     pledgeTokenSymbolStr: '',
     pledgeTokenContractStr: '',
     pledgeToAccountStr: '',
@@ -42,22 +34,6 @@ export default (
     return { ...state, unstakeAmt: action.data };
   case PATREOS_ACTIONS.UPDATE_FOLLOW_ACCOUNT_STR:
     return { ...state, followAccountStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_CREATOR_NAME_STR:
-    return { ...state, creatorNameStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_CREATOR_DESCRIPTION_STR:
-    return { ...state, creatorDescriptionStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_CREATOR_BANNER_STR:
-    return { ...state, creatorBannerStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_CREATOR_IMAGE_STR:
-    return { ...state, creatorImageStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_PUBLICATION_TITLE_STR:
-    return { ...state, publicationTitleStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_PUBLICATION_DESCRIPTION_STR:
-    return { ...state, publicationDescriptionStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_PUBLICATION_URL_STR:
-    return { ...state, publicationUrlStr: action.data };
-  case PATREOS_ACTIONS.UPDATE_PUBLICATION_IMAGE_STR:
-    return { ...state, publicationImageStr: action.data };
   case PATREOS_ACTIONS.UPDATE_PLEDGE_TOKEN_SYMBOL_STR:
     return { ...state, pledgeTokenSymbolStr: action.data };
   case PATREOS_ACTIONS.UPDATE_PLEDGE_TOKEN_CONTRACT_STR:

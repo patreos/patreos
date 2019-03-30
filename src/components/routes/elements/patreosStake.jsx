@@ -18,6 +18,8 @@ import logo from '../../../../public/img/patreos-logo.svg';
 import hero from '../../../../public/img/hero.svg';
 import icnPatreos from '../../../../public/img/icn-patreos.svg';
 
+import Header from './header';
+
 class PatreosStake extends React.Component {
 
   constructor(props) {
@@ -28,7 +30,7 @@ class PatreosStake extends React.Component {
     this.scatterHelper = this.props.scatterHelper;
   }
 
-  updatePatreosTokenInfo() {
+  updateComponentData() {
     if(Object.keys(this.props.scatterEos).length > 0 && this.scatterHelper.getScatterIdentity()) {
       if(this.props.eosAccountStr) {
         this.getStakedBalanceAmt();
@@ -39,7 +41,7 @@ class PatreosStake extends React.Component {
   componentDidUpdate(prevProps) {
     // This means we got all info from app.js
     if (prevProps.scatterEos !== this.props.scatterEos) {
-      this.updatePatreosTokenInfo();
+      this.updateComponentData();
     }
   }
 
@@ -48,8 +50,8 @@ class PatreosStake extends React.Component {
   }
 
   componentDidMount() {
-    this.updatePatreosTokenInfo();
-    this.interval = setInterval(() => this.updatePatreosTokenInfo(), this.config.updateInterval);
+    this.updateComponentData();
+    this.interval = setInterval(() => this.updateComponentData(), this.config.updateInterval);
   }
 
   componentWillUnmount() {
@@ -69,15 +71,10 @@ class PatreosStake extends React.Component {
       conditionalDom = (
         <div className="col-md-6 pr-5 mb-5">
           <ToastContainer/>
-          <a href="/" className="d-inline-block">
-            <img src={ logo } className="my-5" />
-          </a>
           <div className="row">
 
             <div className="col">
               <h2>Account Overview</h2>
-
-              <button onClick={ () => this.scatterHelper.disconnectScatter() } role="button" className="btn btn-primary btn-lg btn-block">Disconnect Scatter Desktop</button>
 
               <div className="d-flex flex-row my-3">
                 <div>
@@ -127,12 +124,9 @@ class PatreosStake extends React.Component {
     } else {
       conditionalDom = (
         <div className="col-md-6 pr-5 mb-5">
-          <a href="/" className="d-inline-block">
-            <img src={ logo } className="my-5" />
-          </a>
           <h2>Account Overview</h2>
           <p className="lead">Got some PATR from the Airdrop? Connect your Scatter Desktop wallet to check your balance and earn even more.</p>
-          <button onClick={ () => this.scatterHelper.connectScatter( () => { this.updatePatreosTokenInfo() } ) } role="button" className="btn btn-primary btn-lg btn-block">Connect Scatter Desktop</button>
+          <button onClick={ () => this.scatterHelper.connectScatter( () => { this.updateComponentData() } ) } role="button" className="btn btn-primary btn-lg btn-block">Connect Scatter Desktop</button>
         </div>
       );
     }
@@ -140,6 +134,9 @@ class PatreosStake extends React.Component {
     return (
       <main role="main" className="token-mgmt">
         <div className="container">
+
+        <Header {...this.props} scatterDetectionStr={ this.props.scatterDetectionStr } parent={this} />
+
           <div className="row">
 
             {conditionalDom}

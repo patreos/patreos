@@ -18,6 +18,7 @@ import Account from './routes/account';
 import Pledge from './routes/pledge';
 import Balance from './routes/balance';
 import Billing from './routes/billing';
+import Profile from './routes/profile';
 import ManagePatr from './routes/patr';
 import PageNotFound from './routes/404';
 
@@ -92,6 +93,14 @@ class App extends React.Component {
                     (props) => {
                       if (this.env == 'production') return <PageNotFound />
                       return <Billing {...props} config={ this.config } />
+                    }
+                  }
+                />
+                <Route exact path='/profile'
+                  render={
+                    (props) => {
+                      if (this.env == 'production') return <PageNotFound />
+                      return <Profile {...props} config={ this.config } />
                     }
                   }
                 />

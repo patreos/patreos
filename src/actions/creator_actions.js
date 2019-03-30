@@ -2,6 +2,30 @@
 
 import { CREATOR_ACTIONS } from '../constants/action_types'
 
+export function updateCreatorCurrentNameStr(creatorCurrentNameStr) {
+  return (dispatch) => {
+   dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_CURRENT_NAME_STR, data: creatorCurrentNameStr });
+  };
+}
+
+export function updateCreatorCurrentDescriptionStr(creatorCurrentDescriptionStr) {
+  return (dispatch) => {
+   dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_CURRENT_DESCRIPTION_STR, data: creatorCurrentDescriptionStr });
+  };
+}
+
+export function updateCreatorCurrentBannerStr(creatorCurrentBannerStr) {
+  return (dispatch) => {
+   dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_CURRENT_BANNER_STR, data: creatorCurrentBannerStr });
+  };
+}
+
+export function updateCreatorCurrentImageStr(creatorCurrentImageStr) {
+  return (dispatch) => {
+   dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_CURRENT_IMAGE_STR, data: creatorCurrentImageStr });
+  };
+}
+
 export function updateCreatorNameStr(creatorNameStr) {
   return (dispatch) => {
    dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_NAME_STR, data: creatorNameStr });

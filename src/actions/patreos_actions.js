@@ -44,54 +44,6 @@ export function updateFollowAccountStr(followAccountStr) {
   };
 }
 
-export function updateCreatorNameStr(creatorNameStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_CREATOR_NAME_STR, data: creatorNameStr });
-  };
-}
-
-export function updateCreatorDescriptionStr(creatorDescriptionStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_CREATOR_DESCRIPTION_STR, data: creatorDescriptionStr });
-  };
-}
-
-export function updateCreatorBannerStr(creatorBannerStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_CREATOR_BANNER_STR, data: creatorBannerStr });
-  };
-}
-
-export function updateCreatorImageStr(creatorImageStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_CREATOR_IMAGE_STR, data: creatorImageStr });
-  };
-}
-
-export function updatePublicationTitleStr(publicationTitleStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_PUBLICATION_TITLE_STR, data: publicationTitleStr });
-  };
-}
-
-export function updatePublicationDescriptionStr(publicationDescriptionStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_PUBLICATION_DESCRIPTION_STR, data: publicationDescriptionStr });
-  };
-}
-
-export function updatePublicationUrlStr(publicationUrlStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_PUBLICATION_URL_STR, data: publicationUrlStr });
-  };
-}
-
-export function updatePublicationImageStr(publicationImageStr) {
-  return (dispatch) => {
-   dispatch({ type: PATREOS_ACTIONS.UPDATE_PUBLICATION_IMAGE_STR, data: publicationImageStr });
-  };
-}
-
 export function updatePledgeTokenSymbolStr(pledgeTokenSymbolStr) {
   return (dispatch) => {
    dispatch({ type: PATREOS_ACTIONS.UPDATE_PLEDGE_TOKEN_SYMBOL_STR, data: pledgeTokenSymbolStr });

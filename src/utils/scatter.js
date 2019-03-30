@@ -64,12 +64,16 @@ class ScatterHelper {
 
   disconnectScatter = () => {
     ScatterJS.logout().then(id => {
+      if(this.props.hasOwnProperty('accountActions')) {
         this.props.accountActions.updateEosAccountStr('Loading...');
         this.props.accountActions.updateEosAccountAuthorityStr('');
-        this.props.accountActions.updateEosAccountInfoObj('')
-        this.props.accountActions.updateEosBalanceAmt('0.0000 EOS')
-        this.props.patreosActions.updateBalanceAmt('0.0000 PATR')
+        this.props.accountActions.updateEosAccountInfoObj('');
+        this.props.accountActions.updateEosBalanceAmt('0.0000 EOS');
         this.props.accountActions.updateScatterDetectionStr('false');
+      }
+      if(this.props.hasOwnProperty('patreosActions')) {
+        this.props.patreosActions.updateBalanceAmt('0.0000 PATR');
+      }
     });
   };
 
