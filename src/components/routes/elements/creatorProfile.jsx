@@ -21,7 +21,7 @@ import icnPatreos from '../../../../public/img/icn-patreos.svg';
 import Header from './header';
 
 
-class CreatorInfo extends React.Component {
+class CreatorProfile extends React.Component {
 
   constructor(props) {
     super(props);
@@ -222,4 +222,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatorInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatorProfile);

@@ -74,3 +74,9 @@ export function updateCreatorPublicationImageStr(creatorPublicationImageStr) {
   };
 }
 
+export function updateCreatorExists(creatorExists) {
+  return (dispatch) => {
+   dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_EXISTS, data: creatorExists });
+  };
+}
+

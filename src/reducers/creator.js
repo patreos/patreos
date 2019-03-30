@@ -16,6 +16,7 @@ export default (
     creatorPublicationDescriptionStr: '',
     creatorPublicationUrlStr: '',
     creatorPublicationImageStr: '',
+    creatorExists: undefined,
   }, action) => {
   switch (action.type) {
   case CREATOR_ACTIONS.UPDATE_CREATOR_CURRENT_NAME_STR:
@@ -42,6 +43,8 @@ export default (
     return { ...state, creatorPublicationUrlStr: action.data };
   case CREATOR_ACTIONS.UPDATE_CREATOR_PUBLICATION_IMAGE_STR:
     return { ...state, creatorPublicationImageStr: action.data };
+  case CREATOR_ACTIONS.UPDATE_CREATOR_EXISTS:
+    return { ...state, creatorExists: action.data };
   default:
     return state;
   }
