@@ -32,10 +32,8 @@ class CreatorPage extends React.Component {
   }
 
   updateComponentData() {
-    if(Object.keys(this.props.scatterEos).length > 0 && this.scatterHelper.getScatterIdentity()) {
-      if(this.props.eosAccountStr) {
-        this.getCreatorProfile();
-      }
+    if(this.props.eosAccountStr) {
+      this.getCreatorProfile();
     }
   }
 
