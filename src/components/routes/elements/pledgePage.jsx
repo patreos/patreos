@@ -11,6 +11,10 @@ import * as CREATOR_ACTIONS from '../../../actions/creator_actions';
 import TransactionBuilder from '../../../utils/transaction_builder';
 import EosReader from '../../../utils/eos_reader'
 
+import logo from '../../../../public/img/patreos-logo.svg';
+import hero from '../../../../public/img/hero.svg';
+import icnPatreos from '../../../../public/img/icn-patreos.svg';
+
 import Header from './header';
 
 class PledgePage extends React.Component {
@@ -78,7 +82,7 @@ class PledgePage extends React.Component {
     } = this.props.creatorReducer;
 
     return (
-      <main role="main" className="token-mgmt">
+      <main role="main">
         <div className="container">
           <Header {...this.props} scatterDetectionStr={ this.props.scatterDetectionStr } parent={this} />
 
@@ -127,6 +131,22 @@ class PledgePage extends React.Component {
           <br/>
           <div className='row'>
             <div id="pledge-list" className='col-m'>
+            </div>
+          </div>
+        </div>
+        <div className="container-fluid footer">
+          <div className="row mt-5 py-5 mb-0">
+            <div className="col text-center">
+              <img src={icnPatreos} alt="" className="mb-5" />
+              <ul className="list-inline">
+                <li className="list-inline-item"><a href="mailto:hello@patreos.com">Contact</a></li>
+                <li className="list-inline-item"><a href="mailto:press@patreos.com">Press</a></li>
+                <li className="list-inline-item"><a href="/faq">FAQ</a></li>
+                <li className="list-inline-item"><a href="/news">News</a></li>
+                <li className="list-inline-item"><a href="https://t.me/patreos">Telegram</a></li>
+                <li className="list-inline-item"><a href="https://twitter.com/PatreosDapp">Twitter</a></li>
+              </ul>
+              <p>All Rights Reserved, Patreos 2019</p>
             </div>
           </div>
         </div>

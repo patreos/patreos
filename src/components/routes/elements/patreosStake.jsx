@@ -155,6 +155,8 @@ class PatreosStake extends React.Component {
               <ul className="list-inline">
                 <li className="list-inline-item"><a href="mailto:hello@patreos.com">Contact</a></li>
                 <li className="list-inline-item"><a href="mailto:press@patreos.com">Press</a></li>
+                <li className="list-inline-item"><a href="/faq">FAQ</a></li>
+                <li className="list-inline-item"><a href="/news">News</a></li>
                 <li className="list-inline-item"><a href="https://t.me/patreos">Telegram</a></li>
                 <li className="list-inline-item"><a href="https://twitter.com/PatreosDapp">Twitter</a></li>
               </ul>

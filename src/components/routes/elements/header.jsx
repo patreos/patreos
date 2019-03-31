@@ -29,7 +29,6 @@ class Header extends React.Component {
         return <div />
     }
     const isConnectedToScatterBool = this.props.scatterDetectionStr == 'true';
-    let conditionalDom;
     let conditionalLoginHeaderDom;
 
     if (isConnectedToScatterBool) {

@@ -112,11 +112,29 @@ class CreatorPage extends React.Component {
     }
 
     return (
-      <div className='container'>
-        <Header {...this.props} scatterDetectionStr={ this.props.scatterDetectionStr } parent={this} />
+      <main role="main">
+        <div className='container'>
+          <Header {...this.props} scatterDetectionStr={ this.props.scatterDetectionStr } parent={this} />
 
-        {conditionalDom}
-      </div>
+          {conditionalDom}
+        </div>
+        <div className="container-fluid footer">
+          <div className="row mt-5 py-5 mb-0">
+            <div className="col text-center">
+              <img src={icnPatreos} alt="" className="mb-5" />
+              <ul className="list-inline">
+                <li className="list-inline-item"><a href="mailto:hello@patreos.com">Contact</a></li>
+                <li className="list-inline-item"><a href="mailto:press@patreos.com">Press</a></li>
+                <li className="list-inline-item"><a href="/faq">FAQ</a></li>
+                <li className="list-inline-item"><a href="/news">News</a></li>
+                <li className="list-inline-item"><a href="https://t.me/patreos">Telegram</a></li>
+                <li className="list-inline-item"><a href="https://twitter.com/PatreosDapp">Twitter</a></li>
+              </ul>
+              <p>All Rights Reserved, Patreos 2019</p>
+            </div>
+          </div>
+        </div>
+      </main>
     );
   }
 
