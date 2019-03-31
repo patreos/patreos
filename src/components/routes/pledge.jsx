@@ -12,9 +12,7 @@ import ScatterHelper from '../../utils/scatter'
 
 import Eos from 'eosjs';
 
-import Sidebar from '../sidebar';
-import Menu from '../menu';
-import PatreosInfo from './children/patreosInfo';
+import PledgePage from './elements/pledgePage';
 
 class Pledge extends React.Component {
 
@@ -27,7 +25,7 @@ class Pledge extends React.Component {
     this.scatterHelper = new ScatterHelper(this.props);
   }
 
-  accountInfoUpdate() {
+  updateComponentData() {
     if(Object.keys(this.props.accountReducer.scatterEosObj).length > 0 && this.scatterHelper.getScatterIdentity()) {
       this.getEOSBalance();
       this.getPATRBalance();
@@ -36,15 +34,11 @@ class Pledge extends React.Component {
   }
 
   componentWillMount() {
-    this.props.accountActions.updateEosAccountStr('Loading...');
-    this.props.accountActions.updateEosBalanceAmt('0.0000 EOS')
-    this.props.patreosActions.updateBalanceAmt('0.0000 PATR')
-
-    this.scatterHelper.recoverScatter( () => { this.accountInfoUpdate() } );
+    this.scatterHelper.recoverScatter( () => { this.updateComponentData() } );
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.accountInfoUpdate(), this.props.config.updateInterval);
+    this.interval = setInterval(() => this.updateComponentData(), this.props.config.updateInterval);
   }
 
   componentDidUpdate(prevProps) {
@@ -62,15 +56,7 @@ class Pledge extends React.Component {
 
   render() {
     return (
-      <div className='wrapper'>
-        <Sidebar pledgeMenuActive={ 'active' } config={ this.props.config } eos={this.eos} scatterEos={ this.props.accountReducer.scatterEosObj }/>
-        <div id="content">
-            <div>
-              <Menu config={ this.props.config } eos={this.eos} scatterEos={ this.scatterEos }/>
-              <PatreosInfo eos={this.eos} scatterEos={ this.props.accountReducer.scatterEosObj } config={ this.props.config } eosAccountStr={ this.props.accountReducer.eosAccountStr } patrBalanceAmt={ this.props.patreosReducer.balanceAmt } recurringpayBalancesArr={ this.props.recurringpayBalancesArr }/>
-            </div>
-        </div>
-      </div>
+      <PledgePage eos={this.eos} scatterEos={ this.props.accountReducer.scatterEosObj } scatterDetectionStr={ this.props.accountReducer.scatterDetectionStr } config={ this.props.config } eosAccountStr={ this.props.accountReducer.eosAccountStr } pledgeToAccountStr={ this.props.match.params.account } eosAccountAuthorityStr={ this.props.accountReducer.eosAccountAuthorityStr } scatterHelper={this.scatterHelper} />
     );
   }
 

@@ -73,7 +73,7 @@ class App extends React.Component {
                     }
                   }
                 />
-                <Route exact path='/pledge'
+                <Route exact path='/pledge/:account'
                   render={
                     (props) => {
                       if (this.env == 'production') return <PageNotFound />
