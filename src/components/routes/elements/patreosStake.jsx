@@ -132,7 +132,7 @@ class PatreosStake extends React.Component {
     }
 
     return (
-      <main role="main" className="token-mgmt">
+      <main role="main">
         <div className="container">
 
         <Header {...this.props} scatterDetectionStr={ this.props.scatterDetectionStr } parent={this} />
