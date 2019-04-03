@@ -20,6 +20,7 @@ import Balance from './routes/balance';
 import Billing from './routes/billing';
 import Profile from './routes/profile';
 import Creator from './routes/creator';
+import Manage from './routes/manage';
 import ManagePatr from './routes/patr';
 import PageNotFound from './routes/404';
 
@@ -110,6 +111,22 @@ class App extends React.Component {
                     (props) => {
                       if (this.env == 'production') return <PageNotFound />
                       return <Creator {...props} config={ this.config } />
+                    }
+                  }
+                />
+                <Route exact path='/manage/:selection'
+                  render={
+                    (props) => {
+                      if (this.env == 'production') return <PageNotFound />
+                      return <Manage {...props} config={ this.config } selection={props.match.params.selection} />
+                    }
+                  }
+                />
+                <Route exact path='/manage'
+                  render={
+                    (props) => {
+                      if (this.env == 'production') return <PageNotFound />
+                      return <Manage {...props} config={ this.config } selection={ 'profile' } />
                     }
                   }
                 />

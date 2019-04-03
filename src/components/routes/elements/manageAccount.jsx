@@ -19,8 +19,9 @@ import hero from '../../../../public/img/hero.svg';
 import icnPatreos from '../../../../public/img/icn-patreos.svg';
 
 import Header from './header';
+import PageNotFound from '../../routes/404';
 
-class PledgePage extends React.Component {
+class ManageAccount extends React.Component {
 
   constructor(props) {
     super(props);
@@ -84,60 +85,46 @@ class PledgePage extends React.Component {
       creatorExists
     } = this.props.creatorReducer;
 
+    let conditionalDom;
+    if (this.props.selection == 'profile') {
+      conditionalDom = (
+        <div className='row'>
+          <div className='col-m'>
+            <h3>Manage Profile </h3>
+          </div>
+        </div>
+      );
+    } else if (this.props.selection == 'pledges') {
+      conditionalDom = (
+        <div className='row'>
+          <div className='col-m'>
+            <h3>Manage Pledges </h3>
+          </div>
+        </div>
+      );
+    } else if (this.props.selection == 'rewards') {
+      conditionalDom = (
+        <div className='row'>
+          <div className='col-m'>
+            <h3>Manage Rewards </h3>
+          </div>
+        </div>
+      );
+    } else {
+      return <PageNotFound />
+    }
+
+
     return (
       <main role="main">
+
         <div className="container">
           <ToastContainer/>
           <Header {...this.props} scatterDetectionStr={ this.props.scatterDetectionStr } parent={this} />
 
-          <div className='row'>
-            <div className='col-m'>
-              <h3>Manage Pledges</h3>
-            </div>
-          </div>
-          <br/>
-          <div className='row'>
-            <div className='col-m mr-1'>
-              Pledge To:
-            </div>
-            <div className='col-m'>
-              { this.props.pledgeToAccountStr }
-            </div>
-            <div className='col-m'>
-              <img src={ creatorCurrentImageStr } alt="Image" height="42" width="42"/>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-m mr-1'>
-              Pledge Amount:
-            </div>
-            <div className='col-m'>
-              { pledgeAmt } { pledgeTokenSymbolStr }
-            </div>
-          </div>
-          <div className='row'>
-            <div className='input-group mb-3'>
-              <input type='text' className='form-control' placeholder={ '0.0000' }  aria-label='Amount (to the nearest dollar)' onChange={ this.updatePledgeAmt } />
-              <div className='input-group-append'>
-                <div className="dropdown">
-                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    { pledgeTokenSymbolStr }
-                  </button>
-                  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a className="dropdown-item" onClick={ () => { this.updatePledgeTokenContractStr('patreostoken'); this.updatePledgeTokenSymbolStr('PATR') } }>PATR</a>
-                  <a className="dropdown-item" onClick={ () => { this.updatePledgeTokenContractStr('eosio.token'); this.updatePledgeTokenSymbolStr('EOS') } }>EOS</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button className='btn btn-patreos' onClick={ () => this.pledge() }>Pledge</button>
-          </div>
-          <br/>
-          <div className='row'>
-            <div id="pledge-list" className='col-m'>
-            </div>
-          </div>
+          { conditionalDom }
         </div>
+
         <div className="container-fluid footer">
           <div className="row mt-5 py-5 mb-0">
             <div className="col text-center">
@@ -338,4 +325,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PledgePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageAccount);
