@@ -12,6 +12,7 @@ export default (
     creatorDescriptionStr: '',
     creatorBannerStr: '',
     creatorImageStr: '',
+    creatorSocialMediaArr: [],
     creatorPublicationTitleStr: '',
     creatorPublicationDescriptionStr: '',
     creatorPublicationUrlStr: '',
@@ -35,6 +36,8 @@ export default (
     return { ...state, creatorBannerStr: action.data };
   case CREATOR_ACTIONS.UPDATE_CREATOR_IMAGE_STR:
     return { ...state, creatorImageStr: action.data };
+  case CREATOR_ACTIONS.UPDATE_CREATOR_SOCIAL_MEDIA_ARR:
+    return { ...state, creatorSocialMediaArr: action.data };
   case CREATOR_ACTIONS.UPDATE_CREATOR_PUBLICATION_TITLE_STR:
     return { ...state, creatorPublicationTitleStr: action.data };
   case CREATOR_ACTIONS.UPDATE_CREATOR_PUBLICATION_DESCRIPTION_STR:

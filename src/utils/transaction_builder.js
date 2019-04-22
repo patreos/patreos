@@ -306,7 +306,8 @@ class TransactionBuilder {
   publish(_from, _title, _description, _url) {}
 
   // Update basic profile information
-  set_profile(_account, _name, _description, _img_url, _banner_url, _permission='active') {
+  //[ { service: "twitter", profile_url: "https://twitter.com/PatreosDapp"} ]
+  set_profile(_account, _name, _description, _img_url, _banner_url, _social_medias, _permission='active') {
     return {
       actions: [{
         account: this.config.code.patreosnexus,
@@ -322,13 +323,29 @@ class TransactionBuilder {
             description: _description,
             image_url: _img_url,
             banner_url: _banner_url,
+            social_medias: _social_medias,
             last_publication: 0
           }
         }
       }]
     }
   }
-  unset_profile(_account) {}
+
+  unset_profile(_account, _permission='active') {
+    return {
+      actions: [{
+        account: this.config.code.patreosnexus,
+        name: 'unsetprofile',
+        authorization: [{
+          actor: _account,
+          permission: _permission
+        }],
+        data: {
+          owner: _account
+        }
+      }]
+    }
+  }
 
 }
 

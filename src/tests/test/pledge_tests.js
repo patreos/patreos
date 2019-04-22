@@ -1,12 +1,11 @@
 Eos = require('eosjs')
-var fs = require("fs");
-var assert = require('assert');
-var accounts = fs.readFileSync("accounts.json");
-
-var messagesModule = require("./messages.js");
-var configModule = require("../../config/test_config.js");
-
-var TransactionBuilder = require('../../utils/transaction_builder');
+const fs = require("fs");
+const assert = require('assert');
+const accounts = JSON.parse(fs.readFileSync("accounts.json"));
+const messagesModule = require("./messages.js");
+const configModule = require("../../config/test_config.js");
+const bignum = require('bignum');
+const TransactionBuilder = require('../../utils/transaction_builder');
 
 process.on('unhandledRejection', (reason, promise) => {
   //console.log('Unhandled Rejection at:', reason.stack || reason)
@@ -15,13 +14,50 @@ process.on('unhandledRejection', (reason, promise) => {
 })
 
 var config = configModule.config.development;
-var messages = messagesModule.messages;
+config.eos.keyProvider = [
+  accounts.contracts[0].private_key, //patreostoken
+  accounts.contracts[1].private_key, //patreosnexus
+  accounts.contracts[3].private_key, //patreosmoney
+  accounts.users[0].private_key, //xokayplanetx
+  accounts.users[2].private_key, //testplanet1x
+  accounts.users[3].private_key, //testplanet2x
+  accounts.users[4].private_key, //testplanet3x
+  accounts.users[9].private_key //patreosvault
+];
+const messages = messagesModule.messages;
 
 eos = Eos(config.eos);
 
 const transaction_builder = new TransactionBuilder(config);
 
 describe('Patreos Pledge Tests', function() {
+
+  it('Set profile for testplanet1x', function(done) {
+    let tx = transaction_builder.set_profile('testplanet1x', 'Test Planet 1x', 'Just a modest description', "", "", [ { service: "twitter", profile_url: "https://twitter.com/PatreosDapp"} ]);
+    eos.transaction(tx).then((response) => {
+      let result = response.processed.receipt.status;
+      assert.equal('executed', result);
+      done();
+    }).catch(err => {
+      console.log(err)
+      assert.fail(0, 1, 'Transaction was not successful');
+      done();
+    });
+  });
+
+  it('Unset profile for testplanet1x', function(done) {
+    let tx = transaction_builder.unset_profile('testplanet1x');
+    eos.transaction(tx).then((response) => {
+      let result = response.processed.receipt.status;
+      assert.equal('executed', result);
+      done();
+    }).catch(err => {
+      console.log(err)
+      assert.fail(0, 1, 'Transaction was not successful');
+      done();
+    });
+  });
+
 /*
   it('Should error when pledge of min value is not met', function(done) {
     let tx = transaction_builder.pledge('xokayplanetx', 'patreosnexus', '1.0000', 10);

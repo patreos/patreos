@@ -139,7 +139,8 @@ class CreatorInfo extends React.Component {
       this.props.creatorReducer.creatorNameStr,
       this.props.creatorReducer.creatorDescriptionStr,
       this.props.creatorReducer.creatorImageStr,
-      this.props.creatorReducer.creatorBannerStr
+      this.props.creatorReducer.creatorBannerStr,
+      [ { service: "twitter", profile_url: "https://twitter.com/PatreosDapp"} ]
     );
     this.props.scatterEos.transaction(transaction);
   }

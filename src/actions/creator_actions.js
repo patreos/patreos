@@ -50,6 +50,12 @@ export function updateCreatorImageStr(creatorImageStr) {
   };
 }
 
+export function updateCreatorSocialMediaArr(creatorSocialMediaArr) {
+  return (dispatch) => {
+   dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_SOCIAL_MEDIA_ARR, data: creatorSocialMediaArr });
+  };
+}
+
 export function updateCreatorPublicationTitleStr(creatorPublicationTitleStr) {
   return (dispatch) => {
    dispatch({ type: CREATOR_ACTIONS.UPDATE_CREATOR_PUBLICATION_TITLE_STR, data: creatorPublicationTitleStr });
